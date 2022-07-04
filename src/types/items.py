@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from typing import Union
 
-from .enums import FishSize, ItemRarity, RelicQuality
+from ..constants import ASSET_ROOT
+from ..utils import _create_languages
+from .enums import ItemRarity, Subtype
 from .formats import ObjectID
 
 
@@ -13,7 +14,17 @@ class LangInItem:
 
     # {name: str, description: str}
     # Already translated
-    drop: list[dict[str, str]]
+    drop: list["Drop"]
+
+
+@dataclass
+class Drop:
+
+    # translated name of the location / item
+    name: str
+
+    # link to the internal or extarnal source with information about that location
+    link: str
 
 
 @dataclass
@@ -31,16 +42,19 @@ class ItemCommon:
 
     # In next API verison:
     # max_rank: int
-    mod_max_rank: int
+    mod_max_rank: int | None
 
-    subtypes: Union[RelicQuality, FishSize] | None
+    subtypes: list[Subtype] | None
     tags: list[str]
 
     # will be introduced in update 1.8.3 and will replace rank for sculptures
-    cyan_stars: int
-    amber_stars: int
+    cyan_stars: int | None
+    amber_stars: int | None
 
     ducats: int
+
+    def __repr__(self):
+        return f"<ItemCommon id={self.id} url_name={self.url_name} tags={self.tags}>"
 
 
 @dataclass
@@ -58,6 +72,9 @@ class ItemInOrder(ItemCommon):
     pt: dict[str, str]
     es: dict[str, str]
     pl: dict[str, str]
+
+    def __repr__(self):
+        return f"<ItemInOrder id={self.id} url_name={self.url_name} tags={self.tags}>"
 
 
 @dataclass
@@ -81,6 +98,33 @@ class ItemFull(ItemInOrder):
     es: LangInItem
     pl: LangInItem
 
+    def __repr__(self):
+        return f"<ItemFull id={self.id} url_name={self.url_name} tags={self.tags} rarity={self.rarity}>"
+
+    def _from_data(node: dict):
+        return ItemFull(
+            id=node["id"],
+            url_name=ObjectID(node["url_name"]),
+            icon=f"{ASSET_ROOT}/{node['icon']}",
+            thumb=f"{ASSET_ROOT}/{node['thumb']}",
+            sub_icon=f"{ASSET_ROOT}/{node['sub_icon']}"
+            if node["sub_icon"] is not None
+            else None,
+            mod_max_rank=node.get("mod_max_rank", None),
+            subtypes=[Subtype[name] for name in node.pop("subtypes", [])],
+            tags=node["tags"],
+            cyan_stars=node.get("cyan_stars", None),
+            amber_stars=node.get("amber_stars", None),
+            ducats=node["ducats"],
+            set_root=node["set_root"],
+            mastery_rank=node["mastery_level"],
+            rarity=ItemRarity[rarity]
+            if (rarity := node.get("rarity", None)) is not None
+            else None,
+            trading_tax=node["trading_tax"],
+            **_create_languages(node, LangInItem, Drop),
+        )
+
 
 @dataclass
 class ItemShort:
@@ -88,3 +132,14 @@ class ItemShort:
     url_name: str
     thumb: str
     item_name: str
+
+    def _from_data(node: dict):
+        return ItemShort(
+            id=node["id"],
+            url_name=node["url_name"],
+            thumb=node["thumb"],
+            item_name=node["item_name"],
+        )
+
+    def __repr__(self):
+        return f"<ItemShort id={self.id} url_name={self.url_name}>"

@@ -1,20 +1,38 @@
-from typing import Final
+from typing import Final, Literal
 
 
-WF_MAIN_URL: Final[str] = "https://warframe.market"
-WF_API_URL: Final[str] = "https://api.warframe.market/v1"
-WF_ASSET_URL: Final[str] = "https://warframe.market/static/assets"
+MAIN_ROOT: Final[str] = "https://warframe.market"
+API_ROOT: Final[str] = "https://api.warframe.market/v1"
+ASSET_ROOT: Final[str] = "https://warframe.market/static/assets"
 
-TRANSLATION_OPTIONS = [
+VALID_TRANSLATIONS = Literal[
     "en",
     "ru",
     "ko",
     "fr",
     "sv",
     "de",
+    "zh-hant",
     "zh_hant",
-    "zh_hans",
+    "zh-hans",
+    "zh_hant",
     "pt",
     "es",
     "pl",
 ]
+
+VALID_TRANSLATIONS_RAW = {
+    "en",
+    "ru",
+    "ko",
+    "fr",
+    "sv",
+    "de",
+    "zh-hant",
+    "zh_hant",
+    "zh-hans",
+    "zh_hant",
+    "pt",
+    "es",
+    "pl",
+}

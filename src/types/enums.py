@@ -28,8 +28,21 @@ class FortunaFishQuality(Base):
     magnificent = 2
 
 
+class Subtype(Base):
+    intact = 0
+    exceptional = 1
+    flawless = 2
+    radiant = 3
+    small = 4
+    medium = 5
+    large = 5
+    basic = 6
+    adorned = 7
+    magnificent = 8
+
+
 class ItemRarity(Base):
-    very_command = 0
+    very_common = 0
     common = 1
     uncommon = 2
     rare = 3
