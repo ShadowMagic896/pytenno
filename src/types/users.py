@@ -1,13 +1,14 @@
 from dataclasses import dataclass
 
-from .enums import UserPatreonBadge, UserStatus
+from .enums import PatreonBadge, UserStatus
 from .formats import DateTime, ObjectID
 
 
+@dataclass
 class PatreonProfile:
     patreon_founder: bool
     subscription: bool
-    patreon_badge: UserPatreonBadge
+    patreon_badge: PatreonBadge
 
 
 @dataclass
@@ -20,6 +21,7 @@ class BaseUser:
     avatar: str | None
 
 
+@dataclass
 class CurrentUser(BaseUser):
     anonymous: bool
     verification: bool
@@ -37,6 +39,7 @@ class CurrentUser(BaseUser):
     unread_messages: int
 
 
+@dataclass
 class UserShort(BaseUser):
     status: UserStatus
     reputation: int

@@ -52,7 +52,7 @@ class Element(Base):
     radiation = 6
 
 
-class UserPatreonBadge(Base):
+class PatreonBadge(Base):
     bronze = 0
     silver = 1
     gold = 2
@@ -133,7 +133,7 @@ class IconFormat(Base):
 AnimationFormat = IconFormat
 
 
-class AuctionType:
+class AuctionType(Base):
     riven = 0
     lich = 1
     kubrow = 2
@@ -151,8 +151,8 @@ class Rotation(Base):
 
 
 class Stage(Base):
-    _1: 0
-    _2: 1
-    _3: 2
-    _4: 3
-    final: 4
+    _1 = 0
+    _2 = 1
+    _3 = 2
+    _4 = 3
+    final = 4

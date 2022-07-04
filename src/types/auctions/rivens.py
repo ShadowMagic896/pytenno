@@ -63,6 +63,7 @@ class RivenAttribute:
     search_only: bool
 
 
+@dataclass
 class RivenAuction:
     # type of the item, in this case it's riven
     type: AuctionType
