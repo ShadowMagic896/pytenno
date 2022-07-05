@@ -1,7 +1,7 @@
 from functools import cache
 from urllib.parse import quote
 
-from .constants import VALID_TRANSLATIONS, VALID_TRANSLATIONS_RAW
+from .constants import VALID_TRANSLATIONS_RAW
 from .errors import BaseError
 
 
@@ -21,9 +21,6 @@ def _raise_error_code(code: int):
 
 
 def _create_languages(data: dict, lang_in_item: type, drop: type):
-    """
-    To avoid import errors...
-    """
     return {
         lang.replace("-", "_"): lang_in_item(
             item_name=vals["item_name"],

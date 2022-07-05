@@ -1,22 +1,17 @@
 import aiohttp
-from functools import cache
 from types import TracebackType
 from typing import Literal, Optional, Type, overload
 
-from httpx import AsyncClient
-
-from . import _asynciofix
 from .constants import API_ROOT, VALID_TRANSLATIONS
 from .types.droptable import DropTable
 from .types.items import ItemFull, ItemShort
-from .types.missions import NPC, Mission, RelicDrop
 from .types.orders import OrderRow
 from .utils import _raise_error_code, format_name
 
 
 class __PyTennoBackend:
-    def __init__(self) -> None:
-        self.session = aiohttp.ClientSession(headers={"content-type": "application/json"})
+    def __init__(self, session: aiohttp.ClientSession) -> None:
+        self.session = session
 
     async def __aenter__(self):
         return self
@@ -33,12 +28,12 @@ class __PyTennoBackend:
         url = f"{API_ROOT}{url}"
         mode = getattr(self.session, kwargs.pop("method", "get"))
         response = await mode(url, **kwargs)
-        print("https://api.warframe.market/v1/items/mirage_prime_systems/droptables?include=item" == url)
         if response.status != 200:
             _raise_error_code(response.status)
         return await response.json()
 
-    @cache
+
+class __ItemBackend(__PyTennoBackend):
     async def _get_items(self, language):
         url = "/items"
         headers = {"Language": language}
@@ -46,7 +41,6 @@ class __PyTennoBackend:
 
         return [ItemShort._from_data(node) for node in response["payload"]["items"]]
 
-    @cache
     async def _get_item(
         self,
         item_name,
@@ -59,7 +53,6 @@ class __PyTennoBackend:
 
         return [ItemFull._from_data(node=node) for node in items]
 
-    @cache
     async def _get_orders(
         self,
         item_name,
@@ -84,9 +77,10 @@ class __PyTennoBackend:
                     for node in response["include"]["item"]["items_in_set"]
                 ],
             )
-        return [OrderRow._from_data(node=node) for node in response["orders"]]
+        return [
+            OrderRow._from_data(node=node) for node in response["payload"]["orders"]
+        ]
 
-    @cache
     async def _get_droptable(
         self, item_name, include_items: bool, language: VALID_TRANSLATIONS
     ):
@@ -106,24 +100,32 @@ class __PyTennoBackend:
         return DropTable._from_data(response["droptables"])
 
 
-class __PyTennoOverloads:
-    @overload
-    async def get_orders(
-        self,
-        item_name: str,
-        include_items: Literal[False],
-        platform: Optional[Literal["pc", "xbox", "ps4", "switch"]] = "pc",
-    ) -> list[OrderRow]:
-        ...
+class PyTenno(__PyTennoBackend):
+    def __init__(self) -> None:
+        # These are hardcoded to please the linter
+        # Could be easily made with __init_subclass__ but I
+        # feel it's worth it for linting support
+        self.session = aiohttp.ClientSession(
+            headers={"content-type": "application/json"}
+        )
+        self.Items = Items(self)
+        super().__init__()
 
-    @overload
-    async def get_orders(
-        self,
-        item_name: str,
-        include_items: Literal[True],
-        platform: Optional[Literal["pc", "xbox", "ps4", "switch"]] = "pc",
-    ) -> tuple[list[OrderRow], list[ItemFull]]:
-        ...
+    def __hash__(self) -> int:
+        return 0
+
+
+class __TennoClass:
+    def __init__(self, pytenno: PyTenno):
+        self.pt = pytenno
+
+
+class Items(__TennoClass, __ItemBackend):
+    async def get_items(self, language: VALID_TRANSLATIONS = "en") -> list[ItemShort]:
+        """
+        Returns all available items
+        """
+        return await self._get_items(language)
 
     @overload
     async def get_droptable(
@@ -143,14 +145,6 @@ class __PyTennoOverloads:
     ) -> list[DropTable]:
         ...
 
-
-class PyTenno(__PyTennoBackend, __PyTennoOverloads):
-    async def get_items(self, language: VALID_TRANSLATIONS = "en") -> list[ItemShort]:
-        """
-        Returns all available items
-        """
-        return await self._get_items(language)
-
     async def get_item(
         self,
         item_name: str,
@@ -160,15 +154,33 @@ class PyTenno(__PyTennoBackend, __PyTennoOverloads):
         Returns available information on an item.
         Items that are part of a set will have the entire set returned, as well as the blueprint and set object, if available.
         """
-        return await self._get_item(item_name, platform)
+        return await self.pt._get_item(item_name, platform)
+
+    @overload
+    async def get_orders(
+        self,
+        item_name: str,
+        include_items: Literal[False],
+        platform: Optional[Literal["pc", "xbox", "ps4", "switch"]] = "pc",
+    ) -> list[OrderRow]:
+        ...
+
+    @overload
+    async def get_orders(
+        self,
+        item_name: str,
+        include_items: Literal[True],
+        platform: Optional[Literal["pc", "xbox", "ps4", "switch"]] = "pc",
+    ) -> tuple[list[OrderRow], list[ItemFull]]:
+        ...
 
     async def get_orders(
         self,
         item_name: str,
         include_items: bool,
         platform: Optional[Literal["pc", "xbox", "ps4", "switch"]] = "pc",
-    ) -> tuple[list[OrderRow], list[ItemFull]]:
-        return await self._get_orders(item_name, include_items, platform)
+    ):
+        return await self.pt._get_orders(item_name, include_items, platform)
 
     async def get_droptable(
         self,
@@ -176,8 +188,7 @@ class PyTenno(__PyTennoBackend, __PyTennoOverloads):
         include_items: bool,
         language: VALID_TRANSLATIONS = "en",
     ):
-        raise Exception("The API on warframe.market for this feature is currently nonfunctional")
-        # return await self._get_droptable(item_name, include_items, language)
-
-
-
+        raise Exception(
+            "The API on warframe.market for this feature is currently nonfunctional"
+        )
+        # return await self.pt._get_droptable(item_name, include_items, language)
