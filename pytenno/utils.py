@@ -1,8 +1,6 @@
 import datetime
 from enum import Enum
 from functools import cache
-from pytenno.models.liches import LichQuirk
-from pytenno.models.rivens import PartialRivenAttribute
 from typing import Any, Callable, Mapping, Type
 from urllib.parse import quote
 
@@ -82,9 +80,6 @@ _ENUM_MAPPING: Mapping[str, Type[Enum]] = {
 # Enums that require special attention
 _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
     "subtypes": lambda names: [Subtype[name] for name in names],
-    "attributes": lambda attributes: [
-        PartialRivenAttribute[name] for name in attributes
-    ],
     "exclusive_to": lambda excls: [RivenWeaponGroup[exc] for exc in excls],
     "units": lambda unit: MeasurementUnit[unit],
     "group": lambda grp: RivenAttributeGroup[
@@ -104,7 +99,7 @@ def _from_data(cls_: type, data: dict[str, Any]):
     for key, value in data.items():
         if value is None:
             continue
-        if key in ("icon", "sub_icon", "thumb", "avatar"):
+        if key in ("icon", "sub_icon", "thumb", "avatar", "animation"):
             nd[key] = f"{ASSET_ROOT}/{value}"
         elif key in (
             "creation_date",

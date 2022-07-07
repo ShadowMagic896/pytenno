@@ -1,22 +1,24 @@
 import aiohttp
 from pytenno.models.auctions import RivenAuction
-from pytenno.models.enums import Platform
+from pytenno.models.enums import Element, Platform, Polarity
 from pytenno.models.locations import Location
 from pytenno.models.missions import NPC, PartialMission
 from pytenno.models.users import CurrentUser
-from types import NoneType, TracebackType
+from types import TracebackType
 from typing import Literal, Optional, Type, Union, overload
 
 from ._backends import (
+    AuctionEntriesBackend,
     AuctionsBackend,
     AuthBackend,
-    ItemBackend,
-    LichBackend,
+    ItemsBackend,
+    LichesBackend,
     MiscBackend,
-    RivenBackend,
+    RivensBackend,
 )
 from .constants import VALID_LANGUAGES
 from .models.auctions import (
+    AuctionEntry,
     AuctionEntryExpanded,
     KubrowAuction,
     LichAuction,
@@ -38,12 +40,13 @@ class PyTenno:
 
         self._session: aiohttp.ClientSession = None
 
-        self.auctions: Auctions
-        self.auth: Auth
-        self.items: Items
-        self.liches: Liches
-        self.misc: Misc
-        self.rivens: Rivens
+        self.AuctionEntries: AuctionEntries
+        self.Auctions: Auctions
+        self.Auth: Auth
+        self.Items: Items
+        self.Liches: Liches
+        self.Misc: Misc
+        self.Rivens: Rivens
 
     async def __aenter__(self):
         headers = {
@@ -55,12 +58,13 @@ class PyTenno:
         }
         self._session = aiohttp.ClientSession(headers=headers)
 
-        self.auctions = Auctions(self._session)
-        self.auth = Auth(self._session)
-        self.items = Items(self._session)
-        self.liches = Liches(self._session)
-        self.misc = Misc(self._session)
-        self.rivens = Rivens(self._session)
+        self.AuctionEntries = AuctionEntries(self._session)
+        self.Auctions = Auctions(self._session)
+        self.Auth = Auth(self._session)
+        self.Items = Items(self._session)
+        self.Liches = Liches(self._session)
+        self.Misc = Misc(self._session)
+        self.Rivens = Rivens(self._session)
         return self
 
     async def __aexit__(
@@ -73,6 +77,14 @@ class PyTenno:
         return False
 
 
+class AuctionEntries(AuctionEntriesBackend):
+    async def get_by_id(self, auction_id: str) -> AuctionEntryExpanded:
+        return await self._get_by_id(auction_id)
+
+    async def get_bids_by_id(self, auction_id: str) -> AuctionEntryExpanded:
+        return await self._get_bids_by_id(auction_id)
+
+
 class Auctions(AuctionsBackend):
     async def create_auction(
         self,
@@ -80,9 +92,9 @@ class Auctions(AuctionsBackend):
         note: str,
         starting_price: int,
         buyout_price: int,
-        minimal_reputation: int = 0,
-        minimal_increment: int = 1,
-        private: bool = False,
+        minimal_reputation: Optional[int] = 0,
+        minimal_increment: Optional[int] = 1,
+        private: Optional[bool] = False,
     ) -> list[AuctionEntryExpanded]:
         return await self._create_auction(
             item,
@@ -94,6 +106,72 @@ class Auctions(AuctionsBackend):
             private,
         )
 
+    async def find_riven_auctions(
+        self,
+        *,
+        platform: Platform = Platform.pc,
+        weapon_url_name: str,
+        mastery_rank_min: int = None,
+        mastery_rank_max: int = None,
+        re_rolls_min: int = None,
+        re_rolls_max: int = None,
+        positive_stats: str = None,
+        negative_stats: str = None,
+        polarity: Polarity = Polarity.any,
+        mod_rank: Literal["any", "maxed"] = None,
+        sort_by: Optional[
+            Literal[
+                "price_desc", "price_asc", "positive_attr_desc", "positive_attr_asc"
+            ]
+        ] = None,
+        operation: Optional[Literal["anyOf", "allOf"]] = None,
+        buyout_policy: Optional[Literal["with", "direct"]] = None,
+    ) -> list[AuctionEntryExpanded]:
+        return await self._find_riven_auctions(
+            platform=platform,
+            weapon_url_name=weapon_url_name,
+            mastery_rank_min=mastery_rank_min,
+            mastery_rank_max=mastery_rank_max,
+            re_rolls_min=re_rolls_min,
+            re_rolls_max=re_rolls_max,
+            positive_stats=positive_stats,
+            negative_stats=negative_stats,
+            polarity=polarity,
+            mod_rank=mod_rank,
+            sort_by=sort_by,
+            operation=operation,
+            buyout_policy=buyout_policy,
+        )
+
+    async def find_lich_auctions(
+        self,
+        *,
+        weapon_url_name: str,
+        platform: Platform = Platform.pc,
+        element: Optional[Element] = None,
+        ephemera: Optional[bool] = None,
+        damage_min: Optional[int] = None,
+        damage_max: Optional[int] = None,
+        quirk_url_name: Optional[str] = None,
+        sort_by: Optional[
+            Literal[
+                "price_desc", "price_asc", "positive_attr_desc", "positive_attr_asc"
+            ]
+        ] = "price_desc",
+        buyout_policy: Optional[Literal["with", "direct"]] = None,
+    ) -> list[AuctionEntryExpanded]:
+        return await self._find_lich_auctions(
+            platform=platform,
+            weapon_url_name=weapon_url_name,
+            element=element,
+            ephemera=ephemera,
+            damage_min=damage_min,
+            damage_max=damage_max,
+            quirk_url_name=quirk_url_name,
+            sort_by=sort_by,
+            buyout_policy=buyout_policy,
+        )
+
 
 class Auth(AuthBackend):
     async def login(
@@ -103,8 +181,21 @@ class Auth(AuthBackend):
     ) -> CurrentUser:
         return await self._login(email, password)
 
+    async def register(
+        self,
+        email: str,
+        password: str,
+        region: Optional[VALID_LANGUAGES] = "en",
+        device_id: Optional[str] = None,
+        recaptcha: Optional[str] = None,
+    ) -> CurrentUser:
+        return await self._register(email, password, region, device_id, recaptcha)
 
-class Items(ItemBackend):
+    async def recover(self, email: str) -> None:
+        return await self._recover(email)
+
+
+class Items(ItemsBackend):
     """
     Provides all information about common items data models.
     """
@@ -199,7 +290,7 @@ class Items(ItemBackend):
         )
 
 
-class Liches(LichBackend):
+class Liches(LichesBackend):
     """
     Provides all information about lich data models.
     """
@@ -216,7 +307,7 @@ class Liches(LichBackend):
         return await self._get_quirks(language)
 
 
-class Rivens(RivenBackend):
+class Rivens(RivensBackend):
     """
     Provides all information about riven data models.
     """
@@ -248,4 +339,3 @@ class Misc(MiscBackend):
     ) -> list[PartialMission]:
         # nonfunctional
         return await self._get_missions(language)
-

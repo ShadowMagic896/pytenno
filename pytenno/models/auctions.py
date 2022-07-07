@@ -1,4 +1,3 @@
-from attr import attributes
 from dataclasses import dataclass
 from datetime import datetime
 from pytenno.utils import _from_data
@@ -9,7 +8,7 @@ from .rivens import PartialRivenAttribute
 from .users import UserShort
 
 
-@dataclass
+@dataclass(kw_only=True)
 class AuctionEntry:
     id: str
 
@@ -17,7 +16,7 @@ class AuctionEntry:
     minimal_reputation: int
 
     # If winner is set, auction is in the paused state. While on pause, bids can't be added, but can be removed.
-    winner: str | None
+    winner: str | None = None
 
     private: bool
     visible: bool
@@ -32,14 +31,14 @@ class AuctionEntry:
     starting_price: int
 
     # if buyout_price is set to null, that means inf.
-    buyout_price: int
+    buyout_price: int | None = None
 
-    minimal_increment: int | None
+    minimal_increment: int | None = None
 
     # Shortcut to starting_price == buyout_price, means that auction is not an auction, but an order
     is_direct_sell: bool
 
-    top_bid: int | None
+    top_bid: int | None = None
     created: datetime
 
     # Last time auction was updated, eighter by owner or by placing a bid.
@@ -50,10 +49,10 @@ class AuctionEntry:
     # Auction is closed, and was marked for removal or archiving, no one can add or remove bids now.
     closed: bool
 
-    # Auction will be removed or archivated after marked_operation_at
-    is_marked_for: AuctionMarking | None
+    # Auction will be removed or archived after marked_operation_at
+    is_marked_for: AuctionMarking | None = None
 
-    marked_operation_for: datetime | None
+    marked_operation_for: datetime | None = None
 
     item: Union["RivenAuction", "LichAuction", "KubrowAuction"]
 
@@ -79,15 +78,15 @@ class AuctionEntryExpanded(AuctionEntry):
         )
 
 
-@dataclass
+@dataclass(kw_only=True)
 class LichAuction:
     type: AuctionType  # lich
     weapon_url_name: str
     element: Element
     damage: int
-    ephemera: bool
-    quirk: str
-    name: str  # Unused by API
+    having_ephemera: bool
+    quirk: str = None
+    name: str = None  # Unused by API
 
 
 @dataclass
