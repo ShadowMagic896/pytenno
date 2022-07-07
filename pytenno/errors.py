@@ -12,4 +12,16 @@ class BaseError(BaseException):
 
 class Missing(BaseError):
     code = 404
-    msg = "Cannot find requested object"
+    msg = "Undocumented"
+
+class BadRequest(BaseError):
+    code = 400
+    msg = "Malformed request URL"
+
+class Unauthorized(BaseError):
+    code = 401
+    msg = "Unauthorized"
+
+class InternalServerError(BaseError):
+    code = 500
+    msg = "Internal server error"
