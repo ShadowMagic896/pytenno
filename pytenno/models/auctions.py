@@ -1,10 +1,8 @@
+from attr import attributes
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Union
-
-from attr import attributes
-
 from pytenno.utils import _from_data
+from typing import Union
 
 from .enums import AuctionMarking, AuctionType, Element, Platform, Polarity
 from .rivens import PartialRivenAttribute
@@ -72,9 +70,12 @@ class AuctionEntryExpanded(AuctionEntry):
         return AuctionEntryExpanded(
             # file deepcode ignore WrongNumberOfArguments
             owner=_from_data(UserShort, node.pop("owner")),
-            item=_from_data(RivenAuction, item) if (t := (item := node.pop("item"))["type"]) == "riven" else
-            _from_data(LichAuction, item) if t == "lich" else _from_data(KubrowAuction, item),
-            **node
+            item=_from_data(RivenAuction, item)
+            if (t := (item := node.pop("item"))["type"]) == "riven"
+            else _from_data(LichAuction, item)
+            if t == "lich"
+            else _from_data(KubrowAuction, item),
+            **node,
         )
 
 
@@ -114,6 +115,8 @@ class RivenAuction:
 
     def _from_data(node: dict):
         return RivenAuction(
-            attributes=[_from_data(PartialRivenAttribute, x) for x in node.pop("attributes")],
-            **node
+            attributes=[
+                _from_data(PartialRivenAttribute, x) for x in node.pop("attributes")
+            ],
+            **node,
         )

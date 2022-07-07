@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+
 from .enums import Faction
+
 
 @dataclass
 class Location:

@@ -23,6 +23,7 @@ class Mission:
     relics: list["RelicDrop"]
     npc: list["NPC"]
 
+
 @dataclass
 class PartialMission:
     id: str

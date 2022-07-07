@@ -1,11 +1,10 @@
 import datetime
 from enum import Enum
 from functools import cache
+from pytenno.models.liches import LichQuirk
+from pytenno.models.rivens import PartialRivenAttribute
 from typing import Any, Callable, Mapping, Type
 from urllib.parse import quote
-from pytenno.models.liches import LichQuirk
-
-from pytenno.models.rivens import PartialRivenAttribute
 
 from .constants import ASSET_ROOT, VALID_TRANSLATIONS_RAW
 from .errors import BaseError
@@ -83,7 +82,9 @@ _ENUM_MAPPING: Mapping[str, Type[Enum]] = {
 # Enums that require special attention
 _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
     "subtypes": lambda names: [Subtype[name] for name in names],
-    "attributes": lambda attributes: [PartialRivenAttribute[name] for name in attributes],
+    "attributes": lambda attributes: [
+        PartialRivenAttribute[name] for name in attributes
+    ],
     "exclusive_to": lambda excls: [RivenWeaponGroup[exc] for exc in excls],
     "units": lambda unit: MeasurementUnit[unit],
     "group": lambda grp: RivenAttributeGroup[
