@@ -100,7 +100,6 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 
 
 def _from_data(cls_: type, data: dict[str, Any]):
-    print(cls_)
     nd = {}  # Create new dict to avoid RuntimeErrors
     for key, value in data.items():
         if value is None:

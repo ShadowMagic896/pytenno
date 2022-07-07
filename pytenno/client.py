@@ -1,12 +1,10 @@
 import aiohttp
-import pprint
 from pytenno.models.auctions import RivenAuction
 from pytenno.models.enums import Platform
 from pytenno.models.locations import Location
 from pytenno.models.missions import NPC, PartialMission
 from pytenno.models.users import CurrentUser
-from tracemalloc import start
-from types import TracebackType
+from types import NoneType, TracebackType
 from typing import Literal, Optional, Type, Union, overload
 
 from ._backends import (
@@ -55,14 +53,14 @@ class PyTenno:
             "language": self._language,
             "platform": self._platform.name,
         }
-        self._sesion = aiohttp.ClientSession(headers=headers)
+        self._session = aiohttp.ClientSession(headers=headers)
 
-        self.auctions = Auctions(self)
-        self.auth = Auth(self)
-        self.items = Items(self)
-        self.liches = Liches(self)
-        self.misc = Misc(self)
-        self.rivens = Rivens(self)
+        self.auctions = Auctions(self._session)
+        self.auth = Auth(self._session)
+        self.items = Items(self._session)
+        self.liches = Liches(self._session)
+        self.misc = Misc(self._session)
+        self.rivens = Rivens(self._session)
         return self
 
     async def __aexit__(
@@ -71,8 +69,30 @@ class PyTenno:
         excinst: Optional[BaseException],
         exctb: Optional[TracebackType],
     ) -> bool:
-        await self._sesion.close()
+        await self._session.close()
         return False
+
+
+class Auctions(AuctionsBackend):
+    async def create_auction(
+        self,
+        item: Union[RivenAuction, LichAuction, KubrowAuction],
+        note: str,
+        starting_price: int,
+        buyout_price: int,
+        minimal_reputation: int = 0,
+        minimal_increment: int = 1,
+        private: bool = False,
+    ) -> list[AuctionEntryExpanded]:
+        return await self._create_auction(
+            item,
+            note,
+            starting_price,
+            buyout_price,
+            minimal_reputation,
+            minimal_increment,
+            private,
+        )
 
 
 class Auth(AuthBackend):
@@ -229,26 +249,3 @@ class Misc(MiscBackend):
         # nonfunctional
         return await self._get_missions(language)
 
-
-class Auctions(AuctionsBackend):
-    async def create_auction(
-        self,
-        item: Union[RivenAuction, LichAuction, KubrowAuction],
-        note: str,
-        starting_price: int,
-        buyout_price: int,
-        minimal_reputation: int = 0,
-        minimal_increment: int = 1,
-        private: bool = False,
-    ) -> list[AuctionEntryExpanded]:
-        if not self._pt.authorized:
-            raise PermissionError("You must pass a valid JWT token to use this")
-        return await self._create_auction(
-            item,
-            note,
-            starting_price,
-            buyout_price,
-            minimal_reputation,
-            minimal_increment,
-            private,
-        )

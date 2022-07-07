@@ -10,7 +10,6 @@ class Base(Enum):
         return self.name.capitalize()
 
     def __getitem__(self, name: str | None) -> Self:
-        print(name)
         if name is None:
             return None
         return super().__getitem__(name)

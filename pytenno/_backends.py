@@ -1,6 +1,5 @@
 import aiohttp
-from traitlets import Union
-from typing import Literal
+from typing import Literal, Union
 
 from .constants import API_ROOT, VALID_LANGUAGES
 from .models.auctions import (
@@ -28,7 +27,7 @@ class PyTennoBackend:
 
     async def _request(self, url: str, **kwargs) -> dict[str, str | int | dict | list]:
         url = f"{API_ROOT}{url}"
-        mode = getattr(self._session, kwargs.pop("method", "get"), "get")
+        mode = getattr(self._session, kwargs.pop("method", "get"))
 
         response: aiohttp.ClientResponse = await mode(url, **kwargs)
         if response.status != 200:
