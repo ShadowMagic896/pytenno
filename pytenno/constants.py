@@ -5,7 +5,7 @@ MAIN_ROOT: Final[str] = "https://warframe.market"
 API_ROOT: Final[str] = "https://api.warframe.market/v1"
 ASSET_ROOT: Final[str] = "https://warframe.market/static/assets"
 
-VALID_TRANSLATIONS = Literal[
+VALID_LANGUAGES = Literal[
     "en",
     "ru",
     "ko",

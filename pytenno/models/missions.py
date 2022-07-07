@@ -7,26 +7,25 @@ from .enums import (
     RelicQuality,
     Rotation,
     Stage,
+    Subtype,
 )
-from .formats import ObjectID
 
 
 @dataclass
 class Mission:
-    mission_id: ObjectID
-    node_id: ObjectID
+    mission_id: str
+    node_id: str
     rarity: ItemRarity
     rate: int | float
-    item_subtype: RelicQuality | FishSize | FortunaFishQuality
+    item_subtype: Subtype
     rotation: Rotation
     stage: Stage
     relics: list["RelicDrop"]
     npc: list["NPC"]
 
-
 @dataclass
 class PartialMission:
-    id: ObjectID
+    id: str
     icon: str
     thumb: str
     name: str
@@ -34,14 +33,14 @@ class PartialMission:
 
 @dataclass
 class RelicDrop:
-    id: ObjectID
+    id: str
     rarity: ItemRarity
     rate: dict[RelicQuality, int | float]
 
 
 @dataclass
 class NPC:
-    id: ObjectID
+    id: str
     icon: str
     thumb: str
     name: str

@@ -1,4 +1,5 @@
 from enum import Enum
+from typing_extensions import Self
 
 
 class Base(Enum):
@@ -7,6 +8,12 @@ class Base(Enum):
 
     def __str__(self):
         return self.name.capitalize()
+
+    def __getitem__(self, name: str | None) -> Self:
+        print(name)
+        if name is None:
+            return None
+        return super().__getitem__(name)
 
 
 class RelicQuality(Base):
@@ -55,6 +62,11 @@ class OrderType(Base):
     sell = 1
 
 
+class MeasurementUnit(Base):
+    seconds = 0
+    percent = 1
+
+
 class Element(Base):
     impact = 0
     heat = 1
@@ -92,7 +104,7 @@ class UserStatus(Base):
     ingame = 2
 
 
-class RivenGroup(Base):
+class RivenWeaponGroup(Base):
     primary = 0
     secondary = 1
     melee = 2
@@ -108,11 +120,21 @@ class RivenAttributeGroup(Base):
     top = 2
 
 
+class RivenWeaponType(Base):
+    rifle = 0
+    shotgun = 1
+    pistol = 2
+    melee = 3
+    zaw = 4
+    kitgun = 5
+
+
 class Polarity(Base):
     madurai = 0
     vazarin = 1
     naramon = 2
     zanurik = 3
+    any = 4
 
 
 class RivenType(Base):
@@ -169,3 +191,10 @@ class Stage(Base):
     _3 = 2
     _4 = 3
     final = 4
+
+
+class Faction(Base):
+    infested = 0
+    grineer = 1
+    corpus = 2
+    corrupted = 3

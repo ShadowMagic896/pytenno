@@ -1,21 +1,21 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 from .enums import OrderType, Platform
-from .formats import DateTime, ObjectID
 from .items import ItemInOrder
 from .users import UserShort
 
 
 @dataclass
 class OrderCommon:
-    id: ObjectID
+    id: str
     platinum: int
     quantity: int
     order_type: OrderType
     platform: Platform
     region: str
-    creation_date: DateTime
-    last_update: DateTime
+    creation_date: datetime
+    last_update: datetime
 
     # always true for this model, exists only for backward compatibility
     visible: bool
@@ -27,16 +27,8 @@ class OrderRow(OrderCommon):
 
     def _from_data(node: dict):
         return OrderRow(
-            id=ObjectID(node["id"]),
-            platinum=node["platinum"],
-            quantity=node["quantity"],
-            order_type=OrderType[node["order_type"]],
-            platform=Platform[node["platform"]],
-            region=node["region"],
-            creation_date=DateTime(node["creation_date"]),
-            last_update=DateTime(node["last_update"]),
-            visible=node["visible"],
-            user=UserShort._from_data(node["user"]),
+            user=UserShort(**node.pop("user")),
+            **node,
         )
 
     def __repr__(self) -> str:

@@ -1,12 +1,11 @@
 from dataclasses import dataclass
 
-from ..enums import AnimationFormat, AuctionType, Element, IconFormat
-from ..formats import ObjectID
+from .enums import AnimationFormat, Element, IconFormat
 
 
 @dataclass
 class LichWeapon:
-    id: ObjectID
+    id: str
     url_name: str
     icon: str
     icon_format: IconFormat
@@ -16,7 +15,7 @@ class LichWeapon:
 
 @dataclass
 class LichEphemera:
-    id: ObjectID
+    id: str
     url_name: str
     icon: str
     icon_format: IconFormat
@@ -28,20 +27,9 @@ class LichEphemera:
 
 
 @dataclass
-class LickQuirk:
-    id: ObjectID
+class LichQuirk:
+    id: str
     url_name: str
     item_name: str
     description: str
     group: str  # Does not belong to any specific enum
-
-
-@dataclass
-class LichAuction:
-    type: AuctionType  # lich
-    weapon_url_name: str
-    element: Element
-    damage: int
-    ephemera: bool
-    quirk: str
-    name: str  # Unused by API
