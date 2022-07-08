@@ -83,9 +83,6 @@ class PyTenno:
 
 
 class AuctionEntries(AuctionEntriesBackend):
-    """
-    A class for getting information about specific auction entries from IDs.
-    """
     async def get_by_id(self, auction_id: str) -> AuctionEntryExpanded:
         """Gets a specific auction entry by ID.
 
@@ -323,10 +320,6 @@ class Auth(AuthBackend):
 
 
 class Items(ItemsBackend):
-    """
-    Provides all information about common items data models.
-    """
-
     async def get_items(self, language: VALID_LANGUAGES = "en") -> list[ItemShort]:
         """Gets all items.
         
@@ -447,10 +440,6 @@ class Items(ItemsBackend):
 
 
 class Liches(LichesBackend):
-    """
-    Provides all information about lich data models.
-    """
-
     async def get_weapons(self, language: VALID_LANGUAGES = "en") -> list[LichWeapon]:
         """Gets all weapons.
         
