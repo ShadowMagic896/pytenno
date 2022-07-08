@@ -32,12 +32,35 @@ from .models.rivens import RivenAttribute, RivenItem
 
 
 class PyTenno:
+    """The primary class for interaction with the warframe.market API endpoints."""
     def __init__(
         self,
         language: VALID_LANGUAGES = "en",
         platform: Platform = Platform.pc,
         silenced_errors: list[Exception] = [],
     ) -> None:
+        """Initialize the PyTenno client. This must be used in an asynchronous context manager.
+
+        Parameters:
+        ----------
+        - `language`: :class:`pytenno.constants.VALID_LANGUAGES`
+            The default language used when communicating with the API.
+        - `platform`: :class:`pytenno.models.enums.Platform`
+            The default platform used when communicating with the API.
+        - `silenced_errors`: list[:class:`pytenno.errors.BaseError`]
+            A list of errors that will be silenced when raised by the API.
+            Instead of raising the error, the function will return None.
+        
+        Returns:
+        --------
+        - :class:`pytenno.PyTenno`
+
+        Examples:
+        ---------
+        >>> async with PyTenno() as tenno:
+        >>>     current_user = await tenno.Auth.login(username="username", password="password")
+        >>>     print(current_user.ingame_name)
+        """
         self._language = language
         self._platform = platform
 

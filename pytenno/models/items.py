@@ -160,8 +160,8 @@ class ItemFull(ItemInOrder):
     - `mastery_level`: :class:`int`
         The mastery level of the item.
 
-    - `rarity`: :class:`ItemRarity`
-        The rarity of the item.
+    - `rarity`: :class:`ItemRarity` | :class:`None`
+        The rarity of the item. If :class:`None`, the item does not have any specific rarity.
 
     - `trading_tax`: :class:`int`
         The trading tax of the item.
@@ -205,7 +205,7 @@ class ItemFull(ItemInOrder):
 
     set_root: bool
     mastery_level: int
-    rarity: ItemRarity
+    rarity: ItemRarity | None = None
     trading_tax: int
     quantity_for_set: int = None
 

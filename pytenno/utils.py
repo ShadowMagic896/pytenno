@@ -103,7 +103,7 @@ def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
     for key, value in data.items():
         if value is None:
             continue
-        if key in ("icon", "sub_icon", "thumb", "avatar", "animation"):
+        if key in ("icon", "sub_icon", "thumb", "avatar", "animation", "background"):
             nd[key] = f"{ASSET_ROOT}/{value}"
         elif key in (
             "creation_date",

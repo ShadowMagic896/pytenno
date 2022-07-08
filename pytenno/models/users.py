@@ -48,12 +48,9 @@ class BaseUser:
     - `avatar`: :class:`str` | :class:`None`
         The URL of the user's avatar.
     """
-
     id: str
     ingame_name: str
     region: str
-
-    # Path to user avatar in static folder.
     avatar: str | None = None
 
     def __repr__(self):

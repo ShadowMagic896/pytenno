@@ -28,7 +28,7 @@ class PyTennoBackend:
         self._session = session
         self.silenced = silenced
 
-    async def _request(self, url: str, **kwargs) -> dict[str, str | int | dict | list]:
+    async def _request(self, url: str, **kwargs) -> dict[str, str | int | dict | list] | None:
         url = f"{API_ROOT}{url}"
         mode = getattr(self._session, kwargs.pop("method", "get"))
         response: aiohttp.ClientResponse = await mode(url, **kwargs)
@@ -255,8 +255,10 @@ class ItemsBackend(BackendAdapter):
         platform: str,
     ):
         url = f"/items/{format_name(item_name)}"
-        headers = {"Platform": platform}
+        headers = {"Platform": str(platform)}
         response = await self._backend._request(url, headers=headers)
+        if response is None:
+            return None
         items = response["payload"]["item"]["items_in_set"]
 
         return [from_data(ItemFull, node) for node in items]
