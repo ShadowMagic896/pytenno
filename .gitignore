@@ -1,6 +1,7 @@
 .dccache
 **/__pycache__/
 html/
+docs/
 
 main.py
 config.json

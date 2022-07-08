@@ -1,16 +1,16 @@
 from typing import Literal, Optional, Union, overload
-from .constants import VALID_LANGUAGES
-from .models.auctions import AuctionEntryExpanded, KubrowAuction, LichAuction, RivenAuction
-from .models.droptable import DropTable
-from .models.enums import Element, Platform, Polarity, RivenStat
-from .models.items import ItemFull, ItemShort
-from .models.liches import LichEphemera, LichQuirk, LichWeapon
-from .models.locations import Location
-from .models.missions import DroptableNPC, PartialMission
-from .models.orders import OrderRow
-from .models.rivens import RivenAttribute, RivenItem
-from .models.users import CurrentUser
-from .client_backends import (AuctionEntriesBackend, AuctionsBackend, AuthBackend, ItemsBackend, LichesBackend, MiscBackend, RivensBackend)
+from ..constants import VALID_LANGUAGES
+from ..models.auctions import AuctionEntryExpanded, KubrowAuction, LichAuction, RivenAuction
+from ..models.droptable import DropTable
+from ..models.enums import Element, Platform, Polarity, RivenStat
+from ..models.items import ItemFull, ItemShort
+from ..models.liches import LichEphemera, LichQuirk, LichWeapon
+from ..models.locations import Location
+from ..models.missions import DroptableNPC, PartialMission
+from ..models.orders import OrderRow
+from ..models.rivens import RivenAttribute, RivenItem
+from ..models.users import CurrentUser
+from .backends import (AuctionEntriesBackend, AuctionsBackend, AuthBackend, ItemsBackend, LichesBackend, MiscBackend, RivensBackend)
 
 
 class AuctionEntries(AuctionEntriesBackend):
@@ -325,6 +325,7 @@ class Auth(AuthBackend):
         *,
         email: str,
         password: str,
+        device_id: Optional[str] = None,
     ) -> CurrentUser:
         """Logs in the user with the given credentials.
 
@@ -334,6 +335,8 @@ class Auth(AuthBackend):
             The email of the user.
         `password`: :class:`str`
             The password of the user.
+        `device_id`: :class:`Optional[:class:`str`]]`
+            The device ID of the user. This can be used to recognize the device between sessions. Default: :class:`None`.
 
         Returns
         -------
@@ -348,7 +351,7 @@ class Auth(AuthBackend):
         >>>     )
         >>>     print(current_user.ingame_name)
         """
-        return await self._login(email, password)
+        return await self._login(email, password, device_id)
 
     async def register(
         self,
@@ -390,7 +393,7 @@ class Auth(AuthBackend):
         """
         return await self._register(email, password, region, device_id, recaptcha)
 
-    async def recover(self, email: str) -> None:
+    async def restore(self, email: str) -> None:
         """ "Sends the user a recovery email.
 
         Parameters
@@ -408,7 +411,7 @@ class Auth(AuthBackend):
         >>>     email = "example@nothing.co"
         >>>     await pytenno.auth.recover(email=email)
         """
-        return await self._recover(email)
+        return await self._restore(email)
 
 
 class Items(ItemsBackend):

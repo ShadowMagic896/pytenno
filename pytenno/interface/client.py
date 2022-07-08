@@ -1,12 +1,12 @@
 import aiohttp
-from pytenno.client_interface import AuctionEntries, Auctions, Auth, Items, Liches, Misc, Rivens
+from pytenno.interface.interfaces import AuctionEntries, Auctions, Auth, Items, Liches, Misc, Rivens
 from pytenno.models.enums import Platform
 from types import TracebackType
 from typing import Optional, Type
 
-from .client_backends import PyTennoBackend
+from .backends import PyTennoBackend
 
-from .constants import VALID_LANGUAGES
+from ..constants import VALID_LANGUAGES
 
 
 class PyTenno:
@@ -21,7 +21,7 @@ class PyTenno:
 
         Parameters:
         ----------
-        - `language`: :class:`pytenno.constants.VALID_LANGUAGES`
+        - `language`: :class:`VALID_LANGUAGES`
             The default language used when communicating with the API.
         - `platform`: :class:`pytenno.models.enums.Platform`
             The default platform used when communicating with the API.
@@ -31,7 +31,7 @@ class PyTenno:
         
         Returns:
         --------
-        - :class:`pytenno.PyTenno`
+        - :class:`PyTenno`
 
         Examples:
         ---------
