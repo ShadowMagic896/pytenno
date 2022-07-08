@@ -1,2 +1,0 @@
-### PyTenno
-__Test__
