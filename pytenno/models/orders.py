@@ -8,6 +8,38 @@ from .users import UserShort
 
 @dataclass
 class OrderCommon:
+    """Common base class that orders inherit from.
+
+    Attributes:
+    -----------
+    - `id`: :class:`str`
+        The ID of the order.
+
+    - `platinum`: :class:`int`
+        The amount of platinum per item in the order.
+
+    - `quantity`: :class:`int`
+        How many items the user is selling / buying.
+
+    - `order_type`: :class:`OrderType`
+        The type of order.
+
+    - `platform`: :class:`Platform`
+        The platform the order is on.
+
+    - `region`: :class:`str`
+        The region the order is on.
+
+    - `creation_date`: :class:`datetime`
+        The time the order was created.
+
+    - `last_update`: :class:`datetime`
+        The time the order was last updated.
+
+    - `visible`: :class:`bool`
+        Whether the order is visible to others. In this case, always :class:`True`.
+    """
+
     id: str
     platinum: int
     quantity: int
@@ -16,16 +48,49 @@ class OrderCommon:
     region: str
     creation_date: datetime
     last_update: datetime
-
-    # always true for this model, exists only for backward compatibility
     visible: bool
 
 
 @dataclass
 class OrderRow(OrderCommon):
+    """Same as :class:`OrderCommon`, but with a full user model.
+
+    Attributes:
+    -----------
+    - `id`: :class:`str`
+        The ID of the order.
+
+    - `platinum`: :class:`int`
+        The amount of platinum per item in the order.
+
+    - `quantity`: :class:`int`
+        How many items the user is selling / buying.
+
+    - `order_type`: :class:`OrderType`
+        The type of order.
+
+    - `platform`: :class:`Platform`
+        The platform the order is on.
+
+    - `region`: :class:`str`
+        The region the order is on.
+
+    - `creation_date`: :class:`datetime`
+        The time the order was created.
+
+    - `last_update`: :class:`datetime`
+        The time the order was last updated.
+
+    - `visible`: :class:`bool`
+        Whether the order is visible to others. In this case, always :class:`True`.
+
+    - `user`: :class:`UserShort`
+        The user who made the order.
+    """
+
     user: UserShort
 
-    def _from_data(node: dict):
+    def from_data(node: dict):
         return OrderRow(
             user=UserShort(**node.pop("user")),
             **node,
@@ -36,5 +101,43 @@ class OrderRow(OrderCommon):
 
 
 @dataclass
-class OrderFull(OrderCommon):
+class OrderFull(OrderRow):
+    """Same as :class:`OrderRow`, but with a full item model.
+
+    Attributes:
+    -----------
+    - `id`: :class:`str`
+        The ID of the order.
+
+    - `platinum`: :class:`int`
+        The amount of platinum per item in the order.
+
+    - `quantity`: :class:`int`
+        How many items the user is selling / buying.
+
+    - `order_type`: :class:`OrderType`
+        The type of order.
+
+    - `platform`: :class:`Platform`
+        The platform the order is on.
+
+    - `region`: :class:`str`
+        The region the order is on.
+
+    - `creation_date`: :class:`datetime`
+        The time the order was created.
+
+    - `last_update`: :class:`datetime`
+        The time the order was last updated.
+
+    - `visible`: :class:`bool`
+        Whether the order is visible to others. In this case, always :class:`True`.
+
+    - `user`: :class:`UserShort`
+        The user who made the order.
+
+    - `item`: :class:`ItemInOrder`
+        The item in the order.
+    """
+
     item: ItemInOrder

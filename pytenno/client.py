@@ -2,7 +2,7 @@ import aiohttp
 from pytenno.models.auctions import RivenAuction
 from pytenno.models.enums import Element, Platform, Polarity, RivenStat
 from pytenno.models.locations import Location
-from pytenno.models.missions import NPC, PartialMission
+from pytenno.models.missions import DroptableNPC, PartialMission
 from pytenno.models.users import CurrentUser
 from types import TracebackType
 from typing import Literal, Optional, Type, Union, overload
@@ -83,6 +83,8 @@ class PyTenno:
 
 
 class AuctionEntries(AuctionEntriesBackend):
+    """A class for getting information about auction entries by ID."""
+
     async def get_by_id(self, auction_id: str) -> AuctionEntryExpanded:
         """Gets a specific auction entry by ID.
 
@@ -94,6 +96,12 @@ class AuctionEntries(AuctionEntriesBackend):
         Returns
         -------
         :class:`AuctionEntryExpanded`
+
+        Examples
+        --------
+        >>> async with PyTenno() as tenno:
+        >>>     auction = await tenno.AuctionEntries.get_by_id("...")
+        >>>     print(auction.owner.ingame_name, auction.platinum)
         """
         return await self._get_by_id(auction_id)
 
@@ -108,11 +116,19 @@ class AuctionEntries(AuctionEntriesBackend):
         Returns
         -------
         :class:`AuctionEntryExpanded`
+
+        Examples
+        --------
+        >>> async with PyTenno() as tenno:
+        >>>     auction = await tenno.AuctionEntries.get_bids_by_id("...")
+        >>>     print(auction.owner.ingame_name, auction.platinum)
         """
         return await self._get_bids_by_id(auction_id)
 
 
 class Auctions(AuctionsBackend):
+    """A class for creating and searching for auctions with certain criteria."""
+
     async def create_auction(
         self,
         item: Union[RivenAuction, LichAuction, KubrowAuction],
@@ -123,6 +139,54 @@ class Auctions(AuctionsBackend):
         minimal_increment: Optional[int] = 1,
         private: Optional[bool] = False,
     ) -> list[AuctionEntryExpanded]:
+        """Creates a new auction.
+
+        Parameters
+        ----------
+        `item`: :class:`RivenAuction`, :class:`LichAuction`, :class:`KubrowAuction`
+            The item to auction.
+        `note`: :class:`str`
+            The note to put on the auction.
+        `starting_price`: :class:`int`
+            The starting price of the auction. (In platinum)
+        `buyout_price`: :class:`int`
+            The buyout price of the auction. (In platinum)
+        `minimal_reputation`: :class:`int`, optional
+            The minimmum reputation a user must have to bid on the auction.
+        `minimal_increment`: :class:`int`, optional
+            The minimum amount between bids. (In platinum)
+        `private`: :class:`bool`, optional
+            Whether the auction is private or not. If it is private, you can set it to public in the auction settings in the web interface.
+
+        Returns
+        -------
+        :class:`list`[:class:`AuctionEntryExpanded`]
+
+        Raises
+        ------
+        :class:`ValueError`
+            If the starting price is higher than the buyout price.
+        :class:`ValueError`
+            If the minimal increment is less than 1.
+
+        Examples
+        --------
+        >>> async with PyTenno() as tenno:
+        >>>     auction = await tenno.Auctions.create_auction(
+        >>>         item=RivenAuction(...),
+        >>>         note="...",
+        >>>         starting_price=100,
+        >>>         buyout_price=200,
+        >>>         minimal_reputation=0,
+        >>>         minimal_increment=50
+        >>>     )
+        >>>     print(auction.owner.ingame_name, auction.platinum)
+        """
+        if starting_price > buyout_price:
+            raise ValueError("Starting price cannot be higher than buyout price.")
+        if minimal_increment < 1:
+            raise ValueError("Minimal increment cannot be less than 1.")
+
         return await self._create_auction(
             item,
             note,
@@ -155,7 +219,7 @@ class Auctions(AuctionsBackend):
         buyout_policy: Optional[Literal["with", "direct"]] = None,
     ) -> list[AuctionEntryExpanded]:
         """Finds all riven auctions that match the given criteria.
-        
+
         Parameters
         ----------
         `weapon_url_name`: :class:`str`
@@ -179,8 +243,51 @@ class Auctions(AuctionsBackend):
 
         Returns
         -------
-        :class:`list`[:class:`AuctionEntryExpanded` ]   
+        :class:`list`[:class:`AuctionEntryExpanded` ]
+
+        Raises
+        ------
+        :class:`ValueError`
+            If the amount of positive stats is greater than 3.
+        :class:`ValueError`
+            If the amount of negative stats is greater than 3.
+        :class:`ValueError`
+            If the mastery rank min is greater than the mastery rank max.
+        :class:`ValueError`
+            If the re-rolls min is greater than the re-rolls max.
+        :class:`ValueError`
+            If the mastery rank min is less than 0.
+        :class:`ValueError`
+            If the re-rolls min is less than 0.
+
+        Examples
+        --------
+        >>> auctions = await tenno.auctions.find_riven_auctions(
+        >>>     weapon_url_name="shedu",
+        >>>     mastery_rank_max=9,
+        >>>     re_rolls_max=10
+        >>> )
+        >>> for auction in auctions:
+        >>>     print(auction.id)
+        >>>     print(auction.item.element.name)
         """
+        if positive_stats is not None and len(positive_stats) > 3:
+            raise ValueError("The amount of positive stats cannot be greater than 3.")
+        if negative_stats is not None and len(negative_stats) > 3:
+            raise ValueError("The amount of negative stats cannot be greater than 3.")
+        if mastery_rank_min is not None and mastery_rank_min > mastery_rank_max:
+            raise ValueError(
+                "The mastery rank min cannot be greater than the mastery rank max."
+            )
+        if re_rolls_min is not None and re_rolls_min > re_rolls_max:
+            raise ValueError(
+                "The re-rolls min cannot be greater than the re-rolls max."
+            )
+        if mastery_rank_min is not None and mastery_rank_min < 0:
+            raise ValueError("The mastery rank min cannot be less than 0.")
+        if re_rolls_min is not None and re_rolls_min < 0:
+            raise ValueError("The re-rolls min cannot be less than 0.")
+
         return await self._find_riven_auctions(
             platform=platform,
             weapon_url_name=weapon_url_name,
@@ -236,11 +343,38 @@ class Auctions(AuctionsBackend):
             The sort order of the results. Default: `"price_desc"`.
         `buyout_policy`: :class:`Literal`
             The buyout policy of the results. Default: :class:`None`.
-        
+
         Returns
         -------
         :class:`list`[:class:`AuctionEntryExpanded`]
+
+        Raises
+        ------
+        :class:`ValueError`
+            If the damage min is greater than the damage max.
+        :class:`ValueError`
+            If the damage min is less than 0.
+        :class:`ValueError`
+            If the damage max is less than 0.
+
+        Examples
+        --------
+        >>> async with PyTenno() as tenno:
+        >>>     auctions = await tenno.auctions.find_lich_auctions(
+        >>>         weapon_url_name="kuva_bramma",
+        >>>         damage_min=20,
+        >>>         element=Element.toxin,
+        >>>     )
+        >>>     for auction in auctions:
+        >>>         print(auction.id, auction.owner.ingame_name)
         """
+        if damage_min is not None and damage_min > damage_max:
+            raise ValueError("The damage min cannot be greater than the damage max.")
+        if damage_min is not None and damage_min < 0:
+            raise ValueError("The damage min cannot be less than 0.")
+        if damage_max is not None and damage_max < 0:
+            raise ValueError("The damage max cannot be less than 0.")
+
         return await self._find_lich_auctions(
             platform=platform,
             weapon_url_name=weapon_url_name,
@@ -257,26 +391,37 @@ class Auctions(AuctionsBackend):
 class Auth(AuthBackend):
     async def login(
         self,
+        *,
         email: str,
         password: str,
     ) -> CurrentUser:
         """Logs in the user with the given credentials.
-        
+
         Parameters
         ----------
         `email`: :class:`str`
             The email of the user.
         `password`: :class:`str`
             The password of the user.
-        
+
         Returns
         -------
         :class:`CurrentUser`
+
+        Examples
+        --------
+        >>> async with PyTenno() as tenno:
+        >>>     current_user = await tenno.auth.login(
+        >>>         email="example@nothing.co"
+        >>>         password="password"
+        >>>     )
+        >>>     print(current_user.ingame_name)
         """
         return await self._login(email, password)
 
     async def register(
         self,
+        *,
         email: str,
         password: str,
         region: Optional[VALID_LANGUAGES] = "en",
@@ -284,7 +429,7 @@ class Auth(AuthBackend):
         recaptcha: Optional[str] = None,
     ) -> CurrentUser:
         """Registers a new user with the given credentials.
-        
+
         Parameters
         ----------
         `email`: :class:`str`
@@ -297,24 +442,40 @@ class Auth(AuthBackend):
             The device ID of the user, used to identify devices between sessions. Default: :class:`None`.
         `recaptcha`: :class:`str`
             The Google recaptcha response of the user. Default: :class:`None`.
-        
+
         Returns
         -------
         :class:`CurrentUser`
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     email = "example@nothing.co"
+        >>>     password = "password"
+        >>>     region = "en"
+        >>>     current_user = await pytenno.auth.register(email, password, region)
+        >>>     print(current_user.ingame_name)
+
         """
         return await self._register(email, password, region, device_id, recaptcha)
 
     async def recover(self, email: str) -> None:
-        """"Sends the user a recovery email.
-        
+        """ "Sends the user a recovery email.
+
         Parameters
         ----------
         email: :class:`str`
             The email of the user.
-        
+
         Returns
         -------
         :class:`None`
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     email = "example@nothing.co"
+        >>>     await pytenno.auth.recover(email=email)
         """
         return await self._recover(email)
 
@@ -322,25 +483,33 @@ class Auth(AuthBackend):
 class Items(ItemsBackend):
     async def get_items(self, language: VALID_LANGUAGES = "en") -> list[ItemShort]:
         """Gets all items.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the items. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`ItemShort`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     items = await pytenno.items.get_items()
+        >>>     for item in items:
+        >>>         print(item.url_name)
         """
         return await self._get_items(language)
 
     async def get_item(
         self,
         item_name: str,
+        *,
         platform: Optional[Platform] = Platform.pc,
     ) -> list[ItemFull]:
         """Gets the item with the given name, as well as related items (such as items of the same set).
-        
+
         Parameters
         ----------
         `item_name`: :class:`str`
@@ -351,6 +520,13 @@ class Items(ItemsBackend):
         Returns
         -------
         :class:`list`[:class:`ItemFull`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     items = await pytenno.items.get_item("kuva_bramma")
+        >>>     for item in items:
+        >>>         print(item.url_name)
         """
         return await self._get_item(item_name, platform)
 
@@ -379,7 +555,7 @@ class Items(ItemsBackend):
         platform: Optional[Platform] = Platform.pc,
     ):
         """Gets the orders of the given item.
-        
+
         Parameters
         ----------
         `item_name`: :class:`str`
@@ -388,10 +564,19 @@ class Items(ItemsBackend):
             Whether to include information about the item requested.
         `platform`: :class:`Platform`
             The platform of the item. Default: :class:`Platform.pc`.
-        
+
         Returns
         -------
         :class:`list`[:class:`OrderRow`] | :class:`tuple`(:class:`list`[:class:`OrderRow`], :class:`list`[:class:`ItemFull`])
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     orders, items = await pytenno.items.get_orders("kuva_bramma", include_items=True)
+        >>>     for order in orders:
+        >>>         print(order.user.ingame_name)
+        >>>     for item in items:
+        >>>         print(item.url_name)
         """
         return await self._get_orders(item_name, include_items, platform)
 
@@ -418,9 +603,9 @@ class Items(ItemsBackend):
         item_name: str,
         include_items: bool,
         language: VALID_LANGUAGES = "en",
-    ):  
+    ):
         """Gets the droptable of the given item.
-        
+
         Parameters
         ----------
         `item_name`: :class:`str`
@@ -429,10 +614,19 @@ class Items(ItemsBackend):
             Whether to include information about the item requested.
         `language`: :class:`VALID_LANGUAGES`
             The language of the droptable. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`DropTable` | :class:`tuple`(:class:`DropTable`, :class:`list`[:class:`ItemFull`])
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     droptable, items = await pytenno.items.get_droptable("kuva_bramma", include_items=True)
+        >>>     print(droptable.relics, droptable.missions)
+        >>>     for item in items:
+        >>>         print(item.url_name)
+
         """
         raise Exception(
             "The API on warframe.market for this feature is currently nonfunctional"
@@ -442,15 +636,22 @@ class Items(ItemsBackend):
 class Liches(LichesBackend):
     async def get_weapons(self, language: VALID_LANGUAGES = "en") -> list[LichWeapon]:
         """Gets all weapons.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the weapons. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`LichWeapon`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     weapons = await pytenno.liches.get_weapons()
+        >>>     for weapon in weapons:
+        >>>         print(weapon.url_name)
         """
         return await self._get_weapons(language)
 
@@ -458,44 +659,68 @@ class Liches(LichesBackend):
         self, language: VALID_LANGUAGES = "en"
     ) -> list[LichEphemera]:
         """Gets all lich ephemeras.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the ephemeras. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`LichEphemera`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     ephemeras = await pytenno.liches.get_ephemeras()
+        >>>     for ephemera in ephemeras:
+        >>>         print(ephemera.url_name)
         """
         return await self._get_ephemeras(language)
 
     async def get_quirks(self, language: VALID_LANGUAGES = "en") -> list[LichQuirk]:
         """Gets all lich quirks.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the quirks. Default: `"en"`.
-        
+
         Returns
         -------
-        :class:`list`[:class:`LichQuirk`]"""
+        :class:`list`[:class:`LichQuirk`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     quirks = await pytenno.liches.get_quirks()
+        >>>     for quirk in quirks:
+        >>>         print(quirk.url_name)
+        """
         return await self._get_quirks(language)
 
 
 class Rivens(RivensBackend):
-    async def get_riven_items(self, language: VALID_LANGUAGES = "en") -> list[RivenItem]:
+    async def get_riven_items(
+        self, language: VALID_LANGUAGES = "en"
+    ) -> list[RivenItem]:
         """Gets a list of all riven-equippable items.
-    
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the riven items. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`RivenItem`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     riven_items = await pytenno.rivens.get_riven_items()
+        >>>     for riven_item in riven_items:
+        >>>         print(riven_item.url_name)
         """
         return await self._get_riven_items(language)
 
@@ -503,15 +728,22 @@ class Rivens(RivensBackend):
         self, language: VALID_LANGUAGES = "en"
     ) -> list[RivenAttribute]:
         """Gets a list of all riven attributes.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the riven attributes. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`RivenAttribute`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     riven_attributes = await pytenno.rivens.get_attributes()
+        >>>     for riven_attribute in riven_attributes:
+        >>>         print(riven_attribute.effect)
         """
         return await self._get_riven_attributes(language)
 
@@ -524,24 +756,38 @@ class Misc(MiscBackend):
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the locations. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`Location`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     locations = await pytenno.misc.get_locations()
+        >>>     for location in locations:
+        >>>         print(location.node_name)
         """
         return await self._get_locations(language)
 
-    async def get_npcs(self, language: VALID_LANGUAGES = "en") -> list[NPC]:
+    async def get_npcs(self, language: VALID_LANGUAGES = "en") -> list[DroptableNPC]:
         """Gets a list of all NPCs.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the NPCs. Default: `"en"`.
-        
+
         Returns
         -------
         :class:`list`[:class:`NPC`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     npcs = await pytenno.misc.get_npcs()
+        >>>     for npc in npcs:
+        >>>         print(npc.name)
         """
         return await self._get_npcs(language)
 
@@ -549,13 +795,21 @@ class Misc(MiscBackend):
         self, language: VALID_LANGUAGES = "en"
     ) -> list[PartialMission]:
         """Gets a list of all missions.
-        
+
         Parameters
         ----------
         `language`: :class:`VALID_LANGUAGES`
             The language of the missions. Default: `"en"`.
-        
+
         Returns
         -------
-        :class:`list`[:class:`PartialMission`]"""
+        :class:`list`[:class:`PartialMission`]
+
+        Examples
+        --------
+        >>> async with PyTenno() as pytenno:
+        >>>     missions = await pytenno.misc.get_missions()
+        >>>     for mission in missions:
+        >>>         print(mission.name)
+        """
         return await self._get_missions(language)

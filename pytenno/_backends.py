@@ -14,7 +14,7 @@ from .models.enums import Element, Platform, Polarity
 from .models.items import ItemFull, ItemShort
 from .models.liches import LichEphemera, LichQuirk, LichWeapon
 from .models.locations import Location
-from .models.missions import NPC, PartialMission
+from .models.missions import DroptableNPC, PartialMission
 from .models.orders import OrderRow
 from .models.rivens import RivenAttribute, RivenItem
 from .models.users import CurrentUser
@@ -294,9 +294,9 @@ class ItemsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
         if include_items:
             return (
-                DropTable._from_data(response["droptables"]),
+                DropTable.from_data(response["droptables"]),
                 [
-                    ItemFull._from_data(item)
+                    ItemFull.from_data(item)
                     for item in response["include"]["item"]["items_in_set"]
                 ],
             )
@@ -353,7 +353,7 @@ class MiscBackend(BackendAdapter):
         url = "/misc/npc"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
-        return [from_data(NPC, node) for node in response["payload"]["npc"]]
+        return [from_data(DroptableNPC, node) for node in response["payload"]["npc"]]
 
     async def _get_missions(self, language):
         url = "/misc/missions"

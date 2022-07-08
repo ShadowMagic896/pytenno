@@ -9,6 +9,9 @@ class Base(Enum):
     def __str__(self):
         return self.name
 
+    def __hash__(self) -> int:
+        return hash(self.name)
+
 
 class RelicQuality(Base):
     intact = 0

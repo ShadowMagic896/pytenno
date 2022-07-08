@@ -2,7 +2,7 @@ import aiohttp
 import datetime
 from enum import Enum
 from functools import cache
-from typing import Any, Callable, Mapping, Type
+from typing import Any, Callable, Mapping, Type, TypeVar
 from urllib.parse import quote
 
 from .constants import ASSET_ROOT, VALID_TRANSLATIONS_RAW
@@ -93,8 +93,10 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
     "is_marked_for": lambda mark: AuctionMarking[mark] if mark is not None else None,
 }
 
+T = TypeVar("T", bound=type)
 
-def from_data(cls_: type, data: dict[str, Any] | None):
+
+def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
     if data is None:
         return None
     nd = {}  # Create new dict to avoid RuntimeErrors
@@ -125,6 +127,6 @@ def from_data(cls_: type, data: dict[str, Any] | None):
                 except KeyError:
                     nd[key] = value
 
-    if hasattr(cls_, "_from_data"):
-        return cls_._from_data(nd)
+    if hasattr(cls_, "from_data"):
+        return cls_.from_data(nd)
     return cls_(**nd)

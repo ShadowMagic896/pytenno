@@ -12,20 +12,40 @@ from .enums import (
 
 @dataclass
 class RivenItem:
-    id: str
+    """Represents a riven item.
 
-    # 	Name of the weapon, depends on the requested language
+    Attributes:
+    -----------
+    - `id`: :class:`str`
+        The ID of the riven item.
+
+    - `item_name`: :class:`str`
+        The name of the riven item.
+
+    - `item_url_name`: :class:`str`
+        The URL name of the riven item.
+
+    - `group`: :class:`RivenWeaponGroup`
+        The group of the riven item.
+
+    - `riven_type`: :class:`RivenType`
+        The type of the riven item.
+
+    - `icon`: :class:`str`
+        The icon URL of the riven item.
+
+    - `icon_format`: :class:`IconFormat`
+        The format of the icon URL of the riven item.
+
+    - `thumb`: :class:`str`
+        The thumbnail URL of the riven item.
+    """
+
+    id: str
     item_name: str
     url_name: str
-
-    # Group of the item, like shotgin, rifle, melee, etc.
-    # Used for grouping within UI elements.
     group: RivenWeaponGroup
-
-    # Type of the riven mod, to restrict certain attributes to specific types
     riven_type: RivenType
-
-    # path to the icon asset file
     icon: str
     icon_format: IconFormat
     thumb: str
@@ -33,37 +53,76 @@ class RivenItem:
 
 @dataclass
 class RivenAttribute:
+    """Represents a riven attribute. Most rivens have multiple attributes.
+
+    Attributes:
+    -----------
+    - `id`: :class:`str`
+        The ID of the riven attribute.
+
+    - `url_name`: :class:`str`
+        The URL name of the riven attribute.
+
+    - `group`: :class:`RivenAttributeGroup`
+        The group of the riven attribute
+
+    - `prefix`: :class:`str`
+        The prefix of the riven attribute.
+        Example: "hexi"
+
+    - `suffix`: :class:`str`
+        The suffix of the riven attribute.
+        Example: "bin"
+
+    - `positive_is_negative`: :class:`bool`
+        Whether the positive attribute is actually negative.
+        Example: Recoil, Reload Speed, etc.
+
+    - `exclusive_to`: :class:`list[:class:`RivenWeaponType`]]` | :class:`None`
+        The types of weapons that the attribute is exclusive to. :class:`None` if it is not exclusive to any weapon.
+
+    - `effect`: :class:`str`
+        The effect of the riven attribute. Depends on the requested language.
+
+    - `units`: :class:`MeasurementUnit`
+        What the riven attribute is measured in.
+
+    - `negative_only`: :class:`bool`
+        Whether the attribute only appears as a negative.
+
+    - `search_only`: :class:`bool`
+        Whether the attribute only appears in search results.
+    """
+
     id: str
     url_name: str
-
-    # Group of the attribute, like top, melee, etc.
-    # Used for grouping within UI elements.
     group: RivenAttributeGroup
     prefix: str
     suffix: str
-
-    # Negative value of this attribute indicate that attribute is positive, e.g. Recoil
     positive_is_negative: bool
-
-    # This attribute is only available on specific types of items, check item property: riven_type.
-    # If null, then this attribute can be selected on every item.
     exclusive_to: list[RivenWeaponType] | None
-
-    # Name of the attribute, depends on the requested language
     effect: str
-
-    # Measurement units
     units: MeasurementUnit
-
-    # This attribute occurs only as a negative.
     negative_only: bool
-
-    # Used only while searching for auctions
     search_only: bool
 
 
 @dataclass
 class PartialRivenAttribute:
+    """Represents a partial riven attribute.
+
+    Attributes:
+    -----------
+    - `positive`: :class:`bool`
+        Whether the attribute is positive.
+
+    - `value`: :class:`int`
+        The value of the attribute.
+
+    - `url_name`: :class:`str`
+        The URL name of the attribute.
+    """
+
     positive: bool
     value: int
     url_name: str

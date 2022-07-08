@@ -9,8 +9,10 @@ class BaseError(BaseException):
     def __init__(self, *args: object) -> None:
         super().__init__(f"Error [Code {self.code}]: {self.msg}")
 
+
 # Create an eror class for every error response and code I can recieve
 # It should properly be inherited from BaseError
+
 
 class BadRequest(BaseError):
     code = 400

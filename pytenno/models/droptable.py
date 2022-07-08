@@ -1,27 +1,48 @@
 from dataclasses import dataclass
 
-from .missions import NPC, Mission, RelicDrop
+from .missions import DroptableMission, DroptableNPC, DroptableRelic
 
 
 @dataclass
 class DropTable:
-    missions: list[Mission]
-    relics: list[RelicDrop]
-    npc: list[NPC]
+    """Represents an item's drop table.
 
-    def _from_data(node: dict):
+    Attributes:
+    -----------
+    - `missions`: :class:`list`[:class:`Mission`]
+        The missions where the item can be found.
+
+    - `relics`: :class:`list`[:class:`RelicDrop`]
+        The relic in which parts for the item can be found.
+
+    - `npc`: :class:`list`[:class:`NPC`]
+        The NPCs where the item can be found.
+    """
+
+    missions: list[DroptableMission]
+    relics: list[DroptableRelic]
+    npc: list[DroptableNPC]
+
+    def from_data(node: dict):
         return DropTable(
-            [Mission._from_data(mission) for mission in node["missions"]],
-            [RelicDrop._from_data(relic) for relic in node["relics"]],
-            [NPC._from_data(npc) for npc in node["npc"]],
+            [DroptableMission.from_data(mission) for mission in node["missions"]],
+            [DroptableRelic.from_data(relic) for relic in node["relics"]],
+            [DroptableNPC.from_data(npc) for npc in node["npc"]],
         )
 
 
 @dataclass
 class Drop:
+    """Represents an item's drop.
 
-    # translated name of the location / item
+    Attributes:
+    -----------
+    - `name`: :class:`str`
+        The translated name of the location / item.
+
+    - `link`: :class:`str`
+        Link to the internal or extarnal source with information about that location.
+    """
+    
     name: str
-
-    # link to the internal or extarnal source with information about that location
     link: str
