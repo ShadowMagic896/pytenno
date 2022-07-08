@@ -14,13 +14,16 @@ class Missing(BaseError):
     code = 404
     msg = "Undocumented"
 
+
 class BadRequest(BaseError):
     code = 400
-    msg = "Malformed request URL"
+    msg = "Invalid request"
+
 
 class Unauthorized(BaseError):
     code = 401
     msg = "Unauthorized"
+
 
 class InternalServerError(BaseError):
     code = 500

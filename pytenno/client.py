@@ -1,6 +1,7 @@
 import aiohttp
+from pytenno.errors import Missing
 from pytenno.models.auctions import RivenAuction
-from pytenno.models.enums import Element, Platform, Polarity
+from pytenno.models.enums import Element, Platform, Polarity, RivenStat
 from pytenno.models.locations import Location
 from pytenno.models.missions import NPC, PartialMission
 from pytenno.models.users import CurrentUser
@@ -14,11 +15,11 @@ from ._backends import (
     ItemsBackend,
     LichesBackend,
     MiscBackend,
+    PyTennoBackend,
     RivensBackend,
 )
 from .constants import VALID_LANGUAGES
 from .models.auctions import (
-    AuctionEntry,
     AuctionEntryExpanded,
     KubrowAuction,
     LichAuction,
@@ -33,12 +34,16 @@ from .models.rivens import RivenAttribute, RivenItem
 
 class PyTenno:
     def __init__(
-        self, language: VALID_LANGUAGES = "en", platform: Platform = Platform.pc
+        self,
+        language: VALID_LANGUAGES = "en",
+        platform: Platform = Platform.pc,
+        silenced_errors: list[Exception] = [],
     ) -> None:
         self._language = language
         self._platform = platform
 
         self._session: aiohttp.ClientSession = None
+        self._silenced = silenced_errors
 
         self.AuctionEntries: AuctionEntries
         self.Auctions: Auctions
@@ -57,14 +62,15 @@ class PyTenno:
             "platform": self._platform.name,
         }
         self._session = aiohttp.ClientSession(headers=headers)
+        backend = PyTennoBackend(self._session, self._silenced)
 
-        self.AuctionEntries = AuctionEntries(self._session)
-        self.Auctions = Auctions(self._session)
-        self.Auth = Auth(self._session)
-        self.Items = Items(self._session)
-        self.Liches = Liches(self._session)
-        self.Misc = Misc(self._session)
-        self.Rivens = Rivens(self._session)
+        self.AuctionEntries = AuctionEntries(backend)
+        self.Auctions = Auctions(backend)
+        self.Auth = Auth(backend)
+        self.Items = Items(backend)
+        self.Liches = Liches(backend)
+        self.Misc = Misc(backend)
+        self.Rivens = Rivens(backend)
         return self
 
     async def __aexit__(
@@ -115,8 +121,8 @@ class Auctions(AuctionsBackend):
         mastery_rank_max: int = None,
         re_rolls_min: int = None,
         re_rolls_max: int = None,
-        positive_stats: str = None,
-        negative_stats: str = None,
+        positive_stats: list[RivenStat] = None,
+        negative_stats: list[RivenStat] = None,
         polarity: Polarity = Polarity.any,
         mod_rank: Literal["any", "maxed"] = None,
         sort_by: Optional[

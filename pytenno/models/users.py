@@ -2,7 +2,7 @@ from construct import stream_iseof
 from dataclasses import dataclass
 from datetime import datetime
 from pyrsistent import m
-from pytenno.utils import _from_data
+from pytenno.utils import from_data
 
 from .enums import PatreonBadge, UserStatus
 
@@ -57,7 +57,7 @@ class CurrentUser(BaseUser):
     def _from_data(node: dict):
         return CurrentUser(
             # file deepcode ignore WrongNumberOfArguments
-            patreon_profile=_from_data(PatreonProfile, node.pop("patreon_profile")),
+            patreon_profile=from_data(PatreonProfile, node.pop("patreon_profile")),
             linked_accounts=LinkedProfiles(**node.pop("linked_accounts")),
             **node,
         )

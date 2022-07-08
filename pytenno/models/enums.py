@@ -7,12 +7,7 @@ class Base(Enum):
         return self.value
 
     def __str__(self):
-        return self.name.capitalize()
-
-    def __getitem__(self, name: str | None) -> Self:
-        if name is None:
-            return None
-        return super().__getitem__(name)
+        return self.name
 
 
 class RelicQuality(Base):
@@ -197,3 +192,44 @@ class Faction(Base):
     grineer = 1
     corpus = 2
     corrupted = 3
+
+
+class RivenStat(Base):
+    ammo_maximum = 0
+    cold = 1
+    critical_chance = 2
+    damage = 3
+    damage_vs_corpus = 4
+    damage_vs_grineer = 5
+    damage_vs_infested = 6
+    electricity = 7
+    fire_rate_attack_speed = 8
+    heat = 9
+    impact = 10
+    magazine_capacity = 11
+    multishot = 12
+    projectile_speed = 13
+    punch_through = 14
+    puncture = 15
+    reload_speed = 16
+    slash = 17
+    status_chance = 18
+    status_duration = 19
+    toxin = 20
+    weapon_recoil = 21
+    initial_combo = 22
+    range = 23
+    chance_to_gain_extra_combo_count = 24
+    combo_duration = 25
+    critical_chance_on_slide_attack = 26
+    finisher_damage = 27
+    channeling_efficiency = 28
+    channeling_damage = 29
+
+    def __str__(self):
+        # Some of these values have non-python-friendly names
+        if self.value == 3:
+            return "base_damage_/_melee_damage"
+        elif self.value == 8:
+            return "fire_rate_/_attack_speed"
+        return self.name

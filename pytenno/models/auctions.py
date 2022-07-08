@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from pytenno.utils import _from_data
+from pytenno.utils import from_data
 from typing import Union
 
 from .enums import AuctionMarking, AuctionType, Element, Platform, Polarity
@@ -68,12 +68,12 @@ class AuctionEntryExpanded(AuctionEntry):
         # deepcode ignore
         return AuctionEntryExpanded(
             # file deepcode ignore WrongNumberOfArguments
-            owner=_from_data(UserShort, node.pop("owner")),
-            item=_from_data(RivenAuction, item)
+            owner=from_data(UserShort, node.pop("owner")),
+            item=from_data(RivenAuction, item)
             if (t := (item := node.pop("item"))["type"]) == "riven"
-            else _from_data(LichAuction, item)
+            else from_data(LichAuction, item)
             if t == "lich"
-            else _from_data(KubrowAuction, item),
+            else from_data(KubrowAuction, item),
             **node,
         )
 
@@ -115,7 +115,7 @@ class RivenAuction:
     def _from_data(node: dict):
         return RivenAuction(
             attributes=[
-                _from_data(PartialRivenAttribute, x) for x in node.pop("attributes")
+                from_data(PartialRivenAttribute, x) for x in node.pop("attributes")
             ],
             **node,
         )

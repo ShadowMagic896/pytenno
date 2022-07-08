@@ -1,3 +1,4 @@
+import aiohttp
 import datetime
 from enum import Enum
 from functools import cache
@@ -38,18 +39,17 @@ def format_name(name: str):
     return quote(name.lower().replace(" ", "_"))
 
 
-@cache
-def _raise_error_code(code: int):
+def _raise_error_code(response: aiohttp.ClientResponse, silenced: list[Exception]):
+    code = response.status
 
     for error in BaseError.__subclasses__():
-
         if error.code == code:
-            raise error
+            if error not in silenced:
+                raise error
+            return None
 
     error = BaseError
-
     error.code = code
-
     error.msg = "Unknown error occurred"
 
     raise error
@@ -94,7 +94,9 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 }
 
 
-def _from_data(cls_: type, data: dict[str, Any]):
+def from_data(cls_: type, data: dict[str, Any] | None):
+    if data is None:
+        return None
     nd = {}  # Create new dict to avoid RuntimeErrors
     for key, value in data.items():
         if value is None:
