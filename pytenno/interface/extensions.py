@@ -1,4 +1,6 @@
 from typing import Literal, Optional, Union, overload
+
+import selenium
 from ..constants import VALID_LANGUAGES
 from ..models.auctions import AuctionEntryExpanded, KubrowAuction, LichAuction, RivenAuction
 from ..models.droptable import DropTable
@@ -10,7 +12,7 @@ from ..models.missions import DroptableNPC, PartialMission
 from ..models.orders import OrderRow
 from ..models.rivens import RivenAttribute, RivenItem
 from ..models.users import CurrentUser
-from .backends import (AuctionEntriesBackend, AuctionsBackend, AuthBackend, ItemsBackend, LichesBackend, MiscBackend, RivensBackend)
+from ._backends import (AuctionEntriesBackend, AuctionsBackend, AuthBackend, ItemsBackend, LichesBackend, MiscBackend, RivensBackend)
 
 
 class AuctionEntries(AuctionEntriesBackend):
@@ -117,7 +119,7 @@ class Auctions(AuctionsBackend):
             raise ValueError("Starting price cannot be higher than buyout price.")
         if minimal_increment < 1:
             raise ValueError("Minimal increment cannot be less than 1.")
-
+        
         return await self._create_auction(
             item,
             note,

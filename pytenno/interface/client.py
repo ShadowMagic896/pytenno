@@ -1,10 +1,10 @@
 import aiohttp
-from pytenno.interface.interfaces import AuctionEntries, Auctions, Auth, Items, Liches, Misc, Rivens
+from pytenno.interface.extensions import AuctionEntries, Auctions, Auth, Items, Liches, Misc, Rivens
 from pytenno.models.enums import Platform
 from types import TracebackType
 from typing import Optional, Type
 
-from .backends import PyTennoBackend
+from ._backends import PyTennoBackend
 
 from ..constants import VALID_LANGUAGES
 
@@ -20,16 +20,16 @@ class PyTenno:
         """Initialize the PyTenno client. This must be used in an asynchronous context manager.
 
         Parameters:
-        ----------
+        
         - `language`: :class:`VALID_LANGUAGES`
             The default language used when communicating with the API.
-        - `platform`: :class:`pytenno.models.enums.Platform`
+        - `platform`: :class:`Platform`
             The default platform used when communicating with the API.
-        - `silenced_errors`: list[:class:`pytenno.errors.BaseError`]
+        - `silenced_errors`: list[:class:`BaseError`]
             A list of errors that will be silenced when raised by the API.
             Instead of raising the error, the function will return None.
         
-        Returns:
+        Returns
         --------
         - :class:`PyTenno`
 
