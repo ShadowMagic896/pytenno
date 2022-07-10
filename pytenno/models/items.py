@@ -8,18 +8,18 @@ from .enums import ItemRarity, Subtype
 class LangInItem:
     """Represents an item's localized name.
 
-    Attributes:
-    -----------
-    - `item_name`: :class:`str`
+    Parameters
+    ----------
+    item_name : str
         The translated name of the item.
 
-    - `description`: :class:`str`
+    description : str
         The translated description of the item.
 
-    - `wiki_link`: :class:`str` | :class:`None`
+    wiki_link : str , optional
         The link to the wiki page of the item.
 
-    - `drop`: :class:list[:class:`Drop`]
+    drop : list[Drop]
         Where the item can be found.
     """
 
@@ -33,43 +33,43 @@ class LangInItem:
 class ItemCommon:
     """Common base class that an item can inherit from.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the item.
 
-    - `url_name`: :class:`str`
+    url_name : str
         The URL name of the item.
 
-    - `icon`: :class:`str`
+    icon : str
         The URL of the item's icon.
 
-    - `icon_format`: :class:`IconFormat`
+    icon_format : IconFormat
         The format of the item's icon.
 
-    - `sub_icon`: :class:`str` | :class:`None`
+    sub_icon : str , optional
         The URL of the item's sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The URL of the item's thumbnail.
 
-    - `tags`: :class:`list`[:class:`str`]
+    tags : list[str]
         The tags of the item.
 
-    - `mod_max_rank`: :class:`int`
+    mod_max_rank : int
         The maximum rank of the item.
         SOON TO BE: max_rank
 
-    - `subtypes`: :class:`list`[:class:`Subtype`] | :class:`None`
+    subtypes : list[Subtype] , optional
         The subtypes of the item.
 
-    - `cyan_stars`: :class:`int`
+    cyan_stars : int
         The number of cyan stars the item has.
 
-    - `amber_stars`: :class:`int`
+    amber_stars : int
         The number of amber stars the item has.
 
-    - `ducats`: :class:`int`
+    ducats : int
         The ducat worth of the item.
     """
 
@@ -91,9 +91,7 @@ class ItemCommon:
 
 
 @dataclass(kw_only=True)
-class ItemInOrder(ItemCommon):
-    """Undocumented."""
-
+class _ItemInOrder(ItemCommon):
     en: dict[str, str]
     ru: dict[str, str]
     ko: dict[str, str]
@@ -111,95 +109,95 @@ class ItemInOrder(ItemCommon):
 
 
 @dataclass(kw_only=True)
-class ItemFull(ItemInOrder):
+class ItemFull(_ItemInOrder):
     """same as ItemInOrder, but lang related fields contain more infos, + rarity, set_root, MR, trading tax.
 
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the item.
 
-    - `url_name`: :class:`str`
+    url_name : str
         The URL name of the item.
 
-    - `icon`: :class:`str`
+    icon : str
         The URL of the item's icon.
 
-    - `icon_format`: :class:`IconFormat`
+    icon_format : IconFormat
         The format of the item's icon.
 
-    - `sub_icon`: :class:`str` | :class:`None`
+    sub_icon : str , optional
         The URL of the item's sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The URL of the item's thumbnail.
 
-    - `tags`: :class:`list`[:class:`str`]
+    tags : list[str]
         The tags of the item.
 
-    - `mod_max_rank`: :class:`int`
+    mod_max_rank : int
         The maximum rank of the item.
         SOON TO BE: max_rank
 
-    - `subtypes`: :class:`list`[:class:`Subtype`] | :class:`None`
+    subtypes : list[Subtype] , optional
         The subtypes of the item.
 
-    - `cyan_stars`: :class:`int`
+    cyan_stars : int
         The number of cyan stars the item has.
 
-    - `amber_stars`: :class:`int`
+    amber_stars : int
         The number of amber stars the item has.
 
-    - `ducats`: :class:`int`
+    ducats : int
         The ducat worth of the item.
 
-    - `set_root`: :class:`bool`
+    set_root : bool
         Whether the item is part of a set.
 
-    - `mastery_level`: :class:`int`
+    mastery_level : int
         The mastery level of the item.
 
-    - `rarity`: :class:`ItemRarity` | :class:`None`
-        The rarity of the item. If :class:`None`, the item does not have any specific rarity.
+    rarity : ItemRarity , optional
+        The rarity of the item. If None, the item does not have any specific rarity.
 
-    - `trading_tax`: :class:`int`
+    trading_tax : int
         The trading tax of the item.
 
-    - `quantity_for_set`: :class:`int` | :class:`None`
+    quantity_for_set : int , optional
         The quantity of the item required to obtain the set.
 
-    - `en`: :class:`LangInItem`
+    en : LangInItem
         The english language of the item.
 
-    - `ru`: :class:`LangInItem`
+    ru : LangInItem
         The russian language of the item.
 
-    - `ko`: :class:`LangInItem`
+    ko : LangInItem
         The korean language of the item.
 
-    - `fr`: :class:`LangInItem`
+    fr : LangInItem
         The french language of the item.
 
-    - `de`: :class:`LangInItem`
+    de : LangInItem
         The german language of the item.
 
-    - `sv`: :class:`LangInItem`
+    sv : LangInItem
         The swedish language of the item.
 
-    - `zh_hant`: :class:`LangInItem`
+    zh_hant : LangInItem
         The chinese traditional language of the item.
 
-    - `zh_hans`: :class:`LangInItem`
+    zh_hans : LangInItem
         The chinese simplified language of the item.
 
-    - `pt`: :class:`LangInItem`
+    pt : LangInItem
         The portuguese language of the item.
 
-    - `es`: :class:`LangInItem`
+    es : LangInItem
         The spanish language of the item.
 
-    - `pl`: :class:`LangInItem`
+    pl : LangInItem
         The polish language of the item.
     """
 
@@ -229,18 +227,18 @@ class ItemFull(ItemInOrder):
 class ItemShort:
     """Represents a simplified version of an item.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the item.
 
-    - `url_name`: :class:`str`
+    url_name : str
         The URL name of the item.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The URL of the item's thumbnail.
 
-    - `item_name`: :class:`str`
+    item_name : str
         The name of the item.
     """
 

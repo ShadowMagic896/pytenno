@@ -7,33 +7,33 @@ from .enums import ItemRarity, RelicQuality, Rotation, Stage, Subtype
 class DroptableMission:
     """Represents a mission.
 
-    Attributes:
-    -----------
-    - `mission_id`: :class:`str`
+    Parameters
+    ----------
+    mission_id : str
         The ID of the mission.
 
-    - `node_id`: :class:`str`
+    node_id : str
         The ID of the node the mission is on.
 
-    - `rarity`: :class:`ItemRarity`
+    rarity : ItemRarity
         The rarity of the item found in the mission.
 
-    - `rate`: :class:`int` | :class:`float`
+    rate : int | float
         The rate of the item found in the mission.
 
-    - `item_subtype`: :class:`Subtype`
+    item_subtype : Subtype
         The subtype of the item found in the mission.
 
-    - `rotation`: :class:`Rotation`
+    rotation : Rotation
         The rotation where the item can be found.
 
-    - `stage`: :class:`Stage`
+    stage : Stage
         The stage of the item found in the mission
 
-    - `relics`: :class:[:class:`RelicDrop`]
+    relics : list[RelicDrop]
         Relics that can be found in the mission.
 
-    - `npc`: :class:list[:class:`NPC`]
+    npc : list[NPC]
         The NPCs where the item can be found.
     """
 
@@ -52,18 +52,18 @@ class DroptableMission:
 class PartialMission:
     """Represents a partial mission.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the mission.
 
-    - `icon`: :class:`str`
+    icon : str
         The icon URL of the mission.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The thumbnail URL of the mission.
 
-    - `name`: :class:`str`
+    name : str
         The name of the mission.
     """
 
@@ -77,15 +77,15 @@ class PartialMission:
 class DroptableRelic:
     """Represents a relic drop in a mission
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the relic.
 
-    - `rarity`: :class:`ItemRarity`
+    rarity : ItemRarity
         The rarity of the item found in the relic.
 
-    - `rate`: :class:dict[:class:RelicQuality, :class:int | :class:float]
+    rate dict[RelicQuality, int | float]
         A mapping of relic quality to the rate of the relic dropping.
     """
 
@@ -98,18 +98,18 @@ class DroptableRelic:
 class DroptableNPC:
     """Represents a NPC in a mission
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the NPC.
 
-    - `icon`: :class:`str`
+    icon : str
         The icon URL of the NPC.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The thumbnail URL of the NPC.
 
-    - `name`: :class:`str`
+    name : str
         The name of the NPC.
     """
 

@@ -3,5 +3,5 @@ from . import (
     errors,
     utils,
 )
-from .interface.client import PyTenno
+from .client import PyTenno
 from .models import *

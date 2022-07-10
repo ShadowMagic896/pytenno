@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from .enums import OrderType, Platform
-from .items import ItemInOrder
+from .items import _ItemInOrder
 from .users import UserShort
 
 
@@ -10,34 +10,34 @@ from .users import UserShort
 class OrderCommon:
     """Common base class that orders inherit from.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the order.
 
-    - `platinum`: :class:`int`
+    platinum : int
         The amount of platinum per item in the order.
 
-    - `quantity`: :class:`int`
+    quantity : int
         How many items the user is selling / buying.
 
-    - `order_type`: :class:`OrderType`
+    order_type : OrderType
         The type of order.
 
-    - `platform`: :class:`Platform`
+    platform : Platform
         The platform the order is on.
 
-    - `region`: :class:`str`
+    region : str
         The region the order is on.
 
-    - `creation_date`: :class:`datetime`
+    creation_date : datetime.datetime
         The time the order was created.
 
-    - `last_update`: :class:`datetime`
+    last_update : datetime.datetime
         The time the order was last updated.
 
-    - `visible`: :class:`bool`
-        Whether the order is visible to others. In this case, always :class:`True`.
+    visible : bool
+        Whether the order is visible to others. In this case, always True.
     """
 
     id: str
@@ -53,38 +53,38 @@ class OrderCommon:
 
 @dataclass
 class OrderRow(OrderCommon):
-    """Same as :class:`OrderCommon`, but with a full user model.
+    """Same as OrderCommon, but with a full user model.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the order.
 
-    - `platinum`: :class:`int`
+    platinum : int
         The amount of platinum per item in the order.
 
-    - `quantity`: :class:`int`
+    quantity : int
         How many items the user is selling / buying.
 
-    - `order_type`: :class:`OrderType`
+    order_type : OrderType
         The type of order.
 
-    - `platform`: :class:`Platform`
+    platform : Platform
         The platform the order is on.
 
-    - `region`: :class:`str`
+    region : str
         The region the order is on.
 
-    - `creation_date`: :class:`datetime`
+    creation_date : datetime.datetime
         The time the order was created.
 
-    - `last_update`: :class:`datetime`
+    last_update : datetime.datetime
         The time the order was last updated.
 
-    - `visible`: :class:`bool`
-        Whether the order is visible to others. In this case, always :class:`True`.
+    visible : bool
+        Whether the order is visible to others. In this case, always True.
 
-    - `user`: :class:`UserShort`
+    user : UserShort
         The user who made the order.
     """
 
@@ -102,42 +102,42 @@ class OrderRow(OrderCommon):
 
 @dataclass
 class OrderFull(OrderRow):
-    """Same as :class:`OrderRow`, but with a full item model.
+    """Same as OrderRow, but with a full item model.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the order.
 
-    - `platinum`: :class:`int`
+    platinum : int
         The amount of platinum per item in the order.
 
-    - `quantity`: :class:`int`
+    quantity : int
         How many items the user is selling / buying.
 
-    - `order_type`: :class:`OrderType`
+    order_type : OrderType
         The type of order.
 
-    - `platform`: :class:`Platform`
+    platform : Platform
         The platform the order is on.
 
-    - `region`: :class:`str`
+    region : str
         The region the order is on.
 
-    - `creation_date`: :class:`datetime`
+    creation_date : datetime.datetime
         The time the order was created.
 
-    - `last_update`: :class:`datetime`
+    last_update : datetime.datetime
         The time the order was last updated.
 
-    - `visible`: :class:`bool`
-        Whether the order is visible to others. In this case, always :class:`True`.
+    visible : bool
+        Whether the order is visible to others. In this case, always True.
 
-    - `user`: :class:`UserShort`
+    user : UserShort
         The user who made the order.
 
-    - `item`: :class:`ItemInOrder`
+    item : ItemInOrder
         The item in the order.
     """
 
-    item: ItemInOrder
+    item: _ItemInOrder

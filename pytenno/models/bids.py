@@ -6,24 +6,24 @@ from datetime import datetime
 class Bid:
     """Represents a bid on an auction.
 
-    Attributes:
-    -----------
-    - `id`: :class:`int`
+    Parameters
+    ----------
+    id : int
         The ID of the bid.
 
-    - `auction`: :class:`str`
+    auction : str
         The ID of the auction the bid is on.
 
-    - `user`: :class:`str`
+    user : str
         The ID of the user who made the bid.
 
-    - `value`: :class:`int`
+    value : int
         The amount of platinum placed on the bid.
 
-    - `created`: :class:`datetime`
+    created : datetime.datetime
         The time the bid was made.
 
-    - `updated`: :class:`datetime`
+    updated : datetime.datetime
         The time the bid was last updated.
     """
 

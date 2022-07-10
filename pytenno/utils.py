@@ -1,3 +1,13 @@
+"""Module for utility functions used elsewhere in the pytenno package.
+
+    Some of these functions are used to convert data types to and from
+    their respective JSON representations.
+
+    There are also a handful of user-friendly functions for common
+    tasks, such as converting a string to a valid url-safe string.
+"""
+
+
 import aiohttp
 import datetime
 from enum import Enum
@@ -35,10 +45,15 @@ from .models.items import LangInItem
 
 @cache
 def format_name(name: str):
-
     return quote(name.lower().replace(" ", "_"))
 
 
+@cache
+def is_formatted_name(name: str):
+    return quote(name.replace("_", " ").lower()) == name
+
+
+@cache
 def _raise_error_code(response: aiohttp.ClientResponse, silenced: list[Exception]):
     code = response.status
 
@@ -96,6 +111,7 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 T = TypeVar("T", bound=type)
 
 
+@cache
 def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
     if data is None:
         return None

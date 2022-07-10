@@ -1,3 +1,8 @@
+"""Simple module for handling errors.
+
+    This module contains no functions. It is only used to define the
+    Error classes that the other modules use.
+"""
 from dataclasses import dataclass
 
 
@@ -8,10 +13,6 @@ class BaseError(BaseException):
 
     def __init__(self, *args: object) -> None:
         super().__init__(f"Error [Code {self.code}]: {self.msg}")
-
-
-# Create an eror class for every error response and code I can recieve
-# It should properly be inherited from BaseError
 
 
 class BadRequest(BaseError):

@@ -7,24 +7,24 @@ from .enums import Faction
 class Location:
     """Represents a location.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the location.
 
-    - `icon`: :class:`str`
+    icon : str
         The icon URL of the location.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The thumbnail URL of the location.
 
-    - `faction`: :class:`Faction`
+    faction : Faction
         The faction of the location.
 
-    - `name`: :class:`str`
+    name : str
         The name of the location.
 
-    - `node_name`: :class:`str`
+    node_name : str
         The name of the node the location is on.
     """
 

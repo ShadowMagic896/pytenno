@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime
-from pytenno.utils import from_data
 from typing import Union
 
+from ..utils import from_data
 from .enums import AuctionMarking, AuctionType, Element, Platform, Polarity
 from .rivens import PartialRivenAttribute
 from .users import UserShort
@@ -12,66 +12,66 @@ from .users import UserShort
 class AuctionEntry:
     """Represents an auction entry.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the auction entry.
 
-    - `minimum_reputation`: :class:`int`
+    minimum_reputation : int
         The minimum reputation required to bid on the auction.
 
-    - `winner`: :class:`str` | :class:`None`
+    winner : str , optional
         The ID of the user who won the auction.
 
-    - `private`: :class:`bool`
+    private : bool
         Whether the auction is private.
 
-    - `visible`: :class:`bool`
+    visible : bool
         Whether the auction is visible to others.
 
-    - `note_raw`: :class:`str` | :class:`None`
+    note_raw : str , optional
         The raw note of the auction.
 
-    - `note`: :class:`str` | :class:`None`
+    note : str , optional
         The formatted note of the auction.  This is safe to include in HTML.
 
-    - `owner`: :class:`str`
+    owner : str
         The ID of the user who owns the auction.
 
-    - `starting_price`: :class:`int`
+    starting_price : int
         The starting price of the auction.
 
-    - `buyout_price`: :class:`int` | :class:`None`
-        The buyout price of the auction. If set to :class:`None`, the auction cannot be bought out.
+    buyout_price : int , optional
+        The buyout price of the auction. If set to None, the auction cannot be bought out.
 
-    - `minimal_increment`: :class:`int`
-        The minimal increment of the auction. If set to :class:`None`, the auction has no minimal increment.
+    minimal_increment : int
+        The minimal increment of the auction. If set to None, the auction has no minimal increment.
 
-    - `is_direct_sell`: :class:`bool`
+    is_direct_sell : bool
         Whether the auction is a direct sell. Shortcut for ``starting_price == buyout_price``.
 
-    - `top_bid`: :class:`int` | :class:`None`
-        The top bid of the auction. If set to :class:`None`, the auction has not been bid on yet.
+    top_bid : int , optional
+        The top bid of the auction. If set to None, the auction has not been bid on yet.
 
-    - `created`: :class:`datetime`
+    created : datetime.datetime
         The time the auction was created.
 
-    - `updated`: :class:`datetime`
+    updated : datetime.datetime
         The time the auction was last updated. Bids count as updates.
 
-    - `platform`: :class:`Platform`
+    platform : Platform
         The platform the auction was created on.
 
-    - `closed`: :class:`bool`
+    closed : bool
         Whether the auction is closed.
 
-    - `is_marked_for`: :class:`AuctionMarking` | :class:`None`
+    is_marked_for : AuctionMarking , optional
         The action that will be executed on ``marked_operation_at``.
 
-    - `marked_operation_at`: :class:`datetime` | :class:`None`
+    marked_operation_at : datetime.datetime , optional
         The time that the auction will be deleted / archived.
 
-    - `item`: :class:`RivenAuction` | :class:`LichAuction` | :class:`KubrowAuction`
+    item : RivenAuction | LichAuction | KubrowAuction
         The item being bid upon.
     """
 
@@ -99,69 +99,72 @@ class AuctionEntry:
 
 @dataclass
 class AuctionEntryExpanded(AuctionEntry):
-    """Represents an auction entry.
+    """Same as `AuctionEntry`, but with a full user model for ``.owner``
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the auction entry.
 
-    - `minimum_reputation`: :class:`int`
+    minimum_reputation : int
         The minimum reputation required to bid on the auction.
 
-    - `winner`: :class:`str` | :class:`None`
+    winner : str , optional
         The ID of the user who won the auction.
 
-    - `private`: :class:`bool`
+    private : bool
         Whether the auction is private.
 
-    - `visible`: :class:`bool`
+    visible : bool
         Whether the auction is visible to others.
 
-    - `note_raw`: :class:`str` | :class:`None`
+    note_raw : str , optional
         The raw note of the auction.
 
-    - `note`: :class:`str` | :class:`None`
+    note : str , optional
         The formatted note of the auction.  This is safe to include in HTML.
 
-    - `owner`: :class:`UserShort`
-        The owner of the auction.
+    owner : str
+        The ID of the user who owns the auction.
 
-    - `starting_price`: :class:`int`
+    starting_price : int
         The starting price of the auction.
 
-    - `buyout_price`: :class:`int` | :class:`None`
-        The buyout price of the auction. If set to :class:`None`, the auction cannot be bought out.
+    buyout_price : int , optional
+        The buyout price of the auction. If set to None, the auction cannot be bought out.
 
-    - `minimal_increment`: :class:`int`
-        The minimal increment of the auction. If set to :class:`None`, the auction has no minimal increment.
+    minimal_increment : int
+        The minimal increment of the auction. If set to None, the auction has no minimal increment.
 
-    - `is_direct_sell`: :class:`bool`
+    is_direct_sell : bool
         Whether the auction is a direct sell. Shortcut for ``starting_price == buyout_price``.
 
-    - `top_bid`: :class:`int` | :class:`None`
-        The top bid of the auction. If set to :class:`None`, the auction has not been bid on yet.
+    top_bid : int , optional
+        The top bid of the auction. If set to None, the auction has not been bid on yet.
 
-    - `created`: :class:`datetime`
+    created : datetime.datetime
         The time the auction was created.
 
-    - `updated`: :class:`datetime`
+    updated : datetime.datetime
         The time the auction was last updated. Bids count as updates.
 
-    - `platform`: :class:`Platform`
+    platform : Platform
         The platform the auction was created on.
 
-    - `closed`: :class:`bool`
+    closed : bool
         Whether the auction is closed.
 
-    - `is_marked_for`: :class:`AuctionMarking` | :class:`None`
+    is_marked_for : AuctionMarking , optional
         The action that will be executed on ``marked_operation_at``.
 
-    - `marked_operation_at`: :class:`datetime` | :class:`None`
+    marked_operation_at : datetime.datetime , optional
         The time that the auction will be deleted / archived.
 
-    - `item`: :class:`RivenAuction` | :class:`LichAuction` | :class:`KubrowAuction`
+    item : RivenAuction | LichAuction | KubrowAuction
         The item being bid upon.
+
+    owner : UserShort
+        The owner of the auction.
     """
 
     owner: UserShort
@@ -184,27 +187,27 @@ class AuctionEntryExpanded(AuctionEntry):
 class LichAuction:
     """Represents a lich auction.
 
-    Attributes:
-    -----------
-    - `type`: :class:`AuctionType`
+    Parameters
+    ----------
+    type : AuctionType
         The type of the auction. In this case, ``lich``.
 
-    - `weapon_url`: :class:`str`
+    weapon_url : str
         The URL of the weapon.
 
-    - `element`: :class:`Element`
+    element : Element
         The element of the weapon.
 
-    - `damage`: :class:`int`
+    damage : int
         The damage of the weapon.
 
-    - `having_ephemera`: :class:`bool`
+    having_ephemera : bool
         Whether the weapon has an ephemera.
 
-    - `quirk`: :class:`str` | :class:`None`
+    quirk : str , optional
         The quirk of the lich.
 
-    - `name`: :class:`str` | :class:`None`
+    name : str , optional
         The name of the lich. Unused by the API.
     """
 
@@ -221,12 +224,12 @@ class LichAuction:
 class KubrowAuction:
     """Represents a kubrow auction.
 
-    Attributes:
-    -----------
-    - `type`: :class:`AuctionType`
+    Parameters
+    ----------
+    type : AuctionType
         The type of the auction. In this case, ``kubrow``.
 
-    - `name`: :class:`str`
+    name : str
         The name of the kubrow.
     """
 
@@ -238,34 +241,34 @@ class KubrowAuction:
 class RivenAuction:
     """Represents a riven auction.
 
-    Attributes:
-    -----------
-    - `type`: :class:`AuctionType`
+    Parameters
+    ----------
+    type : AuctionType
         The type of the auction. In this case, ``riven``.
 
-    - `attributes`: :class:list[:class:`PartialRivenAttribute`]
+    attributes : list[PartialRivenAttribute]
         The attributes of the riven.
 
-    - `name`: :class:`str`
+    name : str
         The name of the riven.
 
-    - `mastery_level`: :class:`int`
+    mastery_level : int
         The mastery level of the riven.
 
-    - `re_rolls`: :class:`int`
+    re_rolls : int
         The number of times the riven has been rerolled.
 
-    - `weapon_url_name`: :class:`str`
+    weapon_url_name : str
         The URL of the weapon the riven is for.
 
-    - `polarity`: :class:`Polarity`
+    polarity : Polarity
         The polarity of the riven.
 
-    - `mod_rank`: :class:`int`
+    mod_rank : int
         The rank of the riven.
     """
 
-    type: AuctionType # riven
+    type: AuctionType  # riven
     attributes: list[PartialRivenAttribute]
     name: str
     mastery_level: int

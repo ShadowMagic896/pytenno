@@ -7,27 +7,27 @@ from .enums import AnimationFormat, Element, IconFormat
 class LichWeapon:
     """Represents a lich weapon.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the weapon.
 
-    - `url_name`: :class:`str`
+    url_name : str
         The URL name of the weapon.
 
-    - `icon`: :class:`str`
+    icon : str
         The icon URL of the weapon.
 
-    - `icon_format`: :class:`IconFormat`
+    icon_format : IconFormat
         The format of the weapon's icon.
 
-    - `icon_format`: :class:`IconFormat`
+    icon_format : IconFormat
         The format of the weapon's icon.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The thumbnail URL of the weapon.
 
-    - `item_name`: :class:`str`
+    item_name : str
         The name of the weapon.
     """
 
@@ -43,33 +43,33 @@ class LichWeapon:
 class LichEphemera:
     """Represents a lich ephemera.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the ephemera.
 
-    - `url_name`: :class:`str`
+    url_name : str
         The URL name of the ephemera.
 
-    - `icon`: :class:`str`
+    icon : str
         The icon URL of the ephemera.
 
-    - `icon_format`: :class:`IconFormat`
+    icon_format : IconFormat
         The format of the ephemera's icon.
 
-    - `thumb`: :class:`str`
+    thumb : str
         The thumbnail URL of the ephemera.
 
-    - `animation`: :class:`str`
+    animation : str
         The animation URL of the ephemera.
 
-    - `animation_format`: :class:`AnimationFormat`
+    animation_format : AnimationFormat
         The format of the ephemera's animation.
 
-    - `element`: :class:`Element`
+    element : Element
         The element of the ephemera.
 
-    - `item_name`: :class:`str`
+    item_name : str
         The name of the ephemera.
     """
 
@@ -88,21 +88,21 @@ class LichEphemera:
 class LichQuirk:
     """Represents a lich quirk.
 
-    Attributes:
-    -----------
-    - `id`: :class:`str`
+    Parameters
+    ----------
+    id : str
         The ID of the quirk.
 
-    - `url_name`: :class:`str`
+    url_name : str
         The URL name of the quirk.
 
-    - `item_name`: :class:`str`
+    item_name : str
         The name of the quirk.
 
-    - `description`: :class:`str`
+    description : str
         The description of the quirk.
 
-    - `group`: :class:`str`
+    group : str
         The group of the quirk. Does not belong to any specific enum
     """
 

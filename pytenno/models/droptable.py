@@ -7,15 +7,15 @@ from .missions import DroptableMission, DroptableNPC, DroptableRelic
 class DropTable:
     """Represents an item's drop table.
 
-    Attributes:
-    -----------
-    - `missions`: :class:`list`[:class:`Mission`]
+    Parameters
+    ----------
+    missions : list[DroptableMission]
         The missions where the item can be found.
 
-    - `relics`: :class:`list`[:class:`RelicDrop`]
+    relics : list[DroptableRelic]
         The relic in which parts for the item can be found.
 
-    - `npc`: :class:`list`[:class:`NPC`]
+    npc : list[DroptableNPC]
         The NPCs where the item can be found.
     """
 
@@ -35,14 +35,14 @@ class DropTable:
 class Drop:
     """Represents an item's drop.
 
-    Attributes:
-    -----------
-    - `name`: :class:`str`
+    Parameters
+    ----------
+    name : str
         The translated name of the location / item.
 
-    - `link`: :class:`str`
+    link : str
         Link to the internal or extarnal source with information about that location.
     """
-    
+
     name: str
     link: str
