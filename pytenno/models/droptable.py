@@ -24,6 +24,7 @@ class DropTable:
     npc: list[DroptableNPC]
 
     def from_data(node: dict):
+        """Creates a DropTable from a dictionary. For internal use, please use `pytenno.utils.from_data` instead."""
         return DropTable(
             [DroptableMission.from_data(mission) for mission in node["missions"]],
             [DroptableRelic.from_data(relic) for relic in node["relics"]],
