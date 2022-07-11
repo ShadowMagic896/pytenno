@@ -3,6 +3,7 @@ from enum import Enum
 
 class Base(Enum):
     """
+    Base class for all enums.
     :meta private:
     """
 

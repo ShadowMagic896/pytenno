@@ -5,8 +5,10 @@ from ..models.auctions import AuctionEntryExpanded
 
 
 class AuctionEntries(AuctionEntriesBackend):
-    """A class for getting information about auction entries by ID."""
-
+    def __init__(self, backend: AuctionEntriesBackend) -> None:
+        """Initializes the interface class. For internal use."""
+        super().__init__(backend)
+        
     async def get_by_id(self, auction_id: str) -> AuctionEntryExpanded:
         """Gets a specific auction entry by ID.
 
