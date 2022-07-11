@@ -1,3 +1,5 @@
+"""Module holding the Auctions interface class."""
+
 from typing import Literal, Optional, Union
 
 from .._backends.auctions import AuctionsBackend

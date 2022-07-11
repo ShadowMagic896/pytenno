@@ -1,3 +1,5 @@
+"""Module holding the Items interface class."""
+
 from typing import Literal, Optional, overload
 
 from .._backends.items import ItemsBackend

@@ -1,3 +1,5 @@
+"""Module holding the Profile interface class."""
+
 from typing import Optional
 
 from .._backends.profile import ProfileBackend

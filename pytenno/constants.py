@@ -1,3 +1,7 @@
+"""Small module for constants used throughout the PyTenno library."""
+
+__all__ = ["VALID_LANGUAGES", "MAIN_ROOT", "API_ROOT", "ASSET_ROOT"]
+
 from typing import Final, Literal
 
 MAIN_ROOT: Final[str] = "https://warframe.market"

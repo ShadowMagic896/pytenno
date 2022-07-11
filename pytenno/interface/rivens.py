@@ -1,3 +1,5 @@
+"""Module holding the Rivens interface class."""
+
 from typing import Optional
 
 from .._backends.rivens import RivensBackend

@@ -1,3 +1,5 @@
+"""Module holding the Liches interface class."""
+
 from typing import Optional
 
 from .._backends.liches import LichesBackend

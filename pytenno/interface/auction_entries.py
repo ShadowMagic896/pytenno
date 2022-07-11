@@ -1,3 +1,5 @@
+"""Module holding the AuctionEntries interface class."""
+
 from .._backends.auction_entries import AuctionEntriesBackend
 from ..models.auctions import AuctionEntryExpanded
 

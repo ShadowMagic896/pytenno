@@ -1,3 +1,5 @@
+"""Module holding the Auth interface class."""
+
 from typing import Optional
 
 from .._backends.auth import AuthBackend

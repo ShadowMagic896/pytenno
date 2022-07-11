@@ -1,3 +1,5 @@
+"""Module holding the Misc. interface class."""
+
 from typing import Optional
 
 from .._backends.misc import MiscBackend

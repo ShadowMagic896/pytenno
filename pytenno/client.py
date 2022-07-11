@@ -1,3 +1,5 @@
+"""The main module for the PyTenno client."""
+
 from types import TracebackType
 from typing import Optional, Type
 
