@@ -90,51 +90,6 @@
   <section id="module-pytenno.interface.auction_entries">
 <span id="pytenno-interface-auction-entries"></span><h1>pytenno.interface.auction_entries<a class="headerlink" href="#module-pytenno.interface.auction_entries" title="Permalink to this heading"></a></h1>
 <p>Module holding the AuctionEntries interface class.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="pytenno.interface.auction_entries.AuctionEntries">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.interface.auction_entries.</span></span><span class="sig-name descname"><span class="pre">AuctionEntries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AuctionEntriesBackend</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/interface/auction_entries.html#AuctionEntries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.interface.auction_entries.AuctionEntries" title="Permalink to this definition"></a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="pytenno.interface.auction_entries.AuctionEntries.get_bids_by_id">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_bids_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auction_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/auctions.html#pytenno.models.auctions.AuctionEntryExpanded" title="pytenno.models.auctions.AuctionEntryExpanded"><span class="pre">AuctionEntryExpanded</span></a></span></span><a class="reference internal" href="../_modules/pytenno/interface/auction_entries.html#AuctionEntries.get_bids_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.interface.auction_entries.AuctionEntries.get_bids_by_id" title="Permalink to this definition"></a></dt>
-<dd><p>Gets all bids for a specific auction entry by ID.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>auction_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the auction entry to get bids for.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="../models/auctions.html#pytenno.models.auctions.AuctionEntryExpanded" title="pytenno.models.auctions.AuctionEntryExpanded">AuctionEntryExpanded</a></p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">async</span> <span class="k">with</span> <span class="n">PyTenno</span><span class="p">()</span> <span class="k">as</span> <span class="n">tenno</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">auction</span> <span class="o">=</span> <span class="k">await</span> <span class="n">tenno</span><span class="o">.</span><span class="n">AuctionEntries</span><span class="o">.</span><span class="n">get_bids_by_id</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">auction</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">ingame_name</span><span class="p">,</span> <span class="n">auction</span><span class="o">.</span><span class="n">platinum</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pytenno.interface.auction_entries.AuctionEntries.get_by_id">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auction_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../models/auctions.html#pytenno.models.auctions.AuctionEntryExpanded" title="pytenno.models.auctions.AuctionEntryExpanded"><span class="pre">AuctionEntryExpanded</span></a></span></span><a class="reference internal" href="../_modules/pytenno/interface/auction_entries.html#AuctionEntries.get_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.interface.auction_entries.AuctionEntries.get_by_id" title="Permalink to this definition"></a></dt>
-<dd><p>Gets a specific auction entry by ID.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>auction_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the auction entry to get.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="../models/auctions.html#pytenno.models.auctions.AuctionEntryExpanded" title="pytenno.models.auctions.AuctionEntryExpanded">AuctionEntryExpanded</a></p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">async</span> <span class="k">with</span> <span class="n">PyTenno</span><span class="p">()</span> <span class="k">as</span> <span class="n">tenno</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">auction</span> <span class="o">=</span> <span class="k">await</span> <span class="n">tenno</span><span class="o">.</span><span class="n">AuctionEntries</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">auction</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">ingame_name</span><span class="p">,</span> <span class="n">auction</span><span class="o">.</span><span class="n">platinum</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 

@@ -28,7 +28,6 @@ module_template = """\
 .. automodule:: {module}
     :inherited-members:
     :members:
-    :undoc-members:
     """
 
 index_template = """\
