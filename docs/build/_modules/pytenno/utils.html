@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pytenno.utils &mdash; PyTenno  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> PyTenno
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../client.html">pytenno.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../errors.html">pytenno.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">pytenno.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/auctions.html">pytenno.interface.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/auction_entries.html">pytenno.interface.auction_entries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/auth.html">pytenno.interface.auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/items.html">pytenno.interface.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/liches.html">pytenno.interface.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/misc.html">pytenno.interface.misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/profile.html">pytenno.interface.profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/rivens.html">pytenno.interface.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/auctions.html">pytenno.models.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/bids.html">pytenno.models.bids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/droptable.html">pytenno.models.droptable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/enums.html">pytenno.models.enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/items.html">pytenno.models.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/liches.html">pytenno.models.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/locations.html">pytenno.models.locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/missions.html">pytenno.models.missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/orders.html">pytenno.models.orders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/rivens.html">pytenno.models.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/users.html">pytenno.models.users</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyTenno</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>pytenno.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pytenno.utils</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module for utility functions used elsewhere in the pytenno package.</span>
+
+<span class="sd">    Some of these functions are used to convert data types to and from</span>
+<span class="sd">    their respective JSON representations.</span>
+
+<span class="sd">    There are also a handful of user-friendly functions for common</span>
+<span class="sd">    tasks, such as converting a string to a valid url-safe string.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span>
+
+<span class="kn">import</span> <span class="nn">aiohttp</span>
+
+<span class="kn">from</span> <span class="nn">.constants</span> <span class="kn">import</span> <span class="n">ASSET_ROOT</span><span class="p">,</span> <span class="n">VALID_TRANSLATIONS_RAW</span>
+<span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">BaseError</span>
+<span class="kn">from</span> <span class="nn">.models.droptable</span> <span class="kn">import</span> <span class="n">Drop</span>
+<span class="kn">from</span> <span class="nn">.models.enums</span> <span class="kn">import</span> <span class="p">(</span><span class="n">AnimationFormat</span><span class="p">,</span> <span class="n">AuctionMarking</span><span class="p">,</span> <span class="n">AuctionType</span><span class="p">,</span>
+                           <span class="n">Element</span><span class="p">,</span> <span class="n">Faction</span><span class="p">,</span> <span class="n">IconFormat</span><span class="p">,</span> <span class="n">ItemRarity</span><span class="p">,</span>
+                           <span class="n">MeasurementUnit</span><span class="p">,</span> <span class="n">OrderType</span><span class="p">,</span> <span class="n">PatreonBadge</span><span class="p">,</span> <span class="n">Platform</span><span class="p">,</span>
+                           <span class="n">Polarity</span><span class="p">,</span> <span class="n">RivenAttributeGroup</span><span class="p">,</span> <span class="n">RivenWeaponGroup</span><span class="p">,</span>
+                           <span class="n">RivenWeaponType</span><span class="p">,</span> <span class="n">Rotation</span><span class="p">,</span> <span class="n">Stage</span><span class="p">,</span> <span class="n">Subtype</span><span class="p">,</span> <span class="n">UserRole</span><span class="p">,</span>
+                           <span class="n">UserStatus</span><span class="p">)</span>
+
+
+
+<div class="viewcode-block" id="format_name"><a class="viewcode-back" href="../../utils.html#pytenno.utils.format_name">[docs]</a><span class="k">def</span> <span class="nf">format_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a string to a valid url-safe string.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">quote</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="is_formatted_name"><a class="viewcode-back" href="../../utils.html#pytenno.utils.is_formatted_name">[docs]</a><span class="k">def</span> <span class="nf">is_formatted_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks if a string is a valid formatted name.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">quote</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">==</span> <span class="n">name</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_raise_error_code</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientResponse</span><span class="p">,</span> <span class="n">silenced</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Raises an error based on the response&#39;s status code.&quot;&quot;&quot;</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span>
+
+    <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">BaseError</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">error</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">silenced</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">error</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">error</span> <span class="o">=</span> <span class="n">BaseError</span>
+    <span class="n">error</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+    <span class="n">error</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Unknown error occurred&quot;</span>
+
+    <span class="k">raise</span> <span class="n">error</span>
+
+
+<span class="n">DATETIME_FORMAT</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">%z&quot;</span>
+
+
+<span class="c1"># Enums that take in a value and return an enum value</span>
+<span class="n">_ENUM_MAPPING</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="n">Enum</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;rarity&quot;</span><span class="p">:</span> <span class="n">ItemRarity</span><span class="p">,</span>
+    <span class="s2">&quot;order_type&quot;</span><span class="p">:</span> <span class="n">OrderType</span><span class="p">,</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span>
+    <span class="s2">&quot;patreon_badge&quot;</span><span class="p">:</span> <span class="n">PatreonBadge</span><span class="p">,</span>
+    <span class="s2">&quot;platform&quot;</span><span class="p">:</span> <span class="n">Platform</span><span class="p">,</span>
+    <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">UserRole</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">UserStatus</span><span class="p">,</span>
+    <span class="s2">&quot;polarity&quot;</span><span class="p">:</span> <span class="n">Polarity</span><span class="p">,</span>
+    <span class="s2">&quot;riven_type&quot;</span><span class="p">:</span> <span class="n">RivenWeaponType</span><span class="p">,</span>
+    <span class="s2">&quot;icon_format&quot;</span><span class="p">:</span> <span class="n">IconFormat</span><span class="p">,</span>
+    <span class="s2">&quot;animation_format&quot;</span><span class="p">:</span> <span class="n">AnimationFormat</span><span class="p">,</span>
+    <span class="s2">&quot;rotation&quot;</span><span class="p">:</span> <span class="n">Rotation</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">AuctionType</span><span class="p">,</span>
+    <span class="s2">&quot;is_marked_for&quot;</span><span class="p">:</span> <span class="n">AuctionMarking</span><span class="p">,</span>
+    <span class="s2">&quot;faction&quot;</span><span class="p">:</span> <span class="n">Faction</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Enums that require special attention</span>
+<span class="n">_SPECIAL_ENUM_MAPPING</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Type</span><span class="p">[</span><span class="n">Enum</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;subtypes&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">names</span><span class="p">:</span> <span class="p">[</span><span class="n">Subtype</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">],</span>
+    <span class="s2">&quot;exclusive_to&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">excls</span><span class="p">:</span> <span class="p">[</span><span class="n">RivenWeaponGroup</span><span class="p">[</span><span class="n">exc</span><span class="p">]</span> <span class="k">for</span> <span class="n">exc</span> <span class="ow">in</span> <span class="n">excls</span><span class="p">],</span>
+    <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">unit</span><span class="p">:</span> <span class="n">MeasurementUnit</span><span class="p">[</span><span class="n">unit</span><span class="p">],</span>
+    <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">grp</span><span class="p">:</span> <span class="n">RivenAttributeGroup</span><span class="p">[</span>
+        <span class="n">grp</span>
+    <span class="p">]</span>  <span class="c1"># The API is ambigous on this attribute; three different items have the name but can have different values</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">RivenAttributeGroup</span><span class="p">,</span> <span class="n">grp</span><span class="p">)</span>
+    <span class="k">else</span> <span class="n">RivenWeaponGroup</span><span class="p">[</span><span class="n">grp</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">RivenWeaponGroup</span><span class="p">,</span> <span class="n">grp</span><span class="p">)</span>
+    <span class="k">else</span> <span class="n">grp</span><span class="p">,</span>
+    <span class="s2">&quot;stage&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">stage</span><span class="p">:</span> <span class="n">Stage</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">stage</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">else</span> <span class="n">stage</span><span class="p">],</span>
+    <span class="s2">&quot;is_marked_for&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">mark</span><span class="p">:</span> <span class="n">AuctionMarking</span><span class="p">[</span><span class="n">mark</span><span class="p">]</span> <span class="k">if</span> <span class="n">mark</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
+
+
+
+<div class="viewcode-block" id="from_data"><a class="viewcode-back" href="../../utils.html#pytenno.utils.from_data">[docs]</a><span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">cls_</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Partially converts common data types into their object equivalent, then creates an instance of ``cls_``.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">nd</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Create new dict to avoid RuntimeErrors</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;icon&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_icon&quot;</span><span class="p">,</span> <span class="s2">&quot;thumb&quot;</span><span class="p">,</span> <span class="s2">&quot;avatar&quot;</span><span class="p">,</span> <span class="s2">&quot;animation&quot;</span><span class="p">,</span> <span class="s2">&quot;background&quot;</span><span class="p">):</span>
+            <span class="n">nd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ASSET_ROOT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="s2">&quot;creation_date&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_updated&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updated&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_seen&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;marked_operation_at&quot;</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">nd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">DATETIME_FORMAT</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;drop&quot;</span><span class="p">:</span>
+            <span class="n">nd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Drop</span><span class="p">(</span><span class="o">**</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_ENUM_MAPPING</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">value</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">nd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_SPECIAL_ENUM_MAPPING</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">nd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">cls_</span><span class="p">,</span> <span class="s2">&quot;from_data&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cls_</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cls_</span><span class="p">(</span><span class="o">**</span><span class="n">nd</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ryan Peckham.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

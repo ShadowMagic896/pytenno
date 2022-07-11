@@ -28,16 +28,19 @@ from .models.enums import (AnimationFormat, AuctionMarking, AuctionType,
 
 
 def format_name(name: str):
+    """Converts a string to a valid url-safe string."""
     return quote(name.lower().replace(" ", "_"))
 
 
 
 def is_formatted_name(name: str):
+    """Checks if a string is a valid formatted name."""
     return quote(name.replace("_", " ").lower()) == name
 
 
 
 def _raise_error_code(response: aiohttp.ClientResponse, silenced: list[Exception]):
+    """Raises an error based on the response's status code."""
     code = response.status
 
     for error in BaseError.__subclasses__():
@@ -96,6 +99,7 @@ T = TypeVar("T", bound=type)
 
 
 def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
+    """Partially converts common data types into their object equivalent, then creates an instance of ``cls_``."""
     if data is None:
         return None
     nd = {}  # Create new dict to avoid RuntimeErrors
