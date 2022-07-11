@@ -1,3 +1,4 @@
+from typing import Optional
 from .._backends.misc import MiscBackend
 from ..constants import VALID_LANGUAGES
 from ..models.locations import Location
@@ -5,13 +6,13 @@ from ..models.missions import DroptableNPC, PartialMission
 
 
 class Misc(MiscBackend):
-    async def get_locations(self, language: VALID_LANGUAGES = "en") -> list[Location]:
+    async def get_locations(self, language: Optional[VALID_LANGUAGES] = None) -> list[Location]:
         """Gets a list of all locations.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the locations. Default: ```"en"```.
+        language : Optional[VALID_LANGUAGES]
+            The language of the locations. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
@@ -26,13 +27,13 @@ class Misc(MiscBackend):
         """
         return await self._get_locations(language)
 
-    async def get_npcs(self, language: VALID_LANGUAGES = "en") -> list[DroptableNPC]:
+    async def get_npcs(self, language: Optional[VALID_LANGUAGES] = None) -> list[DroptableNPC]:
         """Gets a list of all NPCs.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the NPCs. Default: ```"en"```.
+        language : Optional[VALID_LANGUAGES]
+            The language of the NPCs. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
@@ -48,14 +49,14 @@ class Misc(MiscBackend):
         return await self._get_npcs(language)
 
     async def get_missions(
-        self, language: VALID_LANGUAGES = "en"
+        self, language: Optional[VALID_LANGUAGES] = None
     ) -> list[PartialMission]:
         """Gets a list of all missions.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the missions. Default: ```"en"```.
+        language : Optional[VALID_LANGUAGES]
+            The language of the missions. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------

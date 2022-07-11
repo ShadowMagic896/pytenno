@@ -44,7 +44,7 @@ class Auth(AuthBackend):
         *,
         email: str,
         password: str,
-        region: Optional[VALID_LANGUAGES] = "en",
+        region: Optional[VALID_LANGUAGES] = None,
         device_id: Optional[str] = None,
         recaptcha: Optional[str] = None,
     ) -> CurrentUser:
@@ -56,8 +56,8 @@ class Auth(AuthBackend):
             The email of the user.
         password : str
             The password of the user.
-        region : VALID_LANGUAGES
-            The region of the user. Default: ``"en"``.
+        region : Optional[VALID_LANGUAGES]
+            The region of the user. Default: ``None``, meaning the default set during client construction.
         device_id : str
             The device ID of the user, used to identify devices between sessions. Default: None.
         recaptcha : str

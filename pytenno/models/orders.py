@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
 
+from pytenno.utils import from_data
+
 from .enums import OrderType, Platform
-from .items import _ItemInOrder
+from .items import ItemInOrder
 from .users import UserShort
 
 
@@ -49,6 +51,50 @@ class OrderCommon:
     creation_date: datetime
     last_update: datetime
     visible: bool
+
+
+@dataclass
+class OrderCreated(OrderCommon):
+    """Represents an Order after it has been passed to the API
+    and is now created.
+
+    Parameters
+    ----------
+    id : str
+        The ID of the order.
+
+    platinum : int
+        The amount of platinum per item in the order.
+
+    quantity : int
+        How many items the user is selling / buying.
+
+    order_type : OrderType
+        The type of order.
+
+    platform : Platform
+        The platform the order is on.
+
+    region : str
+        The region the order is on.
+
+    creation_date : datetime.datetime
+        The time the order was created.
+
+    last_update : datetime.datetime
+        The time the order was last updated.
+
+    visible : bool
+        Whether the order is visible to others. In this case, always True.
+    
+    item: ItemInOrder
+        The item in the order.
+    """
+
+    def from_data(data: dict):
+        return OrderCreated(
+            item=from_data(ItemInOrder, data.pop("item")),
+        )
 
 
 @dataclass
@@ -140,4 +186,4 @@ class OrderFull(OrderRow):
         The item in the order.
     """
 
-    item: _ItemInOrder
+    item: ItemInOrder

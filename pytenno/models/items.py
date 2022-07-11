@@ -1,7 +1,10 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from pytenno.constants import VALID_TRANSLATIONS_RAW
+
+from pytenno.utils import from_data
 
 from .droptable import Drop
-from .enums import ItemRarity, Subtype
+from .enums import IconFormat, ItemRarity, Subtype
 
 
 @dataclass
@@ -76,7 +79,7 @@ class ItemCommon:
     id: str
     url_name: str
     icon: str
-    icon_format: str
+    icon_format: IconFormat | None = None
     sub_icon: str = None
     thumb: str
     tags: list[str]
@@ -91,25 +94,36 @@ class ItemCommon:
 
 
 @dataclass(kw_only=True)
-class _ItemInOrder(ItemCommon):
-    en: dict[str, str]
-    ru: dict[str, str]
-    ko: dict[str, str]
-    fr: dict[str, str]
-    de: dict[str, str]
-    sv: dict[str, str]
-    zh_hant: dict[str, str]
-    zh_hans: dict[str, str]
-    pt: dict[str, str]
-    es: dict[str, str]
-    pl: dict[str, str]
+class TranslatedItemName:
+    item_name: str
+
+@dataclass(kw_only=True)
+class ItemInOrder(ItemCommon):
+    en: TranslatedItemName
+    ru: TranslatedItemName
+    ko: TranslatedItemName
+    fr: TranslatedItemName
+    de: TranslatedItemName
+    sv: TranslatedItemName
+    zh_hant: TranslatedItemName
+    zh_hans: TranslatedItemName
+    pt: TranslatedItemName
+    es: TranslatedItemName
+    pl: TranslatedItemName
+
+    def from_data(node: dict):
+        [node.__setitem__(lang, TranslatedItemName(item_name=node[lang]["item_name"])) for lang in VALID_TRANSLATIONS_RAW]
+        # Sets all of the languages to their TransLatedItemName objects.
+        # A bit odd to call __setitem__ manually, but it lets it work in a listcomp so meh.
+        return from_data(ItemInOrder, node)
 
     def __repr__(self):
         return f"<ItemInOrder id={self.id} url_name={self.url_name} tags={self.tags}>"
 
 
+
 @dataclass(kw_only=True)
-class ItemFull(_ItemInOrder):
+class ItemFull(ItemInOrder):
     """same as ItemInOrder, but lang related fields contain more infos, + rarity, set_root, MR, trading tax.
 
 

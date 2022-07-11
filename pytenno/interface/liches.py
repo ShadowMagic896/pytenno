@@ -1,16 +1,17 @@
+from typing import Optional
 from .._backends.liches import LichesBackend
 from ..constants import VALID_LANGUAGES
 from ..models.liches import LichEphemera, LichQuirk, LichWeapon
 
 
 class Liches(LichesBackend):
-    async def get_weapons(self, language: VALID_LANGUAGES = "en") -> list[LichWeapon]:
+    async def get_weapons(self, language: Optional[VALID_LANGUAGES] = None) -> list[LichWeapon]:
         """Gets all weapons.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the weapons. Default: ``"en"``.
+        language : Optional[VALID_LANGUAGES]
+            The language of the weapons. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
@@ -26,14 +27,14 @@ class Liches(LichesBackend):
         return await self._get_weapons(language)
 
     async def get_ephemeras(
-        self, language: VALID_LANGUAGES = "en"
+        self, language: Optional[VALID_LANGUAGES] = None
     ) -> list[LichEphemera]:
         """Gets all lich ephemeras.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the ephemeras. Default: ``"en"``.
+        language : Optional[VALID_LANGUAGES]
+            The language of the ephemeras. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
@@ -48,13 +49,13 @@ class Liches(LichesBackend):
         """
         return await self._get_ephemeras(language)
 
-    async def get_quirks(self, language: VALID_LANGUAGES = "en") -> list[LichQuirk]:
+    async def get_quirks(self, language: Optional[VALID_LANGUAGES] = None) -> list[LichQuirk]:
         """Gets all lich quirks.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the quirks. Default: ```"en"```.
+        language : Optional[VALID_LANGUAGES]
+            The language of the quirks. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------

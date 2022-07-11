@@ -1,3 +1,4 @@
+from typing import Optional
 from .._backends.rivens import RivensBackend
 from ..constants import VALID_LANGUAGES
 from ..models.rivens import RivenAttribute, RivenItem
@@ -5,14 +6,14 @@ from ..models.rivens import RivenAttribute, RivenItem
 
 class Rivens(RivensBackend):
     async def get_riven_items(
-        self, language: VALID_LANGUAGES = "en"
+        self, language: Optional[VALID_LANGUAGES] = None
     ) -> list[RivenItem]:
         """Gets a list of all riven-equippable items.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the riven items. Default: ```"en"```.
+        language : Optional[VALID_LANGUAGES]
+            The language of the riven items. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
@@ -28,14 +29,14 @@ class Rivens(RivensBackend):
         return await self._get_riven_items(language)
 
     async def get_attributes(
-        self, language: VALID_LANGUAGES = "en"
+        self, language: Optional[VALID_LANGUAGES] = None
     ) -> list[RivenAttribute]:
         """Gets a list of all riven attributes.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the riven attributes. Default: ```"en"```.
+        language : Optional[VALID_LANGUAGES]
+            The language of the riven attributes. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------

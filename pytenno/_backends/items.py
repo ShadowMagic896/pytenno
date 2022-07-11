@@ -52,7 +52,7 @@ class ItemsBackend(BackendAdapter):
         return [from_data(OrderRow, node) for node in response["payload"]["orders"]]
 
     async def _get_droptable(
-        self, item_name, include_items: bool, language: VALID_LANGUAGES
+        self, item_name, include_items: bool, language: Optional[VALID_LANGUAGES]
     ):
         url = f"/items/{format_name(item_name)}/droptables"
         if include_items:

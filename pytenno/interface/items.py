@@ -9,13 +9,13 @@ from ..models.orders import OrderRow
 
 
 class Items(ItemsBackend):
-    async def get_items(self, language: VALID_LANGUAGES = "en") -> list[ItemShort]:
+    async def get_items(self, language: Optional[VALID_LANGUAGES] = None) -> list[ItemShort]:
         """Gets all items.
 
         Parameters
         ----------
-        language : VALID_LANGUAGES
-            The language of the items. Default: ``"en"``.
+        language : Optional[VALID_LANGUAGES]
+            The language of the items. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
@@ -113,7 +113,7 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         include_items: Literal[False],
-        language: VALID_LANGUAGES = "en",
+        language: Optional[VALID_LANGUAGES] = None,
     ) -> DropTable:
         ...
 
@@ -122,7 +122,7 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         include_items: Literal[True],
-        language: VALID_LANGUAGES = "en",
+        language: Optional[VALID_LANGUAGES] = None,
     ) -> tuple[DropTable, list[ItemFull]]:
         ...
 
@@ -130,7 +130,7 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         include_items: bool,
-        language: VALID_LANGUAGES = "en",
+        language: Optional[VALID_LANGUAGES] = None,
     ):
         """Gets the droptable of the given item.
 
@@ -140,8 +140,8 @@ class Items(ItemsBackend):
             The name of the item.
         include_items : bool
             Whether to include information about the item requested.
-        language : VALID_LANGUAGES
-            The language of the droptable. Default: ``"en"``.
+        language : Optional[VALID_LANGUAGES]
+            The language of the droptable. Default: ``None``, meaning the default set during client construction.
 
         Returns
         -------
