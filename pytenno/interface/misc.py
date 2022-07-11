@@ -1,4 +1,5 @@
 from typing import Optional
+
 from .._backends.misc import MiscBackend
 from ..constants import VALID_LANGUAGES
 from ..models.locations import Location

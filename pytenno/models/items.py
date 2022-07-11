@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from pytenno.constants import VALID_TRANSLATIONS_RAW
 
+from pytenno.constants import VALID_TRANSLATIONS_RAW
 from pytenno.utils import from_data
 
 from .droptable import Drop

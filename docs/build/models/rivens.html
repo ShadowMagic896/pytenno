@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pytenno.models.rivens &#8212; PyTenno  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pytenno.models.users" href="users.html" />
+    <link rel="prev" title="pytenno.models.orders" href="orders.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-pytenno.models.rivens">
+<span id="pytenno-models-rivens"></span><h1>pytenno.models.rivens<a class="headerlink" href="#module-pytenno.models.rivens" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.rivens.PartialRivenAttribute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.rivens.</span></span><span class="sig-name descname"><span class="pre">PartialRivenAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/rivens.html#PartialRivenAttribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.rivens.PartialRivenAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a partial riven attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>positive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the attribute is positive.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The value of the attribute.</p></li>
+<li><p><strong>url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL name of the attribute.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.rivens.RivenAttribute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.rivens.</span></span><span class="sig-name descname"><span class="pre">RivenAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.RivenAttributeGroup" title="pytenno.models.enums.RivenAttributeGroup"><span class="pre">RivenAttributeGroup</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive_is_negative</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclusive_to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="enums.html#pytenno.models.enums.RivenWeaponType" title="pytenno.models.enums.RivenWeaponType"><span class="pre">pytenno.models.enums.RivenWeaponType</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="enums.html#pytenno.models.enums.MeasurementUnit" title="pytenno.models.enums.MeasurementUnit"><span class="pre">MeasurementUnit</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/rivens.html#RivenAttribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.rivens.RivenAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a riven attribute. Most rivens have multiple attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the riven attribute.</p></li>
+<li><p><strong>url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL name of the riven attribute.</p></li>
+<li><p><strong>group</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.RivenAttributeGroup" title="pytenno.models.enums.RivenAttributeGroup"><em>RivenAttributeGroup</em></a>) – The group of the riven attribute</p></li>
+<li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The prefix of the riven attribute.
+Example: “hexi”</p></li>
+<li><p><strong>suffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The suffix of the riven attribute.
+Example: “bin”</p></li>
+<li><p><strong>positive_is_negative</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the positive attribute is actually negative.
+Example: Recoil, Reload Speed, etc.</p></li>
+<li><p><strong>exclusive_to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference internal" href="enums.html#pytenno.models.enums.RivenWeaponType" title="pytenno.models.enums.RivenWeaponType"><em>RivenWeaponType</em></a><em>] </em><em>, </em><em>optional</em>) – The types of weapons that the attribute is exclusive to. None if it is not exclusive to any weapon.</p></li>
+<li><p><strong>effect</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The effect of the riven attribute. Depends on the requested language.</p></li>
+<li><p><strong>units</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.MeasurementUnit" title="pytenno.models.enums.MeasurementUnit"><em>MeasurementUnit</em></a><em>, </em><em>optional</em>) – What the riven attribute is measured in.</p></li>
+<li><p><strong>negative_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the attribute only appears as a negative.</p></li>
+<li><p><strong>search_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the attribute only appears in search results.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.rivens.RivenItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.rivens.</span></span><span class="sig-name descname"><span class="pre">RivenItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.RivenWeaponGroup" title="pytenno.models.enums.RivenWeaponGroup"><span class="pre">RivenWeaponGroup</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">riven_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.RivenWeaponType" title="pytenno.models.enums.RivenWeaponType"><span class="pre">RivenWeaponType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><span class="pre">IconFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">thumb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/rivens.html#RivenItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.rivens.RivenItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a riven item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the riven item.</p></li>
+<li><p><strong>item_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the riven item.</p></li>
+<li><p><strong>item_url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL name of the riven item.</p></li>
+<li><p><strong>group</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.RivenWeaponGroup" title="pytenno.models.enums.RivenWeaponGroup"><em>RivenWeaponGroup</em></a>) – The group of the riven item.</p></li>
+<li><p><strong>riven_type</strong> (<em>RivenType</em>) – The type of the riven item.</p></li>
+<li><p><strong>icon</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The icon URL of the riven item.</p></li>
+<li><p><strong>icon_format</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><em>IconFormat</em></a>) – The format of the icon URL of the riven item.</p></li>
+<li><p><strong>thumb</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The thumbnail URL of the riven item.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PyTenno</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../client.html">pytenno.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../errors.html">pytenno.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">pytenno.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/auctions.html">pytenno.interface.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/auction_entries.html">pytenno.interface.auction_entries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/auth.html">pytenno.interface.auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/items.html">pytenno.interface.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/liches.html">pytenno.interface.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/misc.html">pytenno.interface.misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/profile.html">pytenno.interface.profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/rivens.html">pytenno.interface.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auctions.html">pytenno.models.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bids.html">pytenno.models.bids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="droptable.html">pytenno.models.droptable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">pytenno.models.enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">pytenno.models.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liches.html">pytenno.models.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">pytenno.models.locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="missions.html">pytenno.models.missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orders.html">pytenno.models.orders</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pytenno.models.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">pytenno.models.users</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="orders.html" title="previous chapter">pytenno.models.orders</a></li>
+      <li>Next: <a href="users.html" title="next chapter">pytenno.models.users</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ryan Peckham.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/models/rivens.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

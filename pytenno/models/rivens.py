@@ -1,12 +1,7 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from .enums import (
-    IconFormat,
-    MeasurementUnit,
-    RivenAttributeGroup,
-    RivenWeaponGroup,
-    RivenWeaponType,
-)
+from .enums import (IconFormat, MeasurementUnit, RivenAttributeGroup,
+                    RivenWeaponGroup, RivenWeaponType)
 
 
 @dataclass
@@ -50,7 +45,7 @@ class RivenItem:
     thumb: str
 
 
-@dataclass
+@dataclass(kw_only=True)
 class RivenAttribute:
     """Represents a riven attribute. Most rivens have multiple attributes.
 
@@ -84,7 +79,7 @@ class RivenAttribute:
     effect : str
         The effect of the riven attribute. Depends on the requested language.
 
-    units : MeasurementUnit
+    units : MeasurementUnit, optional
         What the riven attribute is measured in.
 
     negative_only : bool
@@ -97,15 +92,14 @@ class RivenAttribute:
     id: str
     url_name: str
     group: RivenAttributeGroup
-    prefix: str
-    suffix: str
+    prefix: str = field(default="")
+    suffix: str = field(default="")
     positive_is_negative: bool
-    exclusive_to: list[RivenWeaponType] | None
+    exclusive_to: list[RivenWeaponType] | None = None
     effect: str
-    units: MeasurementUnit
+    units: MeasurementUnit | None = None
     negative_only: bool
     search_only: bool
-
 
 @dataclass
 class PartialRivenAttribute:

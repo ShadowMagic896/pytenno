@@ -1,6 +1,7 @@
-import aiohttp
 from types import TracebackType
 from typing import Optional, Type
+
+import aiohttp
 
 from ._backends.core import PyTennoBackend
 from .constants import VALID_LANGUAGES
@@ -10,6 +11,7 @@ from .interface.auth import Auth
 from .interface.items import Items
 from .interface.liches import Liches
 from .interface.misc import Misc
+from .interface.profile import Profile
 from .interface.rivens import Rivens
 from .models.enums import Platform
 
@@ -21,10 +23,10 @@ class PyTenno:
     Parameters
     ----------
 
-    language : str
+    default_language : str
         The default language used when communicating with the API.
         See ``constants.VALID_LANGUAGES`` for valid values.
-    platform : Platform
+    default_platform : Platform
         The default platform used when communicating with the API.
     silenced_errors  : list[Exception]
         A list of errors that will be silenced when raised by the API.
@@ -42,15 +44,15 @@ class PyTenno:
     """
 
     def __init__(
-        self,
-        language: Optional[VALID_LANGUAGES] = "en",
-        platform: Platform = Platform.pc,
+        self, *,
+        default_language: Optional[VALID_LANGUAGES] = "en",
+        default_platform: Platform = Platform.pc,
         silenced_errors: list[Exception] = [],
     ) -> None:
-        self._language = language
-        self._platform = platform
+        self._language = default_language
+        self._platform = default_platform
 
-        self._session: aiohttp.ClientSession = None
+        self._session: aiohttp.ClientSession
         self._silenced = silenced_errors
 
         self.AuctionEntries: AuctionEntries
@@ -59,6 +61,7 @@ class PyTenno:
         self.Items: Items
         self.Liches: Liches
         self.Misc: Misc
+        self.Profile: Profile
         self.Rivens: Rivens
 
     async def __aenter__(self):
@@ -78,6 +81,7 @@ class PyTenno:
         self.Items = Items(backend)
         self.Liches = Liches(backend)
         self.Misc = Misc(backend)
+        self.Profile = Profile(backend)
         self.Rivens = Rivens(backend)
         return self
 
@@ -89,3 +93,7 @@ class PyTenno:
     ) -> bool:
         await self._session.close()
         return False
+    
+    async def close(self) -> None:
+        """Closes the session."""
+        await self._session.close()

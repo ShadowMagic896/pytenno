@@ -1,7 +1,5 @@
-import sys
-
 import os
-
+import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
@@ -21,7 +19,6 @@ intersphinx_mapping = {
 templates_path = ["_templates"]
 source_suffix = ".rst"
 master_doc = "index"
-
 project = "PyTenno"
 copyright = "2022 Ryan Peckham"
 author = "Ryan Peckham"

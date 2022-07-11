@@ -1,12 +1,8 @@
 from typing import Literal, Optional, Union
 
 from .._backends.auctions import AuctionsBackend
-from ..models.auctions import (
-    AuctionEntryExpanded,
-    KubrowAuction,
-    LichAuction,
-    RivenAuction,
-)
+from ..models.auctions import (AuctionEntryExpanded, KubrowAuction,
+                               LichAuction, RivenAuction)
 from ..models.enums import Element, Platform, Polarity, RivenStat
 
 

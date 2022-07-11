@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pytenno.interface.auctions &mdash; PyTenno  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> PyTenno
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../client.html">pytenno.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../errors.html">pytenno.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">pytenno.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auctions.html">pytenno.interface.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auction_entries.html">pytenno.interface.auction_entries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auth.html">pytenno.interface.auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/items.html">pytenno.interface.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/liches.html">pytenno.interface.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/misc.html">pytenno.interface.misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/profile.html">pytenno.interface.profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/rivens.html">pytenno.interface.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/auctions.html">pytenno.models.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/bids.html">pytenno.models.bids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/droptable.html">pytenno.models.droptable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/enums.html">pytenno.models.enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/items.html">pytenno.models.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/liches.html">pytenno.models.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/locations.html">pytenno.models.locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/missions.html">pytenno.models.missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/orders.html">pytenno.models.orders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/rivens.html">pytenno.models.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/users.html">pytenno.models.users</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyTenno</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>pytenno.interface.auctions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pytenno.interface.auctions</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">.._backends.auctions</span> <span class="kn">import</span> <span class="n">AuctionsBackend</span>
+<span class="kn">from</span> <span class="nn">..models.auctions</span> <span class="kn">import</span> <span class="p">(</span><span class="n">AuctionEntryExpanded</span><span class="p">,</span> <span class="n">KubrowAuction</span><span class="p">,</span>
+                               <span class="n">LichAuction</span><span class="p">,</span> <span class="n">RivenAuction</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..models.enums</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Platform</span><span class="p">,</span> <span class="n">Polarity</span><span class="p">,</span> <span class="n">RivenStat</span>
+
+
+<div class="viewcode-block" id="Auctions"><a class="viewcode-back" href="../../../interface/auctions.html#pytenno.interface.auctions.Auctions">[docs]</a><span class="k">class</span> <span class="nc">Auctions</span><span class="p">(</span><span class="n">AuctionsBackend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A class for creating and searching for auctions with certain criteria.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Auctions.create_auction"><a class="viewcode-back" href="../../../interface/auctions.html#pytenno.interface.auctions.Auctions.create_auction">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">create_auction</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">item</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">RivenAuction</span><span class="p">,</span> <span class="n">LichAuction</span><span class="p">,</span> <span class="n">KubrowAuction</span><span class="p">],</span>
+        <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">starting_price</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">buyout_price</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">minimal_reputation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">minimal_increment</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">private</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AuctionEntryExpanded</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new auction.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        item : RivenAuction, LichAuction, KubrowAuction</span>
+<span class="sd">            The item to auction.</span>
+<span class="sd">        note : str</span>
+<span class="sd">            The note to put on the auction.</span>
+<span class="sd">        starting_price : int</span>
+<span class="sd">            The starting price of the auction. (In platinum)</span>
+<span class="sd">        buyout_price : int</span>
+<span class="sd">            The buyout price of the auction. (In platinum)</span>
+<span class="sd">        minimal_reputation : int, optional</span>
+<span class="sd">            The minimmum reputation a user must have to bid on the auction.</span>
+<span class="sd">        minimal_increment : int, optional</span>
+<span class="sd">            The minimum amount between bids. (In platinum)</span>
+<span class="sd">        private : bool, optional</span>
+<span class="sd">            Whether the auction is private or not. If it is private, you can set it to public in the auction settings in the web interface.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[AuctionEntryExpanded]</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the starting price is higher than the buyout price.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the minimal increment is less than 1.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as tenno:</span>
+<span class="sd">        &gt;&gt;&gt;     auction = await tenno.Auctions.create_auction(</span>
+<span class="sd">        &gt;&gt;&gt;         item=RivenAuction(...),</span>
+<span class="sd">        &gt;&gt;&gt;         note=&quot;...&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;         starting_price=100,</span>
+<span class="sd">        &gt;&gt;&gt;         buyout_price=200,</span>
+<span class="sd">        &gt;&gt;&gt;         minimal_reputation=0,</span>
+<span class="sd">        &gt;&gt;&gt;         minimal_increment=50</span>
+<span class="sd">        &gt;&gt;&gt;     )</span>
+<span class="sd">        &gt;&gt;&gt;     print(auction.owner.ingame_name, auction.platinum)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">starting_price</span> <span class="o">&gt;</span> <span class="n">buyout_price</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Starting price cannot be higher than buyout price.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">minimal_increment</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Minimal increment cannot be less than 1.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_auction</span><span class="p">(</span>
+            <span class="n">item</span><span class="p">,</span>
+            <span class="n">note</span><span class="p">,</span>
+            <span class="n">starting_price</span><span class="p">,</span>
+            <span class="n">buyout_price</span><span class="p">,</span>
+            <span class="n">minimal_reputation</span><span class="p">,</span>
+            <span class="n">minimal_increment</span><span class="p">,</span>
+            <span class="n">private</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Auctions.find_riven_auctions"><a class="viewcode-back" href="../../../interface/auctions.html#pytenno.interface.auctions.Auctions.find_riven_auctions">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">find_riven_auctions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">weapon_url_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">platform</span><span class="p">:</span> <span class="n">Platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="o">.</span><span class="n">pc</span><span class="p">,</span>
+        <span class="n">mastery_rank_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mastery_rank_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">re_rolls_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">re_rolls_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">positive_stats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RivenStat</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">negative_stats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RivenStat</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">polarity</span><span class="p">:</span> <span class="n">Polarity</span> <span class="o">=</span> <span class="n">Polarity</span><span class="o">.</span><span class="n">any</span><span class="p">,</span>
+        <span class="n">mod_rank</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="s2">&quot;maxed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sort_by</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+            <span class="n">Literal</span><span class="p">[</span>
+                <span class="s2">&quot;price_desc&quot;</span><span class="p">,</span> <span class="s2">&quot;price_asc&quot;</span><span class="p">,</span> <span class="s2">&quot;positive_attr_desc&quot;</span><span class="p">,</span> <span class="s2">&quot;positive_attr_asc&quot;</span>
+            <span class="p">]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">operation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;anyOf&quot;</span><span class="p">,</span> <span class="s2">&quot;allOf&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">buyout_policy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;with&quot;</span><span class="p">,</span> <span class="s2">&quot;direct&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AuctionEntryExpanded</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Finds all riven auctions that match the given criteria.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        weapon_url_name : str</span>
+<span class="sd">            The URL name of the weapon to search for.</span>
+<span class="sd">        platform : Platform</span>
+<span class="sd">            The platform to search for riven auctions on. Default: ``Platform.pc``.</span>
+<span class="sd">        mastery_rank_min : int</span>
+<span class="sd">            The minimum mastery rank of the riven. Default: None.</span>
+<span class="sd">        mastery_rank_max : int</span>
+<span class="sd">            The maximum mastery rank of the riven. Default: None.</span>
+<span class="sd">        re_rolls_min : int</span>
+<span class="sd">            The minimum number of re-rolls of the riven. Default: None.</span>
+<span class="sd">        re_rolls_max : int</span>
+<span class="sd">            The maximum number of re-rolls of the riven. Default: None.</span>
+<span class="sd">        positive_stats : list[RivenStat]</span>
+<span class="sd">            Restricts the riven to have the given positive stats. Maximum amount is 3. Default: None.</span>
+<span class="sd">        negative_stats : list[RivenStat]</span>
+<span class="sd">            Restricts the riven to have the given negative stats. Maximum amount is 3. Default: None.</span>
+<span class="sd">        polarity : Polarity</span>
+<span class="sd">            The polarity of the riven. Default: ``Polarity.any``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[AuctionEntryExpanded]</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the amount of ``positive_stats`` is greater than 3.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the amount of ``negative_stats`` is greater than 3.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the ``mastery_rank_min`` is greater than the ``mastery_rank_max``.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the ``re_rolls_min`` is greater than the ``re_rolls_max``.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the ``mastery_rank_min`` is less than 0.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the ``re_rolls_min`` is less than 0.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; auctions = await tenno.auctions.find_riven_auctions(</span>
+<span class="sd">        &gt;&gt;&gt;     weapon_url_name=&quot;shedu&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;     mastery_rank_max=9,</span>
+<span class="sd">        &gt;&gt;&gt;     re_rolls_max=10</span>
+<span class="sd">        &gt;&gt;&gt; )</span>
+<span class="sd">        &gt;&gt;&gt; for auction in auctions:</span>
+<span class="sd">        &gt;&gt;&gt;     print(auction.id)</span>
+<span class="sd">        &gt;&gt;&gt;     print(auction.item.element.name)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">positive_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_stats</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The amount of positive stats cannot be greater than 3.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">negative_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">negative_stats</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The amount of negative stats cannot be greater than 3.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mastery_rank_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">mastery_rank_min</span> <span class="o">&gt;</span> <span class="n">mastery_rank_max</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The mastery rank min cannot be greater than the mastery rank max.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">re_rolls_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">re_rolls_min</span> <span class="o">&gt;</span> <span class="n">re_rolls_max</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The re-rolls min cannot be greater than the re-rolls max.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">mastery_rank_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">mastery_rank_min</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The mastery rank min cannot be less than 0.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">re_rolls_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">re_rolls_min</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The re-rolls min cannot be less than 0.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_riven_auctions</span><span class="p">(</span>
+            <span class="n">platform</span><span class="o">=</span><span class="n">platform</span><span class="p">,</span>
+            <span class="n">weapon_url_name</span><span class="o">=</span><span class="n">weapon_url_name</span><span class="p">,</span>
+            <span class="n">mastery_rank_min</span><span class="o">=</span><span class="n">mastery_rank_min</span><span class="p">,</span>
+            <span class="n">mastery_rank_max</span><span class="o">=</span><span class="n">mastery_rank_max</span><span class="p">,</span>
+            <span class="n">re_rolls_min</span><span class="o">=</span><span class="n">re_rolls_min</span><span class="p">,</span>
+            <span class="n">re_rolls_max</span><span class="o">=</span><span class="n">re_rolls_max</span><span class="p">,</span>
+            <span class="n">positive_stats</span><span class="o">=</span><span class="n">positive_stats</span><span class="p">,</span>
+            <span class="n">negative_stats</span><span class="o">=</span><span class="n">negative_stats</span><span class="p">,</span>
+            <span class="n">polarity</span><span class="o">=</span><span class="n">polarity</span><span class="p">,</span>
+            <span class="n">mod_rank</span><span class="o">=</span><span class="n">mod_rank</span><span class="p">,</span>
+            <span class="n">sort_by</span><span class="o">=</span><span class="n">sort_by</span><span class="p">,</span>
+            <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span>
+            <span class="n">buyout_policy</span><span class="o">=</span><span class="n">buyout_policy</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Auctions.find_lich_auctions"><a class="viewcode-back" href="../../../interface/auctions.html#pytenno.interface.auctions.Auctions.find_lich_auctions">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">find_lich_auctions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">weapon_url_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">platform</span><span class="p">:</span> <span class="n">Platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="o">.</span><span class="n">pc</span><span class="p">,</span>
+        <span class="n">element</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Element</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ephemera</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">damage_min</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">damage_max</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">quirk_url_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sort_by</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+            <span class="n">Literal</span><span class="p">[</span>
+                <span class="s2">&quot;price_desc&quot;</span><span class="p">,</span> <span class="s2">&quot;price_asc&quot;</span><span class="p">,</span> <span class="s2">&quot;positive_attr_desc&quot;</span><span class="p">,</span> <span class="s2">&quot;positive_attr_asc&quot;</span>
+            <span class="p">]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;price_desc&quot;</span><span class="p">,</span>
+        <span class="n">buyout_policy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;with&quot;</span><span class="p">,</span> <span class="s2">&quot;direct&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AuctionEntryExpanded</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Finds all lich auctions that match the given criteria.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        weapon_url_name : str</span>
+<span class="sd">            The URL name of the weapon to search for.</span>
+<span class="sd">        platform : Platform</span>
+<span class="sd">            The platform to search for lich auctions on. Default: Platform.pc.</span>
+<span class="sd">        element : Element</span>
+<span class="sd">            The element of the lich. Default: None.</span>
+<span class="sd">        ephemera : bool</span>
+<span class="sd">            Whether the lich is ephemeral. Default: None.</span>
+<span class="sd">        damage_min : int</span>
+<span class="sd">            The minimum damage of the lich. Default: None.</span>
+<span class="sd">        damage_max : int</span>
+<span class="sd">            The maximum damage of the lich. Default: None.</span>
+<span class="sd">        quirk_url_name : str</span>
+<span class="sd">            The URL name of the quirk of the lich. Default: None.</span>
+<span class="sd">        sort_by : Literal</span>
+<span class="sd">            The sort order of the results. Default: `&quot;price_desc&quot;`.</span>
+<span class="sd">        buyout_policy : Literal</span>
+<span class="sd">            The buyout policy of the results. Default: None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[AuctionEntryExpanded]</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the damage min is greater than the damage max.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the damage min is less than 0.</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the damage max is less than 0.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as tenno:</span>
+<span class="sd">        &gt;&gt;&gt;     auctions = await tenno.auctions.find_lich_auctions(</span>
+<span class="sd">        &gt;&gt;&gt;         weapon_url_name=&quot;kuva_bramma&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;         damage_min=20,</span>
+<span class="sd">        &gt;&gt;&gt;         element=Element.toxin,</span>
+<span class="sd">        &gt;&gt;&gt;     )</span>
+<span class="sd">        &gt;&gt;&gt;     for auction in auctions:</span>
+<span class="sd">        &gt;&gt;&gt;         print(auction.id, auction.owner.ingame_name)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">damage_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">damage_min</span> <span class="o">&gt;</span> <span class="n">damage_max</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The damage min cannot be greater than the damage max.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">damage_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">damage_min</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The damage min cannot be less than 0.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">damage_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">damage_max</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The damage max cannot be less than 0.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_lich_auctions</span><span class="p">(</span>
+            <span class="n">platform</span><span class="o">=</span><span class="n">platform</span><span class="p">,</span>
+            <span class="n">weapon_url_name</span><span class="o">=</span><span class="n">weapon_url_name</span><span class="p">,</span>
+            <span class="n">element</span><span class="o">=</span><span class="n">element</span><span class="p">,</span>
+            <span class="n">ephemera</span><span class="o">=</span><span class="n">ephemera</span><span class="p">,</span>
+            <span class="n">damage_min</span><span class="o">=</span><span class="n">damage_min</span><span class="p">,</span>
+            <span class="n">damage_max</span><span class="o">=</span><span class="n">damage_max</span><span class="p">,</span>
+            <span class="n">quirk_url_name</span><span class="o">=</span><span class="n">quirk_url_name</span><span class="p">,</span>
+            <span class="n">sort_by</span><span class="o">=</span><span class="n">sort_by</span><span class="p">,</span>
+            <span class="n">buyout_policy</span><span class="o">=</span><span class="n">buyout_policy</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Ryan Peckham.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

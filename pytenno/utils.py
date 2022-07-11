@@ -8,39 +8,23 @@
 """
 
 
-import aiohttp
 import datetime
 from enum import Enum
 from functools import cache
 from typing import Any, Callable, Mapping, Type, TypeVar
 from urllib.parse import quote
 
+import aiohttp
+
 from .constants import ASSET_ROOT, VALID_TRANSLATIONS_RAW
 from .errors import BaseError
 from .models.droptable import Drop
-from .models.enums import (
-    AnimationFormat,
-    AuctionMarking,
-    AuctionType,
-    Element,
-    Faction,
-    IconFormat,
-    ItemRarity,
-    MeasurementUnit,
-    OrderType,
-    PatreonBadge,
-    Platform,
-    Polarity,
-    RivenAttributeGroup,
-    RivenWeaponGroup,
-    RivenWeaponType,
-    Rotation,
-    Stage,
-    Subtype,
-    UserRole,
-    UserStatus,
-)
-from .models.items import LangInItem
+from .models.enums import (AnimationFormat, AuctionMarking, AuctionType,
+                           Element, Faction, IconFormat, ItemRarity,
+                           MeasurementUnit, OrderType, PatreonBadge, Platform,
+                           Polarity, RivenAttributeGroup, RivenWeaponGroup,
+                           RivenWeaponType, Rotation, Stage, Subtype, UserRole,
+                           UserStatus)
 
 
 @cache
@@ -111,7 +95,7 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 T = TypeVar("T", bound=type)
 
 
-@cache
+
 def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
     if data is None:
         return None
@@ -130,8 +114,6 @@ def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
             "marked_operation_at",
         ):
             nd[key] = datetime.datetime.strptime(value, DATETIME_FORMAT)
-        elif key in VALID_TRANSLATIONS_RAW:
-            nd[key.replace("-", "_")] = LangInItem(**value)
         elif key == "drop":
             nd[key] = [Drop(**val) for val in value]
         else:

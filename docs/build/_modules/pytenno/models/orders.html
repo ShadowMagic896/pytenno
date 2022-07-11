@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pytenno.models.orders &mdash; PyTenno  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> PyTenno
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../client.html">pytenno.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../errors.html">pytenno.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">pytenno.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auctions.html">pytenno.interface.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auction_entries.html">pytenno.interface.auction_entries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auth.html">pytenno.interface.auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/items.html">pytenno.interface.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/liches.html">pytenno.interface.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/misc.html">pytenno.interface.misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/profile.html">pytenno.interface.profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/rivens.html">pytenno.interface.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/auctions.html">pytenno.models.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/bids.html">pytenno.models.bids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/droptable.html">pytenno.models.droptable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/enums.html">pytenno.models.enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/items.html">pytenno.models.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/liches.html">pytenno.models.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/locations.html">pytenno.models.locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/missions.html">pytenno.models.missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/orders.html">pytenno.models.orders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/rivens.html">pytenno.models.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/users.html">pytenno.models.users</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyTenno</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>pytenno.models.orders</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pytenno.models.orders</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="nn">pytenno.utils</span> <span class="kn">import</span> <span class="n">from_data</span>
+
+<span class="kn">from</span> <span class="nn">.enums</span> <span class="kn">import</span> <span class="n">OrderType</span><span class="p">,</span> <span class="n">Platform</span>
+<span class="kn">from</span> <span class="nn">.items</span> <span class="kn">import</span> <span class="n">ItemInOrder</span>
+<span class="kn">from</span> <span class="nn">.users</span> <span class="kn">import</span> <span class="n">UserShort</span>
+
+
+<div class="viewcode-block" id="OrderCommon"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderCommon">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">OrderCommon</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Common base class that orders inherit from.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the order.</span>
+
+<span class="sd">    platinum : int</span>
+<span class="sd">        The amount of platinum per item in the order.</span>
+
+<span class="sd">    quantity : int</span>
+<span class="sd">        How many items the user is selling / buying.</span>
+
+<span class="sd">    order_type : OrderType</span>
+<span class="sd">        The type of order.</span>
+
+<span class="sd">    platform : Platform</span>
+<span class="sd">        The platform the order is on.</span>
+
+<span class="sd">    region : str</span>
+<span class="sd">        The region the order is on.</span>
+
+<span class="sd">    creation_date : datetime.datetime</span>
+<span class="sd">        The time the order was created.</span>
+
+<span class="sd">    last_update : datetime.datetime</span>
+<span class="sd">        The time the order was last updated.</span>
+
+<span class="sd">    visible : bool</span>
+<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">platinum</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">order_type</span><span class="p">:</span> <span class="n">OrderType</span>
+    <span class="n">platform</span><span class="p">:</span> <span class="n">Platform</span>
+    <span class="n">region</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">creation_date</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="n">last_update</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span></div>
+
+
+<div class="viewcode-block" id="OrderCreated"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderCreated">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">OrderCreated</span><span class="p">(</span><span class="n">OrderCommon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents an Order after it has been passed to the API</span>
+<span class="sd">    and is now created.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the order.</span>
+
+<span class="sd">    platinum : int</span>
+<span class="sd">        The amount of platinum per item in the order.</span>
+
+<span class="sd">    quantity : int</span>
+<span class="sd">        How many items the user is selling / buying.</span>
+
+<span class="sd">    order_type : OrderType</span>
+<span class="sd">        The type of order.</span>
+
+<span class="sd">    platform : Platform</span>
+<span class="sd">        The platform the order is on.</span>
+
+<span class="sd">    region : str</span>
+<span class="sd">        The region the order is on.</span>
+
+<span class="sd">    creation_date : datetime.datetime</span>
+<span class="sd">        The time the order was created.</span>
+
+<span class="sd">    last_update : datetime.datetime</span>
+<span class="sd">        The time the order was last updated.</span>
+
+<span class="sd">    visible : bool</span>
+<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
+<span class="sd">    </span>
+<span class="sd">    item: ItemInOrder</span>
+<span class="sd">        The item in the order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">OrderCreated</span><span class="p">(</span>
+            <span class="n">item</span><span class="o">=</span><span class="n">from_data</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">)),</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OrderRow"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderRow">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">OrderRow</span><span class="p">(</span><span class="n">OrderCommon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Same as OrderCommon, but with a full user model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the order.</span>
+
+<span class="sd">    platinum : int</span>
+<span class="sd">        The amount of platinum per item in the order.</span>
+
+<span class="sd">    quantity : int</span>
+<span class="sd">        How many items the user is selling / buying.</span>
+
+<span class="sd">    order_type : OrderType</span>
+<span class="sd">        The type of order.</span>
+
+<span class="sd">    platform : Platform</span>
+<span class="sd">        The platform the order is on.</span>
+
+<span class="sd">    region : str</span>
+<span class="sd">        The region the order is on.</span>
+
+<span class="sd">    creation_date : datetime.datetime</span>
+<span class="sd">        The time the order was created.</span>
+
+<span class="sd">    last_update : datetime.datetime</span>
+<span class="sd">        The time the order was last updated.</span>
+
+<span class="sd">    visible : bool</span>
+<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
+
+<span class="sd">    user : UserShort</span>
+<span class="sd">        The user who made the order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">user</span><span class="p">:</span> <span class="n">UserShort</span>
+
+    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">OrderRow</span><span class="p">(</span>
+            <span class="n">user</span><span class="o">=</span><span class="n">UserShort</span><span class="p">(</span><span class="o">**</span><span class="n">node</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)),</span>
+            <span class="o">**</span><span class="n">node</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;OrderRow id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> user=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">ingame_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
+
+
+<div class="viewcode-block" id="OrderFull"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderFull">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">OrderFull</span><span class="p">(</span><span class="n">OrderRow</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Same as OrderRow, but with a full item model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the order.</span>
+
+<span class="sd">    platinum : int</span>
+<span class="sd">        The amount of platinum per item in the order.</span>
+
+<span class="sd">    quantity : int</span>
+<span class="sd">        How many items the user is selling / buying.</span>
+
+<span class="sd">    order_type : OrderType</span>
+<span class="sd">        The type of order.</span>
+
+<span class="sd">    platform : Platform</span>
+<span class="sd">        The platform the order is on.</span>
+
+<span class="sd">    region : str</span>
+<span class="sd">        The region the order is on.</span>
+
+<span class="sd">    creation_date : datetime.datetime</span>
+<span class="sd">        The time the order was created.</span>
+
+<span class="sd">    last_update : datetime.datetime</span>
+<span class="sd">        The time the order was last updated.</span>
+
+<span class="sd">    visible : bool</span>
+<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
+
+<span class="sd">    user : UserShort</span>
+<span class="sd">        The user who made the order.</span>
+
+<span class="sd">    item : ItemInOrder</span>
+<span class="sd">        The item in the order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">item</span><span class="p">:</span> <span class="n">ItemInOrder</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Ryan Peckham.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

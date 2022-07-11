@@ -16,6 +16,12 @@ class PyTennoBackend:
     ) -> dict[str, str | int | dict | list] | None:
         url = f"{API_ROOT}{url}"
         mode = getattr(self._session, kwargs.pop("method", "get"))
+        if "headers" in kwargs:
+            print("HEADERS:", kwargs["headers"])
+            if "Language" in kwargs["headers"].keys() and kwargs["headers"]["Language"] is None:
+                print("SETTING LANGUAGE")
+                del kwargs["headers"]["Language"] # Let the default language be used.
+        print(kwargs)
         response: aiohttp.ClientResponse = await mode(url, **kwargs)
         if response.status != 200:
             return _raise_error_code(response, self.silenced)

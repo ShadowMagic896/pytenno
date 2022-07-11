@@ -1,3 +1,5 @@
+from typing import Optional
+
 from ..constants import VALID_LANGUAGES
 from ..models.droptable import DropTable
 from ..models.items import ItemFull, ItemShort

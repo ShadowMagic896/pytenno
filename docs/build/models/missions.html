@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pytenno.models.missions &#8212; PyTenno  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pytenno.models.orders" href="orders.html" />
+    <link rel="prev" title="pytenno.models.locations" href="locations.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-pytenno.models.missions">
+<span id="pytenno-models-missions"></span><h1>pytenno.models.missions<a class="headerlink" href="#module-pytenno.models.missions" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.missions.DroptableMission">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.missions.</span></span><span class="sig-name descname"><span class="pre">DroptableMission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rarity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.ItemRarity" title="pytenno.models.enums.ItemRarity"><span class="pre">ItemRarity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_subtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Subtype" title="pytenno.models.enums.Subtype"><span class="pre">Subtype</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Rotation" title="pytenno.models.enums.Rotation"><span class="pre">Rotation</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Stage" title="pytenno.models.enums.Stage"><span class="pre">Stage</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">relics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'DroptableRelic'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'DroptableNPC'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/missions.html#DroptableMission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.missions.DroptableMission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a mission.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mission_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the mission.</p></li>
+<li><p><strong>node_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the node the mission is on.</p></li>
+<li><p><strong>rarity</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.ItemRarity" title="pytenno.models.enums.ItemRarity"><em>ItemRarity</em></a>) – The rarity of the item found in the mission.</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The rate of the item found in the mission.</p></li>
+<li><p><strong>item_subtype</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Subtype" title="pytenno.models.enums.Subtype"><em>Subtype</em></a>) – The subtype of the item found in the mission.</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Rotation" title="pytenno.models.enums.Rotation"><em>Rotation</em></a>) – The rotation where the item can be found.</p></li>
+<li><p><strong>stage</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Stage" title="pytenno.models.enums.Stage"><em>Stage</em></a>) – The stage of the item found in the mission</p></li>
+<li><p><strong>relics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><em>RelicDrop</em><em>]</em>) – Relics that can be found in the mission.</p></li>
+<li><p><strong>npc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><em>NPC</em><em>]</em>) – The NPCs where the item can be found.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.missions.DroptableNPC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.missions.</span></span><span class="sig-name descname"><span class="pre">DroptableNPC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">thumb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/missions.html#DroptableNPC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.missions.DroptableNPC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a NPC in a mission</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the NPC.</p></li>
+<li><p><strong>icon</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The icon URL of the NPC.</p></li>
+<li><p><strong>thumb</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The thumbnail URL of the NPC.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the NPC.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.missions.DroptableRelic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.missions.</span></span><span class="sig-name descname"><span class="pre">DroptableRelic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rarity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.ItemRarity" title="pytenno.models.enums.ItemRarity"><span class="pre">ItemRarity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="enums.html#pytenno.models.enums.RelicQuality" title="pytenno.models.enums.RelicQuality"><span class="pre">pytenno.models.enums.RelicQuality</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/missions.html#DroptableRelic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.missions.DroptableRelic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a relic drop in a mission</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the relic.</p></li>
+<li><p><strong>rarity</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.ItemRarity" title="pytenno.models.enums.ItemRarity"><em>ItemRarity</em></a>) – The rarity of the item found in the relic.</p></li>
+<li><p><strong>dict</strong><strong>[</strong><strong>RelicQuality</strong> (<em>rate</em>) – A mapping of relic quality to the rate of the relic dropping.</p></li>
+<li><p><strong>float</strong><strong>]</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> |</em>) – A mapping of relic quality to the rate of the relic dropping.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytenno.models.missions.PartialMission">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.missions.</span></span><span class="sig-name descname"><span class="pre">PartialMission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">thumb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/missions.html#PartialMission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.missions.PartialMission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a partial mission.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the mission.</p></li>
+<li><p><strong>icon</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The icon URL of the mission.</p></li>
+<li><p><strong>thumb</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The thumbnail URL of the mission.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the mission.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PyTenno</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../client.html">pytenno.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../errors.html">pytenno.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">pytenno.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/auctions.html">pytenno.interface.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/auction_entries.html">pytenno.interface.auction_entries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/auth.html">pytenno.interface.auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/items.html">pytenno.interface.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/liches.html">pytenno.interface.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/misc.html">pytenno.interface.misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/profile.html">pytenno.interface.profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/rivens.html">pytenno.interface.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auctions.html">pytenno.models.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bids.html">pytenno.models.bids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="droptable.html">pytenno.models.droptable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">pytenno.models.enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">pytenno.models.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liches.html">pytenno.models.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="locations.html">pytenno.models.locations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pytenno.models.missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orders.html">pytenno.models.orders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rivens.html">pytenno.models.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">pytenno.models.users</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="locations.html" title="previous chapter">pytenno.models.locations</a></li>
+      <li>Next: <a href="orders.html" title="next chapter">pytenno.models.orders</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ryan Peckham.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/models/missions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

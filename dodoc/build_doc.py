@@ -1,6 +1,5 @@
 import os
 
-
 source = ".\\pytenno"
 output = ".\\docs"
 
@@ -18,6 +17,7 @@ def iter_py_files(source: str, relative: bool) -> list[str]:
                 file.endswith(".py")
                 and not file.startswith("_")
                 and not f"{os.path.sep}_" in root
+                and not "examples" in root
                 and file not in ignored_files
             ):
                 print(file, root)

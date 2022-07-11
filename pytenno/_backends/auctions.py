@@ -1,12 +1,7 @@
 from typing import Literal, Union
 
-from ..models.auctions import (
-    AuctionEntry,
-    AuctionEntryExpanded,
-    KubrowAuction,
-    LichAuction,
-    RivenAuction,
-)
+from ..models.auctions import (AuctionEntry, AuctionEntryExpanded,
+                               KubrowAuction, LichAuction, RivenAuction)
 from ..models.enums import Element, Platform, Polarity
 from ..utils import format_name, from_data
 from .core import BackendAdapter

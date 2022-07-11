@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pytenno.models.items &mdash; PyTenno  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> PyTenno
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../client.html">pytenno.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../errors.html">pytenno.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils.html">pytenno.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auctions.html">pytenno.interface.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auction_entries.html">pytenno.interface.auction_entries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/auth.html">pytenno.interface.auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/items.html">pytenno.interface.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/liches.html">pytenno.interface.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/misc.html">pytenno.interface.misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/profile.html">pytenno.interface.profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../interface/rivens.html">pytenno.interface.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/auctions.html">pytenno.models.auctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/bids.html">pytenno.models.bids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/droptable.html">pytenno.models.droptable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/enums.html">pytenno.models.enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/items.html">pytenno.models.items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/liches.html">pytenno.models.liches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/locations.html">pytenno.models.locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/missions.html">pytenno.models.missions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/orders.html">pytenno.models.orders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/rivens.html">pytenno.models.rivens</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/users.html">pytenno.models.users</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyTenno</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>pytenno.models.items</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pytenno.models.items</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span> <span class="nn">pytenno.constants</span> <span class="kn">import</span> <span class="n">VALID_TRANSLATIONS_RAW</span>
+<span class="kn">from</span> <span class="nn">pytenno.utils</span> <span class="kn">import</span> <span class="n">from_data</span>
+
+<span class="kn">from</span> <span class="nn">.droptable</span> <span class="kn">import</span> <span class="n">Drop</span>
+<span class="kn">from</span> <span class="nn">.enums</span> <span class="kn">import</span> <span class="n">IconFormat</span><span class="p">,</span> <span class="n">ItemRarity</span><span class="p">,</span> <span class="n">Subtype</span>
+
+
+<div class="viewcode-block" id="LangInItem"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.LangInItem">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LangInItem</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s localized name.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    item_name : str</span>
+<span class="sd">        The translated name of the item.</span>
+
+<span class="sd">    description : str</span>
+<span class="sd">        The translated description of the item.</span>
+
+<span class="sd">    wiki_link : str , optional</span>
+<span class="sd">        The link to the wiki page of the item.</span>
+
+<span class="sd">    drop : list[Drop]</span>
+<span class="sd">        Where the item can be found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">wiki_link</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">drop</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Drop</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ItemCommon"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemCommon">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ItemCommon</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Common base class that an item can inherit from.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the item.</span>
+
+<span class="sd">    url_name : str</span>
+<span class="sd">        The URL name of the item.</span>
+
+<span class="sd">    icon : str</span>
+<span class="sd">        The URL of the item&#39;s icon.</span>
+
+<span class="sd">    icon_format : IconFormat</span>
+<span class="sd">        The format of the item&#39;s icon.</span>
+
+<span class="sd">    sub_icon : str , optional</span>
+<span class="sd">        The URL of the item&#39;s sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.</span>
+
+<span class="sd">    thumb : str</span>
+<span class="sd">        The URL of the item&#39;s thumbnail.</span>
+
+<span class="sd">    tags : list[str]</span>
+<span class="sd">        The tags of the item.</span>
+
+<span class="sd">    mod_max_rank : int</span>
+<span class="sd">        The maximum rank of the item.</span>
+<span class="sd">        SOON TO BE: max_rank</span>
+
+<span class="sd">    subtypes : list[Subtype] , optional</span>
+<span class="sd">        The subtypes of the item.</span>
+
+<span class="sd">    cyan_stars : int</span>
+<span class="sd">        The number of cyan stars the item has.</span>
+
+<span class="sd">    amber_stars : int</span>
+<span class="sd">        The number of amber stars the item has.</span>
+
+<span class="sd">    ducats : int</span>
+<span class="sd">        The ducat worth of the item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">icon_format</span><span class="p">:</span> <span class="n">IconFormat</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">sub_icon</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">mod_max_rank</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">subtypes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subtype</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">cyan_stars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">amber_stars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ducats</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemCommon id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2"> tags=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
+
+
+<div class="viewcode-block" id="TranslatedItemName"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.TranslatedItemName">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">TranslatedItemName</span><span class="p">:</span>
+    <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="ItemInOrder"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemInOrder">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ItemInOrder</span><span class="p">(</span><span class="n">ItemCommon</span><span class="p">):</span>
+    <span class="n">en</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">ru</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">ko</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">fr</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">de</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">sv</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">zh_hant</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">zh_hans</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">pt</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">es</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+    <span class="n">pl</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+
+    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">TranslatedItemName</span><span class="p">(</span><span class="n">item_name</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="n">lang</span><span class="p">][</span><span class="s2">&quot;item_name&quot;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">VALID_TRANSLATIONS_RAW</span><span class="p">]</span>
+        <span class="c1"># Sets all of the languages to their TransLatedItemName objects.</span>
+        <span class="c1"># A bit odd to call __setitem__ manually, but it lets it work in a listcomp so meh.</span>
+        <span class="k">return</span> <span class="n">from_data</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemInOrder id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2"> tags=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ItemFull"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemFull">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ItemFull</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;same as ItemInOrder, but lang related fields contain more infos, + rarity, set_root, MR, trading tax.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the item.</span>
+
+<span class="sd">    url_name : str</span>
+<span class="sd">        The URL name of the item.</span>
+
+<span class="sd">    icon : str</span>
+<span class="sd">        The URL of the item&#39;s icon.</span>
+
+<span class="sd">    icon_format : IconFormat</span>
+<span class="sd">        The format of the item&#39;s icon.</span>
+
+<span class="sd">    sub_icon : str , optional</span>
+<span class="sd">        The URL of the item&#39;s sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.</span>
+
+<span class="sd">    thumb : str</span>
+<span class="sd">        The URL of the item&#39;s thumbnail.</span>
+
+<span class="sd">    tags : list[str]</span>
+<span class="sd">        The tags of the item.</span>
+
+<span class="sd">    mod_max_rank : int</span>
+<span class="sd">        The maximum rank of the item.</span>
+<span class="sd">        SOON TO BE: max_rank</span>
+
+<span class="sd">    subtypes : list[Subtype] , optional</span>
+<span class="sd">        The subtypes of the item.</span>
+
+<span class="sd">    cyan_stars : int</span>
+<span class="sd">        The number of cyan stars the item has.</span>
+
+<span class="sd">    amber_stars : int</span>
+<span class="sd">        The number of amber stars the item has.</span>
+
+<span class="sd">    ducats : int</span>
+<span class="sd">        The ducat worth of the item.</span>
+
+<span class="sd">    set_root : bool</span>
+<span class="sd">        Whether the item is part of a set.</span>
+
+<span class="sd">    mastery_level : int</span>
+<span class="sd">        The mastery level of the item.</span>
+
+<span class="sd">    rarity : ItemRarity , optional</span>
+<span class="sd">        The rarity of the item. If None, the item does not have any specific rarity.</span>
+
+<span class="sd">    trading_tax : int</span>
+<span class="sd">        The trading tax of the item.</span>
+
+<span class="sd">    quantity_for_set : int , optional</span>
+<span class="sd">        The quantity of the item required to obtain the set.</span>
+
+<span class="sd">    en : LangInItem</span>
+<span class="sd">        The english language of the item.</span>
+
+<span class="sd">    ru : LangInItem</span>
+<span class="sd">        The russian language of the item.</span>
+
+<span class="sd">    ko : LangInItem</span>
+<span class="sd">        The korean language of the item.</span>
+
+<span class="sd">    fr : LangInItem</span>
+<span class="sd">        The french language of the item.</span>
+
+<span class="sd">    de : LangInItem</span>
+<span class="sd">        The german language of the item.</span>
+
+<span class="sd">    sv : LangInItem</span>
+<span class="sd">        The swedish language of the item.</span>
+
+<span class="sd">    zh_hant : LangInItem</span>
+<span class="sd">        The chinese traditional language of the item.</span>
+
+<span class="sd">    zh_hans : LangInItem</span>
+<span class="sd">        The chinese simplified language of the item.</span>
+
+<span class="sd">    pt : LangInItem</span>
+<span class="sd">        The portuguese language of the item.</span>
+
+<span class="sd">    es : LangInItem</span>
+<span class="sd">        The spanish language of the item.</span>
+
+<span class="sd">    pl : LangInItem</span>
+<span class="sd">        The polish language of the item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">set_root</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">mastery_level</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">rarity</span><span class="p">:</span> <span class="n">ItemRarity</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">trading_tax</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">quantity_for_set</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">en</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">ru</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">ko</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">fr</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">de</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">sv</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">zh_hant</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">zh_hans</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">pt</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">es</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="n">pl</span><span class="p">:</span> <span class="n">LangInItem</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemFull id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2"> tags=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="si">}</span><span class="s2"> rarity=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rarity</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
+
+
+<div class="viewcode-block" id="ItemShort"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemShort">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ItemShort</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents a simplified version of an item.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the item.</span>
+
+<span class="sd">    url_name : str</span>
+<span class="sd">        The URL name of the item.</span>
+
+<span class="sd">    thumb : str</span>
+<span class="sd">        The URL of the item&#39;s thumbnail.</span>
+
+<span class="sd">    item_name : str</span>
+<span class="sd">        The name of the item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemShort id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Ryan Peckham.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
