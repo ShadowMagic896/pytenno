@@ -1,3 +1,5 @@
+"""Module containg models for items."""
+
 from dataclasses import dataclass
 
 from pytenno.constants import VALID_TRANSLATIONS_RAW
@@ -9,85 +11,46 @@ from .enums import IconFormat, ItemRarity, Subtype
 
 @dataclass
 class LangInItem:
-    """Represents an item's localized data.
-
-    Parameters
-    ----------
-    item_name : str
-        The translated name of the item.
-
-    description : str
-        The translated description of the item.
-
-    wiki_link : str , optional
-        The link to the wiki page of the item.
-
-    drop : list[Drop]
-        Where the item can be found.
-    """
+    """Represents an item's localized data."""
 
     item_name: str
+    """The translated name of the item."""
     description: str
+    """The translated description of the item."""
     wiki_link: str | None
+    """The link to the wiki page of the item."""
     drop: list[Drop]
+    """Where the item can be found."""
 
 
 @dataclass(kw_only=True)
 class ItemCommon:
-    """Common base class that an item can inherit from.
-
-    Parameters
-    ----------
-    id : str
-        The ID of the item.
-
-    url_name : str
-        The URL name of the item.
-
-    icon : str
-        The URL of the item's icon.
-
-    icon_format : IconFormat
-        The format of the item's icon.
-
-    sub_icon : str , optional
-        The URL of the item's sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.
-
-    thumb : str
-        The URL of the item's thumbnail.
-
-    tags : list[str]
-        The tags of the item.
-
-    mod_max_rank : int
-        The maximum rank of the item.
-        SOON TO BE: max_rank
-
-    subtypes : list[Subtype] , optional
-        The subtypes of the item.
-
-    cyan_stars : int
-        The number of cyan stars the item has.
-
-    amber_stars : int
-        The number of amber stars the item has.
-
-    ducats : int
-        The ducat worth of the item.
-    """
+    """Common base class that an item can inherit from."""
 
     id: str
+    """The ID of the item."""
     url_name: str
+    """The URL name of the item."""
     icon: str
+    """The URL of the item's icon."""
     icon_format: IconFormat | None = None
+    """The format of the item's icon."""
     sub_icon: str = None
+    """The URL of the item's sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set."""
     thumb: str
+    """The URL of the item's thumbnail."""
     tags: list[str]
+    """The tags of the item."""
     mod_max_rank: int | None = None
+    """The maximum rank of the item."""
     subtypes: list[Subtype] | None = None
+    """The subtypes of the item."""
     cyan_stars: int | None = None
+    """The number of cyan stars the item has."""
     amber_stars: int | None = None
+    """The number of amber stars the item has."""
     ducats: int | None = None
+    """The ducat worth of the item."""
 
     def __repr__(self):
         return f"<ItemCommon id={self.id} url_name={self.url_name} tags={self.tags}>"
@@ -140,114 +103,41 @@ class ItemInOrder(ItemCommon):
 
 @dataclass(kw_only=True)
 class ItemFull(ItemInOrder):
-    """same as ItemInOrder, but lang related fields contain more infos, + rarity, set_root, MR, trading tax.
-
-
-    Parameters
-    ----------
-    id : str
-        The ID of the item.
-
-    url_name : str
-        The URL name of the item.
-
-    icon : str
-        The URL of the item's icon.
-
-    icon_format : IconFormat
-        The format of the item's icon.
-
-    sub_icon : str , optional
-        The URL of the item's sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.
-
-    thumb : str
-        The URL of the item's thumbnail.
-
-    tags : list[str]
-        The tags of the item.
-
-    mod_max_rank : int
-        The maximum rank of the item.
-        SOON TO BE: max_rank
-
-    subtypes : list[Subtype] , optional
-        The subtypes of the item.
-
-    cyan_stars : int
-        The number of cyan stars the item has.
-
-    amber_stars : int
-        The number of amber stars the item has.
-
-    ducats : int
-        The ducat worth of the item.
-
-    set_root : bool
-        Whether the item is part of a set.
-
-    mastery_level : int
-        The mastery level of the item.
-
-    rarity : ItemRarity , optional
-        The rarity of the item. If None, the item does not have any specific rarity.
-
-    trading_tax : int
-        The trading tax of the item.
-
-    quantity_for_set : int , optional
-        The quantity of the item required to obtain the set.
-
-    en : LangInItem
-        The english language of the item.
-
-    ru : LangInItem
-        The russian language of the item.
-
-    ko : LangInItem
-        The korean language of the item.
-
-    fr : LangInItem
-        The french language of the item.
-
-    de : LangInItem
-        The german language of the item.
-
-    sv : LangInItem
-        The swedish language of the item.
-
-    zh_hant : LangInItem
-        The chinese traditional language of the item.
-
-    zh_hans : LangInItem
-        The chinese simplified language of the item.
-
-    pt : LangInItem
-        The portuguese language of the item.
-
-    es : LangInItem
-        The spanish language of the item.
-
-    pl : LangInItem
-        The polish language of the item.
-    """
+    """same as ItemInOrder, but lang related fields contain more info, as well as ``rarity``, ``set_root``, ``mastery_level``, and ``trading_tax`` attributes."""
 
     set_root: bool
+    """Whether the item is part of a set."""
     mastery_level: int
+    """The mastery level of the item."""
     rarity: ItemRarity | None = None
+    """The rarity of the item. If None, the item does not have any specific rarity."""
     trading_tax: int
+    """The trading tax of the item."""
     quantity_for_set: int = None
+    """The quantity of the item required to obtain the set."""
 
     en: LangInItem
+    """The English translation of the item."""
     ru: LangInItem
+    """The Russian translation of the item."""
     ko: LangInItem
+    """The Korean translation of the item."""
     fr: LangInItem
+    """The French translation of the item."""
     de: LangInItem
+    """The German translation of the item."""
     sv: LangInItem
+    """The Swedish translation of the item."""
     zh_hant: LangInItem
+    """The Chinese (Traditional) translation of the item."""
     zh_hans: LangInItem
+    """The Chinese (Simplified) translation of the item."""
     pt: LangInItem
+    """The Portuguese translation of the item."""
     es: LangInItem
+    """The Spanish translation of the item."""
     pl: LangInItem
+    """The Polish translation of the item."""
 
     def __repr__(self):
         return f"<ItemFull id={self.id} url_name={self.url_name} tags={self.tags} rarity={self.rarity}>"
@@ -255,27 +145,16 @@ class ItemFull(ItemInOrder):
 
 @dataclass
 class ItemShort:
-    """Represents a simplified version of an item.
-
-    Parameters
-    ----------
-    id : str
-        The ID of the item.
-
-    url_name : str
-        The URL name of the item.
-
-    thumb : str
-        The URL of the item's thumbnail.
-
-    item_name : str
-        The name of the item.
-    """
+    """Represents a simplified version of an item."""
 
     id: str
+    """The ID of the item."""
     url_name: str
+    """The URL name of the item."""
     thumb: str
+    """The URL of the item's thumbnail."""
     item_name: str
+    """The name of the item."""
 
     def __repr__(self):
         return f"<ItemShort id={self.id} url_name={self.url_name}>"

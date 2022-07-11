@@ -96,85 +96,46 @@
 
 <div class="viewcode-block" id="LangInItem"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.LangInItem">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">LangInItem</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s localized data.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    item_name : str</span>
-<span class="sd">        The translated name of the item.</span>
-
-<span class="sd">    description : str</span>
-<span class="sd">        The translated description of the item.</span>
-
-<span class="sd">    wiki_link : str , optional</span>
-<span class="sd">        The link to the wiki page of the item.</span>
-
-<span class="sd">    drop : list[Drop]</span>
-<span class="sd">        Where the item can be found.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s localized data.&quot;&quot;&quot;</span>
 
     <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The translated name of the item.&quot;&quot;&quot;</span>
     <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The translated description of the item.&quot;&quot;&quot;</span>
     <span class="n">wiki_link</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
-    <span class="n">drop</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Drop</span><span class="p">]</span></div>
+    <span class="sd">&quot;&quot;&quot;The link to the wiki page of the item.&quot;&quot;&quot;</span>
+    <span class="n">drop</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Drop</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;Where the item can be found.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="ItemCommon"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemCommon">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">ItemCommon</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Common base class that an item can inherit from.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the item.</span>
-
-<span class="sd">    url_name : str</span>
-<span class="sd">        The URL name of the item.</span>
-
-<span class="sd">    icon : str</span>
-<span class="sd">        The URL of the item&#39;s icon.</span>
-
-<span class="sd">    icon_format : IconFormat</span>
-<span class="sd">        The format of the item&#39;s icon.</span>
-
-<span class="sd">    sub_icon : str , optional</span>
-<span class="sd">        The URL of the item&#39;s sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.</span>
-
-<span class="sd">    thumb : str</span>
-<span class="sd">        The URL of the item&#39;s thumbnail.</span>
-
-<span class="sd">    tags : list[str]</span>
-<span class="sd">        The tags of the item.</span>
-
-<span class="sd">    mod_max_rank : int</span>
-<span class="sd">        The maximum rank of the item.</span>
-<span class="sd">        SOON TO BE: max_rank</span>
-
-<span class="sd">    subtypes : list[Subtype] , optional</span>
-<span class="sd">        The subtypes of the item.</span>
-
-<span class="sd">    cyan_stars : int</span>
-<span class="sd">        The number of cyan stars the item has.</span>
-
-<span class="sd">    amber_stars : int</span>
-<span class="sd">        The number of amber stars the item has.</span>
-
-<span class="sd">    ducats : int</span>
-<span class="sd">        The ducat worth of the item.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Common base class that an item can inherit from.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the item.&quot;&quot;&quot;</span>
     <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL name of the item.&quot;&quot;&quot;</span>
     <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the item&#39;s icon.&quot;&quot;&quot;</span>
     <span class="n">icon_format</span><span class="p">:</span> <span class="n">IconFormat</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The format of the item&#39;s icon.&quot;&quot;&quot;</span>
     <span class="n">sub_icon</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the item&#39;s sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.&quot;&quot;&quot;</span>
     <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the item&#39;s thumbnail.&quot;&quot;&quot;</span>
     <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;The tags of the item.&quot;&quot;&quot;</span>
     <span class="n">mod_max_rank</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The maximum rank of the item.&quot;&quot;&quot;</span>
     <span class="n">subtypes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subtype</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The subtypes of the item.&quot;&quot;&quot;</span>
     <span class="n">cyan_stars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The number of cyan stars the item has.&quot;&quot;&quot;</span>
     <span class="n">amber_stars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The number of amber stars the item has.&quot;&quot;&quot;</span>
     <span class="n">ducats</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The ducat worth of the item.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemCommon id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2"> tags=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
@@ -214,11 +175,11 @@
     <span class="n">pl</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
     <span class="sd">&quot;&quot;&quot;The Polish name of the item.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ItemInOrder.from_data"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemInOrder.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">TranslatedItemName</span><span class="p">(</span><span class="n">item_name</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="n">lang</span><span class="p">][</span><span class="s2">&quot;item_name&quot;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">VALID_TRANSLATIONS_RAW</span><span class="p">]</span>
         <span class="c1"># Sets all of the languages to their TransLatedItemName objects.</span>
         <span class="c1"># A bit odd to call __setitem__ manually, but it lets it work in a listcomp so meh.</span>
-        <span class="k">return</span> <span class="n">from_data</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">from_data</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemInOrder id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2"> tags=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
@@ -227,114 +188,41 @@
 
 <div class="viewcode-block" id="ItemFull"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemFull">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">ItemFull</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;same as ItemInOrder, but lang related fields contain more infos, + rarity, set_root, MR, trading tax.</span>
-
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the item.</span>
-
-<span class="sd">    url_name : str</span>
-<span class="sd">        The URL name of the item.</span>
-
-<span class="sd">    icon : str</span>
-<span class="sd">        The URL of the item&#39;s icon.</span>
-
-<span class="sd">    icon_format : IconFormat</span>
-<span class="sd">        The format of the item&#39;s icon.</span>
-
-<span class="sd">    sub_icon : str , optional</span>
-<span class="sd">        The URL of the item&#39;s sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.</span>
-
-<span class="sd">    thumb : str</span>
-<span class="sd">        The URL of the item&#39;s thumbnail.</span>
-
-<span class="sd">    tags : list[str]</span>
-<span class="sd">        The tags of the item.</span>
-
-<span class="sd">    mod_max_rank : int</span>
-<span class="sd">        The maximum rank of the item.</span>
-<span class="sd">        SOON TO BE: max_rank</span>
-
-<span class="sd">    subtypes : list[Subtype] , optional</span>
-<span class="sd">        The subtypes of the item.</span>
-
-<span class="sd">    cyan_stars : int</span>
-<span class="sd">        The number of cyan stars the item has.</span>
-
-<span class="sd">    amber_stars : int</span>
-<span class="sd">        The number of amber stars the item has.</span>
-
-<span class="sd">    ducats : int</span>
-<span class="sd">        The ducat worth of the item.</span>
-
-<span class="sd">    set_root : bool</span>
-<span class="sd">        Whether the item is part of a set.</span>
-
-<span class="sd">    mastery_level : int</span>
-<span class="sd">        The mastery level of the item.</span>
-
-<span class="sd">    rarity : ItemRarity , optional</span>
-<span class="sd">        The rarity of the item. If None, the item does not have any specific rarity.</span>
-
-<span class="sd">    trading_tax : int</span>
-<span class="sd">        The trading tax of the item.</span>
-
-<span class="sd">    quantity_for_set : int , optional</span>
-<span class="sd">        The quantity of the item required to obtain the set.</span>
-
-<span class="sd">    en : LangInItem</span>
-<span class="sd">        The english language of the item.</span>
-
-<span class="sd">    ru : LangInItem</span>
-<span class="sd">        The russian language of the item.</span>
-
-<span class="sd">    ko : LangInItem</span>
-<span class="sd">        The korean language of the item.</span>
-
-<span class="sd">    fr : LangInItem</span>
-<span class="sd">        The french language of the item.</span>
-
-<span class="sd">    de : LangInItem</span>
-<span class="sd">        The german language of the item.</span>
-
-<span class="sd">    sv : LangInItem</span>
-<span class="sd">        The swedish language of the item.</span>
-
-<span class="sd">    zh_hant : LangInItem</span>
-<span class="sd">        The chinese traditional language of the item.</span>
-
-<span class="sd">    zh_hans : LangInItem</span>
-<span class="sd">        The chinese simplified language of the item.</span>
-
-<span class="sd">    pt : LangInItem</span>
-<span class="sd">        The portuguese language of the item.</span>
-
-<span class="sd">    es : LangInItem</span>
-<span class="sd">        The spanish language of the item.</span>
-
-<span class="sd">    pl : LangInItem</span>
-<span class="sd">        The polish language of the item.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;same as ItemInOrder, but lang related fields contain more info, as well as ``rarity``, ``set_root``, ``mastery_level``, and ``trading_tax`` attributes.&quot;&quot;&quot;</span>
 
     <span class="n">set_root</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the item is part of a set.&quot;&quot;&quot;</span>
     <span class="n">mastery_level</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The mastery level of the item.&quot;&quot;&quot;</span>
     <span class="n">rarity</span><span class="p">:</span> <span class="n">ItemRarity</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The rarity of the item. If None, the item does not have any specific rarity.&quot;&quot;&quot;</span>
     <span class="n">trading_tax</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The trading tax of the item.&quot;&quot;&quot;</span>
     <span class="n">quantity_for_set</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The quantity of the item required to obtain the set.&quot;&quot;&quot;</span>
 
     <span class="n">en</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The English translation of the item.&quot;&quot;&quot;</span>
     <span class="n">ru</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Russian translation of the item.&quot;&quot;&quot;</span>
     <span class="n">ko</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Korean translation of the item.&quot;&quot;&quot;</span>
     <span class="n">fr</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The French translation of the item.&quot;&quot;&quot;</span>
     <span class="n">de</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The German translation of the item.&quot;&quot;&quot;</span>
     <span class="n">sv</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Swedish translation of the item.&quot;&quot;&quot;</span>
     <span class="n">zh_hant</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Chinese (Traditional) translation of the item.&quot;&quot;&quot;</span>
     <span class="n">zh_hans</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Chinese (Simplified) translation of the item.&quot;&quot;&quot;</span>
     <span class="n">pt</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Portuguese translation of the item.&quot;&quot;&quot;</span>
     <span class="n">es</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Spanish translation of the item.&quot;&quot;&quot;</span>
     <span class="n">pl</span><span class="p">:</span> <span class="n">LangInItem</span>
+    <span class="sd">&quot;&quot;&quot;The Polish translation of the item.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemFull id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2"> tags=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="si">}</span><span class="s2"> rarity=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rarity</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
@@ -342,27 +230,16 @@
 
 <div class="viewcode-block" id="ItemShort"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemShort">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">ItemShort</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a simplified version of an item.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the item.</span>
-
-<span class="sd">    url_name : str</span>
-<span class="sd">        The URL name of the item.</span>
-
-<span class="sd">    thumb : str</span>
-<span class="sd">        The URL of the item&#39;s thumbnail.</span>
-
-<span class="sd">    item_name : str</span>
-<span class="sd">        The name of the item.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a simplified version of an item.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the item.&quot;&quot;&quot;</span>
     <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL name of the item.&quot;&quot;&quot;</span>
     <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the item&#39;s thumbnail.&quot;&quot;&quot;</span>
     <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The name of the item.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ItemShort id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> url_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
