@@ -25,7 +25,7 @@ class PyTenno:
 
     default_language : str
         The default language used when communicating with the API.
-        See ``constants.VALID_LANGUAGES`` for valid values.
+        See ``VALID_LANGUAGES`` for valid values.
     default_platform : Platform
         The default platform used when communicating with the API.
     silenced_errors  : list[Exception]

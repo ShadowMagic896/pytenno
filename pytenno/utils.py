@@ -10,7 +10,6 @@
 
 import datetime
 from enum import Enum
-from functools import cache
 from typing import Any, Callable, Mapping, Type, TypeVar
 from urllib.parse import quote
 
@@ -27,17 +26,17 @@ from .models.enums import (AnimationFormat, AuctionMarking, AuctionType,
                            UserStatus)
 
 
-@cache
+
 def format_name(name: str):
     return quote(name.lower().replace(" ", "_"))
 
 
-@cache
+
 def is_formatted_name(name: str):
     return quote(name.replace("_", " ").lower()) == name
 
 
-@cache
+
 def _raise_error_code(response: aiohttp.ClientResponse, silenced: list[Exception]):
     code = response.status
 
