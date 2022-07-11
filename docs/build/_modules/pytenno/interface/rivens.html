@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pytenno.models.locations &mdash; PyTenno  documentation</title>
+  <title>pytenno.interface.rivens &mdash; PyTenno  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -75,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>pytenno.models.locations</li>
+      <li>pytenno.interface.rivens</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -84,43 +84,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pytenno.models.locations</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+  <h1>Source code for pytenno.interface.rivens</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">.enums</span> <span class="kn">import</span> <span class="n">Faction</span>
+<span class="kn">from</span> <span class="nn">.._backends.rivens</span> <span class="kn">import</span> <span class="n">RivensBackend</span>
+<span class="kn">from</span> <span class="nn">..constants</span> <span class="kn">import</span> <span class="n">VALID_LANGUAGES</span>
+<span class="kn">from</span> <span class="nn">..models.rivens</span> <span class="kn">import</span> <span class="n">RivenAttribute</span><span class="p">,</span> <span class="n">RivenItem</span>
 
 
-<div class="viewcode-block" id="Location"><a class="viewcode-back" href="../../../models/locations.html#pytenno.models.locations.Location">[docs]</a><span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">Location</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a location.</span>
+<div class="viewcode-block" id="Rivens"><a class="viewcode-back" href="../../../interface/rivens.html#pytenno.interface.rivens.Rivens">[docs]</a><span class="k">class</span> <span class="nc">Rivens</span><span class="p">(</span><span class="n">RivensBackend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class for the rivens backend.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Rivens.get_riven_items"><a class="viewcode-back" href="../../../interface/rivens.html#pytenno.interface.rivens.Rivens.get_riven_items">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_riven_items</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">RivenItem</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Gets a list of all riven-equippable items.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the location.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        language : Optional[VALID_LANGUAGES]</span>
+<span class="sd">            The language of the riven items. Default: ``None``, meaning the default set during client construction.</span>
 
-<span class="sd">    icon : str</span>
-<span class="sd">        The icon URL of the location.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[RivenItem]</span>
 
-<span class="sd">    thumb : str</span>
-<span class="sd">        The thumbnail URL of the location.</span>
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as pytenno:</span>
+<span class="sd">        &gt;&gt;&gt;     riven_items = await pytenno.rivens.get_riven_items()</span>
+<span class="sd">        &gt;&gt;&gt;     for riven_item in riven_items:</span>
+<span class="sd">        &gt;&gt;&gt;         print(riven_item.url_name)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_riven_items</span><span class="p">(</span><span class="n">language</span><span class="p">)</span></div>
 
-<span class="sd">    faction : Faction</span>
-<span class="sd">        The faction of the location.</span>
+<div class="viewcode-block" id="Rivens.get_attributes"><a class="viewcode-back" href="../../../interface/rivens.html#pytenno.interface.rivens.Rivens.get_attributes">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_attributes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">RivenAttribute</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Gets a list of all riven attributes.</span>
 
-<span class="sd">    name : str</span>
-<span class="sd">        The name of the location.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        language : Optional[VALID_LANGUAGES]</span>
+<span class="sd">            The language of the riven attributes. Default: ``None``, meaning the default set during client construction.</span>
 
-<span class="sd">    node_name : str</span>
-<span class="sd">        The name of the node the location is on.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[RivenAttribute]</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">faction</span><span class="p">:</span> <span class="n">Faction</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">node_name</span><span class="p">:</span> <span class="nb">str</span></div>
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as pytenno:</span>
+<span class="sd">        &gt;&gt;&gt;     riven_attributes = await pytenno.rivens.get_attributes()</span>
+<span class="sd">        &gt;&gt;&gt;     for riven_attribute in riven_attributes:</span>
+<span class="sd">        &gt;&gt;&gt;         print(riven_attribute.effect)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_riven_attributes</span><span class="p">(</span><span class="n">language</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

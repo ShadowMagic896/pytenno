@@ -20,7 +20,6 @@ def iter_py_files(source: str, relative: bool) -> list[str]:
                 and not "examples" in root
                 and file not in ignored_files
             ):
-                print(file, root)
                 yield os.path.join(root, file).strip("./\\").replace("\\", ".")
 
 

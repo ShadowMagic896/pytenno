@@ -6,6 +6,7 @@ from ..models.users import CurrentUser
 
 
 class Auth(AuthBackend):
+    """Class for the authentication backend."""
     async def login(
         self,
         *,
@@ -86,10 +87,6 @@ class Auth(AuthBackend):
         ----------
         email: str
             The email of the user.
-
-        Returns
-        -------
-        None
 
         Example
         -------

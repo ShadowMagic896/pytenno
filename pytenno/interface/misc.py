@@ -7,6 +7,7 @@ from ..models.missions import DroptableNPC, PartialMission
 
 
 class Misc(MiscBackend):
+    """Class for the misc backends."""
     async def get_locations(self, language: Optional[VALID_LANGUAGES] = None) -> list[Location]:
         """Gets a list of all locations.
 

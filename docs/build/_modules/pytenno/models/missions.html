@@ -70,7 +70,7 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content style-external-links">
+        <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
@@ -89,6 +89,51 @@
 
 <span class="kn">from</span> <span class="nn">.enums</span> <span class="kn">import</span> <span class="n">ItemRarity</span><span class="p">,</span> <span class="n">RelicQuality</span><span class="p">,</span> <span class="n">Rotation</span><span class="p">,</span> <span class="n">Stage</span><span class="p">,</span> <span class="n">Subtype</span>
 
+
+<div class="viewcode-block" id="DroptableRelic"><a class="viewcode-back" href="../../../models/missions.html#pytenno.models.missions.DroptableRelic">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">DroptableRelic</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents a relic drop in a mission</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the relic.</span>
+
+<span class="sd">    rarity : ItemRarity</span>
+<span class="sd">        The rarity of the item found in the relic.</span>
+
+<span class="sd">    rate : dict[RelicQuality, int | float]</span>
+<span class="sd">        A mapping of relic quality to the rate of the relic dropping.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">rarity</span><span class="p">:</span> <span class="n">ItemRarity</span>
+    <span class="n">rate</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">RelicQuality</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="DroptableNPC"><a class="viewcode-back" href="../../../models/missions.html#pytenno.models.missions.DroptableNPC">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">DroptableNPC</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents a NPC in a mission</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the NPC.</span>
+
+<span class="sd">    icon : str</span>
+<span class="sd">        The icon URL of the NPC.</span>
+
+<span class="sd">    thumb : str</span>
+<span class="sd">        The thumbnail URL of the NPC.</span>
+
+<span class="sd">    name : str</span>
+<span class="sd">        The name of the NPC.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="DroptableMission"><a class="viewcode-back" href="../../../models/missions.html#pytenno.models.missions.DroptableMission">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">DroptableMission</span><span class="p">:</span>
@@ -131,8 +176,8 @@
     <span class="n">item_subtype</span><span class="p">:</span> <span class="n">Subtype</span>
     <span class="n">rotation</span><span class="p">:</span> <span class="n">Rotation</span>
     <span class="n">stage</span><span class="p">:</span> <span class="n">Stage</span>
-    <span class="n">relics</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;DroptableRelic&quot;</span><span class="p">]</span>
-    <span class="n">npc</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;DroptableNPC&quot;</span><span class="p">]</span></div>
+    <span class="n">relics</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DroptableRelic</span><span class="p">]</span>
+    <span class="n">npc</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DroptableNPC</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="PartialMission"><a class="viewcode-back" href="../../../models/missions.html#pytenno.models.missions.PartialMission">[docs]</a><span class="nd">@dataclass</span>
@@ -160,50 +205,7 @@
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="DroptableRelic"><a class="viewcode-back" href="../../../models/missions.html#pytenno.models.missions.DroptableRelic">[docs]</a><span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">DroptableRelic</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a relic drop in a mission</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the relic.</span>
-
-<span class="sd">    rarity : ItemRarity</span>
-<span class="sd">        The rarity of the item found in the relic.</span>
-
-<span class="sd">    rate dict[RelicQuality, int | float]</span>
-<span class="sd">        A mapping of relic quality to the rate of the relic dropping.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">rarity</span><span class="p">:</span> <span class="n">ItemRarity</span>
-    <span class="n">rate</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">RelicQuality</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="DroptableNPC"><a class="viewcode-back" href="../../../models/missions.html#pytenno.models.missions.DroptableNPC">[docs]</a><span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">DroptableNPC</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a NPC in a mission</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the NPC.</span>
-
-<span class="sd">    icon : str</span>
-<span class="sd">        The icon URL of the NPC.</span>
-
-<span class="sd">    thumb : str</span>
-<span class="sd">        The thumbnail URL of the NPC.</span>
-
-<span class="sd">    name : str</span>
-<span class="sd">        The name of the NPC.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span></div>
 </pre></div>
 
            </div>
@@ -213,7 +215,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022 Ryan Peckham.</p>
+    <p>&#169; Copyright 2022, Ryan Peckham.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

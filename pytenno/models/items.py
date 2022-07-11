@@ -9,7 +9,7 @@ from .enums import IconFormat, ItemRarity, Subtype
 
 @dataclass
 class LangInItem:
-    """Represents an item's localized name.
+    """Represents an item's localized data.
 
     Parameters
     ----------
@@ -95,6 +95,13 @@ class ItemCommon:
 
 @dataclass(kw_only=True)
 class TranslatedItemName:
+    """Represents an item's localized name.
+    
+    Parameters
+    ----------
+    item_name : str
+        The translated name of the item.
+    """
     item_name: str
 
 @dataclass(kw_only=True)
@@ -110,6 +117,81 @@ class ItemInOrder(ItemCommon):
     pt: TranslatedItemName
     es: TranslatedItemName
     pl: TranslatedItemName
+
+    
+    """Represents an item in an order.
+    
+    Parameters
+    ----------
+    id : str
+        The ID of the item.
+    
+    url_name : str
+        The URL name of the item.
+    
+    icon : str
+        The URL of the item's icon.
+    
+    icon_format : IconFormat, optional
+        The format of the item's icon.
+    
+    sub_icon : str , optional
+        The URL of the item's sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.
+    
+    thumb : str
+        The URL of the item's thumbnail.
+    
+    tags : list[str]
+        The tags of the item.
+    
+    mod_max_rank : int, optional
+        The maximum rank of the item.
+    
+    subtypes : list[Subtype] , optional
+        The subtypes of the item.
+    
+    cyan_stars : int, optional
+        The number of cyan stars the item has.
+    
+    amber_stars : int, optional
+        The number of amber stars the item has.
+    
+    ducats : int, optional
+        The ducat worth of the item.
+    
+    en : TranslatedItemName
+        The translated name of the item in English.
+    
+    ru : TranslatedItemName
+        The translated name of the item in Russian.
+    
+    ko : TranslatedItemName
+        The translated name of the item in Korean.
+    
+    fr : TranslatedItemName
+        The translated name of the item in French.
+    
+    de : TranslatedItemName
+        The translated name of the item in German.
+    
+    sv : TranslatedItemName
+        The translated name of the item in Swedish.
+    
+    zh_hant : TranslatedItemName
+        The translated name of the item in Chinese (Traditional).
+    
+    zh_hans : TranslatedItemName
+        The translated name of the item in Chinese (Simplified).
+    
+    pt : TranslatedItemName 
+        The translated name of the item in Portuguese.
+    
+    es : TranslatedItemName
+        The translated name of the item in Spanish.
+    
+    pl : TranslatedItemName
+        The translated name of the item in Polish.
+    """
 
     def from_data(node: dict):
         [node.__setitem__(lang, TranslatedItemName(item_name=node[lang]["item_name"])) for lang in VALID_TRANSLATIONS_RAW]

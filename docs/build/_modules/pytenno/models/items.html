@@ -70,7 +70,7 @@
       </nav>
 
       <div class="wy-nav-content">
-        <div class="rst-content style-external-links">
+        <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
@@ -96,7 +96,7 @@
 
 <div class="viewcode-block" id="LangInItem"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.LangInItem">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">LangInItem</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s localized name.</span>
+    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s localized data.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -182,6 +182,13 @@
 
 <div class="viewcode-block" id="TranslatedItemName"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.TranslatedItemName">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">TranslatedItemName</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s localized name.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    item_name : str</span>
+<span class="sd">        The translated name of the item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="ItemInOrder"><a class="viewcode-back" href="../../../models/items.html#pytenno.models.items.ItemInOrder">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -197,6 +204,81 @@
     <span class="n">pt</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
     <span class="n">es</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
     <span class="n">pl</span><span class="p">:</span> <span class="n">TranslatedItemName</span>
+
+    
+    <span class="sd">&quot;&quot;&quot;Represents an item in an order.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    id : str</span>
+<span class="sd">        The ID of the item.</span>
+<span class="sd">    </span>
+<span class="sd">    url_name : str</span>
+<span class="sd">        The URL name of the item.</span>
+<span class="sd">    </span>
+<span class="sd">    icon : str</span>
+<span class="sd">        The URL of the item&#39;s icon.</span>
+<span class="sd">    </span>
+<span class="sd">    icon_format : IconFormat, optional</span>
+<span class="sd">        The format of the item&#39;s icon.</span>
+<span class="sd">    </span>
+<span class="sd">    sub_icon : str , optional</span>
+<span class="sd">        The URL of the item&#39;s sub icon. For example if the item is part of a set, `icon` will the icon of the set, while `sub_icon` will be the icon of the item in the set.</span>
+<span class="sd">    </span>
+<span class="sd">    thumb : str</span>
+<span class="sd">        The URL of the item&#39;s thumbnail.</span>
+<span class="sd">    </span>
+<span class="sd">    tags : list[str]</span>
+<span class="sd">        The tags of the item.</span>
+<span class="sd">    </span>
+<span class="sd">    mod_max_rank : int, optional</span>
+<span class="sd">        The maximum rank of the item.</span>
+<span class="sd">    </span>
+<span class="sd">    subtypes : list[Subtype] , optional</span>
+<span class="sd">        The subtypes of the item.</span>
+<span class="sd">    </span>
+<span class="sd">    cyan_stars : int, optional</span>
+<span class="sd">        The number of cyan stars the item has.</span>
+<span class="sd">    </span>
+<span class="sd">    amber_stars : int, optional</span>
+<span class="sd">        The number of amber stars the item has.</span>
+<span class="sd">    </span>
+<span class="sd">    ducats : int, optional</span>
+<span class="sd">        The ducat worth of the item.</span>
+<span class="sd">    </span>
+<span class="sd">    en : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in English.</span>
+<span class="sd">    </span>
+<span class="sd">    ru : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Russian.</span>
+<span class="sd">    </span>
+<span class="sd">    ko : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Korean.</span>
+<span class="sd">    </span>
+<span class="sd">    fr : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in French.</span>
+<span class="sd">    </span>
+<span class="sd">    de : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in German.</span>
+<span class="sd">    </span>
+<span class="sd">    sv : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Swedish.</span>
+<span class="sd">    </span>
+<span class="sd">    zh_hant : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Chinese (Traditional).</span>
+<span class="sd">    </span>
+<span class="sd">    zh_hans : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Chinese (Simplified).</span>
+<span class="sd">    </span>
+<span class="sd">    pt : TranslatedItemName </span>
+<span class="sd">        The translated name of the item in Portuguese.</span>
+<span class="sd">    </span>
+<span class="sd">    es : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Spanish.</span>
+<span class="sd">    </span>
+<span class="sd">    pl : TranslatedItemName</span>
+<span class="sd">        The translated name of the item in Polish.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">TranslatedItemName</span><span class="p">(</span><span class="n">item_name</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="n">lang</span><span class="p">][</span><span class="s2">&quot;item_name&quot;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">VALID_TRANSLATIONS_RAW</span><span class="p">]</span>
@@ -359,7 +441,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022 Ryan Peckham.</p>
+    <p>&#169; Copyright 2022, Ryan Peckham.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

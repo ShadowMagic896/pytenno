@@ -6,6 +6,7 @@ from ..models.orders import OrderCreated
 
 
 class Profile(ProfileBackend):
+    """Class for the profile backend."""
     async def create_order(
         self,
         item_id: str,

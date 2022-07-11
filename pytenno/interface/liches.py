@@ -6,6 +6,7 @@ from ..models.liches import LichEphemera, LichQuirk, LichWeapon
 
 
 class Liches(LichesBackend):
+    """Class for the liches backend."""
     async def get_weapons(self, language: Optional[VALID_LANGUAGES] = None) -> list[LichWeapon]:
         """Gets all weapons.
 

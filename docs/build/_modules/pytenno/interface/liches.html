@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pytenno.interface.auction_entries &mdash; PyTenno  documentation</title>
+  <title>pytenno.interface.liches &mdash; PyTenno  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -75,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>pytenno.interface.auction_entries</li>
+      <li>pytenno.interface.liches</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -84,53 +84,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pytenno.interface.auction_entries</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.._backends.auction_entries</span> <span class="kn">import</span> <span class="n">AuctionEntriesBackend</span>
-<span class="kn">from</span> <span class="nn">..models.auctions</span> <span class="kn">import</span> <span class="n">AuctionEntryExpanded</span>
+  <h1>Source code for pytenno.interface.liches</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">.._backends.liches</span> <span class="kn">import</span> <span class="n">LichesBackend</span>
+<span class="kn">from</span> <span class="nn">..constants</span> <span class="kn">import</span> <span class="n">VALID_LANGUAGES</span>
+<span class="kn">from</span> <span class="nn">..models.liches</span> <span class="kn">import</span> <span class="n">LichEphemera</span><span class="p">,</span> <span class="n">LichQuirk</span><span class="p">,</span> <span class="n">LichWeapon</span>
 
 
-<div class="viewcode-block" id="AuctionEntries"><a class="viewcode-back" href="../../../interface/auction_entries.html#pytenno.interface.auction_entries.AuctionEntries">[docs]</a><span class="k">class</span> <span class="nc">AuctionEntries</span><span class="p">(</span><span class="n">AuctionEntriesBackend</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A class for getting information about auction entries by ID.&quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="AuctionEntries.get_by_id"><a class="viewcode-back" href="../../../interface/auction_entries.html#pytenno.interface.auction_entries.AuctionEntries.get_by_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AuctionEntryExpanded</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets a specific auction entry by ID.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        auction_id : str</span>
-<span class="sd">            The ID of the auction entry to get.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        AuctionEntryExpanded</span>
-
-<span class="sd">        Example</span>
-<span class="sd">        -------</span>
-<span class="sd">        &gt;&gt;&gt; async with PyTenno() as tenno:</span>
-<span class="sd">        &gt;&gt;&gt;     auction = await tenno.AuctionEntries.get_by_id(&quot;...&quot;)</span>
-<span class="sd">        &gt;&gt;&gt;     print(auction.owner.ingame_name, auction.platinum)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_by_id</span><span class="p">(</span><span class="n">auction_id</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="AuctionEntries.get_bids_by_id"><a class="viewcode-back" href="../../../interface/auction_entries.html#pytenno.interface.auction_entries.AuctionEntries.get_bids_by_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_bids_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AuctionEntryExpanded</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets all bids for a specific auction entry by ID.</span>
+<div class="viewcode-block" id="Liches"><a class="viewcode-back" href="../../../interface/liches.html#pytenno.interface.liches.Liches">[docs]</a><span class="k">class</span> <span class="nc">Liches</span><span class="p">(</span><span class="n">LichesBackend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class for the liches backend.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Liches.get_weapons"><a class="viewcode-back" href="../../../interface/liches.html#pytenno.interface.liches.Liches.get_weapons">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_weapons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">LichWeapon</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Gets all weapons.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        auction_id : str</span>
-<span class="sd">            The ID of the auction entry to get bids for.</span>
+<span class="sd">        language : Optional[VALID_LANGUAGES]</span>
+<span class="sd">            The language of the weapons. Default: ``None``, meaning the default set during client construction.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        AuctionEntryExpanded</span>
+<span class="sd">        list[LichWeapon]</span>
 
 <span class="sd">        Example</span>
 <span class="sd">        -------</span>
-<span class="sd">        &gt;&gt;&gt; async with PyTenno() as tenno:</span>
-<span class="sd">        &gt;&gt;&gt;     auction = await tenno.AuctionEntries.get_bids_by_id(&quot;...&quot;)</span>
-<span class="sd">        &gt;&gt;&gt;     print(auction.owner.ingame_name, auction.platinum)</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as pytenno:</span>
+<span class="sd">        &gt;&gt;&gt;     weapons = await pytenno.liches.get_weapons()</span>
+<span class="sd">        &gt;&gt;&gt;     for weapon in weapons:</span>
+<span class="sd">        &gt;&gt;&gt;         print(weapon.url_name)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_bids_by_id</span><span class="p">(</span><span class="n">auction_id</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_weapons</span><span class="p">(</span><span class="n">language</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Liches.get_ephemeras"><a class="viewcode-back" href="../../../interface/liches.html#pytenno.interface.liches.Liches.get_ephemeras">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_ephemeras</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">LichEphemera</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Gets all lich ephemeras.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        language : Optional[VALID_LANGUAGES]</span>
+<span class="sd">            The language of the ephemeras. Default: ``None``, meaning the default set during client construction.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[LichEphemera]</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as pytenno:</span>
+<span class="sd">        &gt;&gt;&gt;     ephemeras = await pytenno.liches.get_ephemeras()</span>
+<span class="sd">        &gt;&gt;&gt;     for ephemera in ephemeras:</span>
+<span class="sd">        &gt;&gt;&gt;         print(ephemera.url_name)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ephemeras</span><span class="p">(</span><span class="n">language</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Liches.get_quirks"><a class="viewcode-back" href="../../../interface/liches.html#pytenno.interface.liches.Liches.get_quirks">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_quirks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">LichQuirk</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Gets all lich quirks.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        language : Optional[VALID_LANGUAGES]</span>
+<span class="sd">            The language of the quirks. Default: ``None``, meaning the default set during client construction.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[LichQuirk]</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; async with PyTenno() as pytenno:</span>
+<span class="sd">        &gt;&gt;&gt;     quirks = await pytenno.liches.get_quirks()</span>
+<span class="sd">        &gt;&gt;&gt;     for quirk in quirks:</span>
+<span class="sd">        &gt;&gt;&gt;         print(quirk.url_name)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_quirks</span><span class="p">(</span><span class="n">language</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pytenno.models.locations &mdash; PyTenno  documentation</title>
+  <title>pytenno.interface.profile &mdash; PyTenno  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -75,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>pytenno.models.locations</li>
+      <li>pytenno.interface.profile</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -84,43 +84,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pytenno.models.locations</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+  <h1>Source code for pytenno.interface.profile</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">.enums</span> <span class="kn">import</span> <span class="n">Faction</span>
+<span class="kn">from</span> <span class="nn">.._backends.profile</span> <span class="kn">import</span> <span class="n">ProfileBackend</span>
+<span class="kn">from</span> <span class="nn">..models.enums</span> <span class="kn">import</span> <span class="n">OrderType</span><span class="p">,</span> <span class="n">Subtype</span>
+<span class="kn">from</span> <span class="nn">..models.orders</span> <span class="kn">import</span> <span class="n">OrderCreated</span>
 
 
-<div class="viewcode-block" id="Location"><a class="viewcode-back" href="../../../models/locations.html#pytenno.models.locations.Location">[docs]</a><span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">Location</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a location.</span>
+<div class="viewcode-block" id="Profile"><a class="viewcode-back" href="../../../interface/profile.html#pytenno.interface.profile.Profile">[docs]</a><span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">ProfileBackend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class for the profile backend.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Profile.create_order"><a class="viewcode-back" href="../../../interface/profile.html#pytenno.interface.profile.Profile.create_order">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">create_order</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">item_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">order_type</span><span class="p">:</span> <span class="n">OrderType</span><span class="p">,</span>
+        <span class="n">platinum</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">subtype</span><span class="p">:</span> <span class="n">Subtype</span><span class="p">,</span>
+        <span class="n">rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OrderCreated</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates an order, and returns the order object.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the location.</span>
-
-<span class="sd">    icon : str</span>
-<span class="sd">        The icon URL of the location.</span>
-
-<span class="sd">    thumb : str</span>
-<span class="sd">        The thumbnail URL of the location.</span>
-
-<span class="sd">    faction : Faction</span>
-<span class="sd">        The faction of the location.</span>
-
-<span class="sd">    name : str</span>
-<span class="sd">        The name of the location.</span>
-
-<span class="sd">    node_name : str</span>
-<span class="sd">        The name of the node the location is on.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">faction</span><span class="p">:</span> <span class="n">Faction</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">node_name</span><span class="p">:</span> <span class="nb">str</span></div>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        item_id : str</span>
+<span class="sd">            The ID of the item.</span>
+<span class="sd">        order_type : OrderType</span>
+<span class="sd">            The type of order.</span>
+<span class="sd">        platinum : int</span>
+<span class="sd">            The amount of platinum per item in the order.</span>
+<span class="sd">        quantity : int</span>
+<span class="sd">            How many items to offer to buy / sell.</span>
+<span class="sd">        visible : bool</span>
+<span class="sd">            Whether the order is visible to others.</span>
+<span class="sd">        subtype : Subtype</span>
+<span class="sd">            The subtype of the item. Must be applicable to the item passed.</span>
+<span class="sd">        rank : Optional[int]</span>
+<span class="sd">            The rank of the item. Unnecessary for anything which doesn&#39;t have a rank.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        OrderCreated</span>
+<span class="sd">            The order object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_order</span><span class="p">(</span>
+            <span class="n">item_id</span><span class="p">,</span>
+            <span class="n">order_type</span><span class="p">,</span>
+            <span class="n">platinum</span><span class="p">,</span>
+            <span class="n">quantity</span><span class="p">,</span>
+            <span class="n">visible</span><span class="p">,</span>
+            <span class="n">subtype</span><span class="p">,</span>
+            <span class="n">rank</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
 </pre></div>
 
            </div>
