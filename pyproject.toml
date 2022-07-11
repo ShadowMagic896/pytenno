@@ -19,7 +19,7 @@ keywords = ["warframe", "market", "api", "asyncio", "aiohttp"]
 dependencies = [
     "aiohttp >= 3.8.1",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 dev = ["black", "isort"]
