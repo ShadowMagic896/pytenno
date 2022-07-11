@@ -96,6 +96,7 @@
 
 <div class="viewcode-block" id="Profile"><a class="viewcode-back" href="../../../interface/profile.html#pytenno.interface.profile.Profile">[docs]</a><span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">ProfileBackend</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class for the profile backend.&quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="Profile.create_order"><a class="viewcode-back" href="../../../interface/profile.html#pytenno.interface.profile.Profile.create_order">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">create_order</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">item_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -124,7 +125,7 @@
 <span class="sd">            The subtype of the item. Must be applicable to the item passed.</span>
 <span class="sd">        rank : Optional[int]</span>
 <span class="sd">            The rank of the item. Unnecessary for anything which doesn&#39;t have a rank.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        OrderCreated</span>

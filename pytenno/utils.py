@@ -26,17 +26,14 @@ from .models.enums import (AnimationFormat, AuctionMarking, AuctionType,
                            UserStatus)
 
 
-
 def format_name(name: str):
     """Converts a string to a valid url-safe string."""
     return quote(name.lower().replace(" ", "_"))
 
 
-
 def is_formatted_name(name: str):
     """Checks if a string is a valid formatted name."""
     return quote(name.replace("_", " ").lower()) == name
-
 
 
 def _raise_error_code(response: aiohttp.ClientResponse, silenced: list[Exception]):
@@ -95,7 +92,6 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 }
 
 T = TypeVar("T", bound=type)
-
 
 
 def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:

@@ -63,6 +63,7 @@ class TranslatedItemName:
     item_name: str
     """The translated name of the item."""
 
+
 @dataclass(kw_only=True)
 class ItemInOrder(ItemCommon):
     """Represents an item in an order."""
@@ -91,14 +92,18 @@ class ItemInOrder(ItemCommon):
     """The Polish name of the item."""
 
     def from_data(node: dict):
-        [node.__setitem__(lang, TranslatedItemName(item_name=node[lang]["item_name"])) for lang in VALID_TRANSLATIONS_RAW]
+        [
+            node.__setitem__(
+                lang, TranslatedItemName(item_name=node[lang]["item_name"])
+            )
+            for lang in VALID_TRANSLATIONS_RAW
+        ]
         # Sets all of the languages to their TransLatedItemName objects.
         # A bit odd to call __setitem__ manually, but it lets it work in a listcomp so meh.
         return from_data(ItemInOrder, node)
 
     def __repr__(self):
         return f"<ItemInOrder id={self.id} url_name={self.url_name} tags={self.tags}>"
-
 
 
 @dataclass(kw_only=True)

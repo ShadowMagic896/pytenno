@@ -12,7 +12,10 @@ from ..models.orders import OrderRow
 
 class Items(ItemsBackend):
     """Class for the items backend."""
-    async def get_items(self, language: Optional[VALID_LANGUAGES] = None) -> list[ItemShort]:
+
+    async def get_items(
+        self, language: Optional[VALID_LANGUAGES] = None
+    ) -> list[ItemShort]:
         """Gets all items.
 
         Parameters

@@ -10,7 +10,10 @@ from ..models.missions import DroptableNPC, PartialMission
 
 class Misc(MiscBackend):
     """Class for the misc backends."""
-    async def get_locations(self, language: Optional[VALID_LANGUAGES] = None) -> list[Location]:
+
+    async def get_locations(
+        self, language: Optional[VALID_LANGUAGES] = None
+    ) -> list[Location]:
         """Gets a list of all locations.
 
         Parameters
@@ -31,7 +34,9 @@ class Misc(MiscBackend):
         """
         return await self._get_locations(language)
 
-    async def get_npcs(self, language: Optional[VALID_LANGUAGES] = None) -> list[DroptableNPC]:
+    async def get_npcs(
+        self, language: Optional[VALID_LANGUAGES] = None
+    ) -> list[DroptableNPC]:
         """Gets a list of all NPCs.
 
         Parameters

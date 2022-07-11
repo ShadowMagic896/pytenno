@@ -53,6 +53,7 @@ class RivenAttribute:
     search_only: bool
     """Whether the attribute only appears in search results."""
 
+
 @dataclass
 class PartialRivenAttribute:
     """Represents a partial riven attribute."""

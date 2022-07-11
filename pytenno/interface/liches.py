@@ -9,7 +9,10 @@ from ..models.liches import LichEphemera, LichQuirk, LichWeapon
 
 class Liches(LichesBackend):
     """Class for the liches backend."""
-    async def get_weapons(self, language: Optional[VALID_LANGUAGES] = None) -> list[LichWeapon]:
+
+    async def get_weapons(
+        self, language: Optional[VALID_LANGUAGES] = None
+    ) -> list[LichWeapon]:
         """Gets all weapons.
 
         Parameters
@@ -53,7 +56,9 @@ class Liches(LichesBackend):
         """
         return await self._get_ephemeras(language)
 
-    async def get_quirks(self, language: Optional[VALID_LANGUAGES] = None) -> list[LichQuirk]:
+    async def get_quirks(
+        self, language: Optional[VALID_LANGUAGES] = None
+    ) -> list[LichQuirk]:
         """Gets all lich quirks.
 
         Parameters

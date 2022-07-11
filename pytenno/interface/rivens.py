@@ -9,6 +9,7 @@ from ..models.rivens import RivenAttribute, RivenItem
 
 class Rivens(RivensBackend):
     """Class for the rivens backend."""
+
     async def get_riven_items(
         self, language: Optional[VALID_LANGUAGES] = None
     ) -> list[RivenItem]:

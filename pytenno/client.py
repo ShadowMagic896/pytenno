@@ -32,7 +32,7 @@ class PyTenno:
     silenced_errors  : list[Exception]
         A list of errors that will be silenced when raised by the API.
         Instead of raising the error, the function will return None.
-    
+
     Example
     -------
     >>> async with PyTenno() as tenno:
@@ -41,7 +41,8 @@ class PyTenno:
     """
 
     def __init__(
-        self, *,
+        self,
+        *,
         default_language: Optional[VALID_LANGUAGES] = "en",
         default_platform: Platform = Platform.pc,
         silenced_errors: list[Exception] = [],
@@ -85,21 +86,13 @@ class PyTenno:
         backend = PyTennoBackend(self._session, self._silenced)
 
         self.AuctionEntries = AuctionEntries(backend)
-        """The AuctionEntries interface."""
         self.Auctions = Auctions(backend)
-        """The Auctions interface."""
         self.Auth = Auth(backend)
-        """The Auth interface."""
         self.Items = Items(backend)
-        """The Items interface."""
         self.Liches = Liches(backend)
-        """The Liches interface."""
         self.Misc = Misc(backend)
-        """The Misc interface."""
         self.Profile = Profile(backend)
-        """The Profile interface."""
         self.Rivens = Rivens(backend)
-        """The Rivens interface."""
         return self
 
     async def __aexit__(
@@ -110,7 +103,7 @@ class PyTenno:
     ) -> bool:
         await self._session.close()
         return False
-    
+
     async def close(self) -> None:
-        """Closes the session."""
+        """Closes the client's ``aiohttp`` session."""
         await self._session.close()

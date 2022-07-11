@@ -9,6 +9,7 @@ from ..models.orders import OrderCreated
 
 class Profile(ProfileBackend):
     """Class for the profile backend."""
+
     async def create_order(
         self,
         item_id: str,
@@ -37,7 +38,7 @@ class Profile(ProfileBackend):
             The subtype of the item. Must be applicable to the item passed.
         rank : Optional[int]
             The rank of the item. Unnecessary for anything which doesn't have a rank.
-        
+
         Returns
         -------
         OrderCreated

@@ -57,6 +57,7 @@ class AuctionEntry:
 @dataclass
 class AuctionEntryExpanded(AuctionEntry):
     """Same as `AuctionEntry`, but with a full user model for ``.owner``"""
+
     owner: UserShort
     """The owner of the auction."""
 

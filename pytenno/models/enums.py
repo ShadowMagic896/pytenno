@@ -558,7 +558,7 @@ class Faction(Base):
 
 class RivenStat(Base):
     """Represents the stat of a riven attribute.
-    
+
     Notes
     -----
     The stat names do not always line up with the actual names in Warframe.

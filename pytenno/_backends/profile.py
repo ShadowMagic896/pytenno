@@ -10,7 +10,7 @@ from .core import BackendAdapter
 
 class ProfileBackend(BackendAdapter):
     async def _create_order(
-        self, 
+        self,
         item_id: str,
         order_type: OrderType,
         platinum: int,
@@ -18,12 +18,11 @@ class ProfileBackend(BackendAdapter):
         visible: bool,
         subtype: Subtype,
         rank: Optional[int] = None,
-
     ):
         url = "/profile/orders"
         response = await self._backend._request(
-            url, 
-            method="post", 
+            url,
+            method="post",
             json={
                 "item_id": item_id,
                 "order_type": order_type.name,
@@ -32,7 +31,7 @@ class ProfileBackend(BackendAdapter):
                 "visible": visible,
                 "subtype": subtype.name,
                 "rank": rank,
-            }
+            },
         )
         order = response["payload"]["order"]
         return from_data(OrderCreated, order)

@@ -99,7 +99,10 @@
 
 <div class="viewcode-block" id="Items"><a class="viewcode-back" href="../../../interface/items.html#pytenno.interface.items.Items">[docs]</a><span class="k">class</span> <span class="nc">Items</span><span class="p">(</span><span class="n">ItemsBackend</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class for the items backend.&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Items.get_items"><a class="viewcode-back" href="../../../interface/items.html#pytenno.interface.items.Items.get_items">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ItemShort</span><span class="p">]:</span>
+
+<div class="viewcode-block" id="Items.get_items"><a class="viewcode-back" href="../../../interface/items.html#pytenno.interface.items.Items.get_items">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">VALID_LANGUAGES</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ItemShort</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Gets all items.</span>
 
 <span class="sd">        Parameters</span>

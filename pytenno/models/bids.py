@@ -5,6 +5,7 @@ from datetime import datetime
 @dataclass
 class Bid:
     """Represents a bid on an auction."""
+
     id: str
     """The ID of the bid."""
     auction: str

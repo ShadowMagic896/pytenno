@@ -5,7 +5,7 @@ from .enums import ItemRarity, RelicQuality, Rotation, Stage, Subtype
 
 @dataclass
 class DroptableRelic:
-    """Represents a relic drop in a mission """
+    """Represents a relic drop in a mission"""
 
     id: str
     """The ID of the relic."""
@@ -27,6 +27,7 @@ class DroptableNPC:
     """The thumbnail URL of the NPC."""
     name: str
     """The name of the NPC."""
+
 
 @dataclass
 class DroptableMission:
@@ -64,6 +65,3 @@ class PartialMission:
     """The thumbnail URL of the mission."""
     name: str
     """The name of the mission."""
-
-
-

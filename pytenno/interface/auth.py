@@ -9,6 +9,7 @@ from ..models.users import CurrentUser
 
 class Auth(AuthBackend):
     """Class for the authentication backend."""
+
     async def login(
         self,
         *,
