@@ -86,6 +86,7 @@ def build_files(source: str, output: str):
         with open(f"{output}\\conf.py", "w") as target:
             target.write(template.read())
 
+    return
     print("Building html")
     os.system(f"cd ./dodoc && make")
 
