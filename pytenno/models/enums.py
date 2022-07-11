@@ -558,70 +558,7 @@ class Faction(Base):
 
 class RivenStat(Base):
     """Represents the stat of a riven attribute.
-
-    Attributes
-    ----------
-    ammo_maximum : int
-        The stat modifies the maximum ammo of the weapon the riven is on.
-    cold : int
-        The stat modifies the ``Element.cold`` damage of the weapon the riven is on.
-    critical_chance : int
-        The stat modifies the critical chance damage of the weapon the riven is on.
-    damage : int
-        The stat modifies the base damage of the weapon the riven is on.
-    damage_vs_corpus : int
-        The stat modifies the damage of the weapon the riven is on against the Corpus.
-    damage_vs_grineer : int
-        The stat modifies the damage of the weapon the riven is on against the Grineer.
-    damage_vs_infested : int
-        The stat modifies the damage of the weapon the riven is on against the Infested.
-    electricity : int
-        The stat modifies the ``Element.electricity`` damage of the weapon the riven is on.
-    fire_rate_attack_speed : int
-        The stat modifies the fire rate / attack speed of the weapon the riven is on.
-    heat : int
-        The stat modifies the ``Element.heat`` damage of the weapon the riven is on.
-    impact : int
-        The stat modifies the ``Element.impact`` damage of the weapon the riven is on.
-    magazine_capacity : int
-        The stat modifies the magazine capacity of the weapon the riven is on.
-    multishot : int
-        The stat modifies the multishot of the weapon the riven is on.
-    projectile_speed : int
-        The stat modifies the projectile speed of the weapon the riven is on.
-    punch_through : int
-        The stat modifies the punch through of the weapon the riven is on.
-    puncture : int
-        The stat modifies the ``Element.puncture`` damage of the weapon the riven is on.
-    reload_speed : int
-        The stat modifies the reload speed of the weapon the riven is on.
-    slash : int
-        The stat modifies the ``Element.slash`` damage of the weapon the riven is on.
-    status_chance : int
-        The stat modifies the status chance of the weapon the riven is on.
-    status_duration : int
-        The stat modifies the status duration of the weapon the riven is on.
-    toxin : int
-        The stat modifies the ``Element.toxin`` damage of the weapon the riven is on.
-    weapon_recoil : int
-        The stat modifies the weapon recoil of the weapon the riven is on.
-    initial_combo : int
-        The stat modifies the initial combo of the weapon the riven is on.
-    range : int
-        The stat modifies the range of the weapon the riven is on.
-    chance_to_gain_extra_combo_count : int
-        The stat modifies the chance for the weapon to gain an extra combo count on a hit.
-    combo_duration : int
-        The stat modifies the duration of the combo of the weapon the riven is on.
-    critical_chance_on_slide_attack : int
-        The stat modifies the critical chance on a slide attack of the weapon the riven is on.
-    finisher_damage : int
-        The stat modifies the finisher damage of the weapon the riven is on.
-    channeling_efficiency : int
-        The stat modifies the channeling efficiency (heavy attack efficiency) of the weapon the riven is on.
-    channeling_damage : int
-        The stat modifies the channeling damage (heavy attack damage) of the weapon the riven is on.
-
+    
     Notes
     -----
     The stat names do not always line up with the actual names in Warframe.
@@ -632,35 +569,65 @@ class RivenStat(Base):
     """
 
     ammo_maximum = 0
+    """The stat modifies the maximum ammo of the weapon the riven is on."""
     cold = 1
+    """The stat modifies the ``Element.cold`` damage of the weapon the riven is on."""
     critical_chance = 2
+    """The stat modifies the critical chance damage of the weapon the riven is on."""
     damage = 3
+    """The stat modifies the base damage of the weapon the riven is on."""
     damage_vs_corpus = 4
+    """The stat modifies the damage of the weapon the riven is on against the Corpus."""
     damage_vs_grineer = 5
+    """The stat modifies the damage of the weapon the riven is on against the Corpus."""
     damage_vs_infested = 6
+    """The stat modifies the damage of the weapon the riven is on against the faction."""
     electricity = 7
+    """The stat modifies the ``Element.electricity`` damage of the weapon the riven is on."""
     fire_rate_attack_speed = 8
+    """The stat modifies the fire rate / attack speed of the weapon the riven is on."""
     heat = 9
+    """The stat modifies the ``Element.heat`` damage of the weapon the riven is on."""
     impact = 10
+    """The stat modifies the ``Element.impact`` damage of the weapon the riven is on."""
     magazine_capacity = 11
+    """The stat modifies the magazine capacity of the weapon the riven is on."""
     multishot = 12
+    """The stat modifies the multishot of the weapon the riven is on."""
     projectile_speed = 13
+    """The stat modifies the projectile speed of the weapon the riven is on."""
     punch_through = 14
+    """The stat modifies the punch through of the weapon the riven is on."""
     puncture = 15
+    """The stat modifies the ``Element.puncture`` damage of the weapon the riven is on."""
     reload_speed = 16
+    """The stat modifies the reload speed of the weapon the riven is on."""
     slash = 17
+    """The stat modifies the ``Element.slash`` damage of the weapon the riven is on."""
     status_chance = 18
+    """The stat modifies the status chance of the weapon the riven is on."""
     status_duration = 19
+    """The stat modifies the status duration of the weapon the riven is on."""
     toxin = 20
+    """The stat modifies the ``Element.toxin`` damage of the weapon the riven is on."""
     weapon_recoil = 21
+    """The stat modifies the weapon recoil of the weapon the riven is on."""
     initial_combo = 22
+    """The stat modifies the initial combo of the weapon the riven is on."""
     range = 23
+    """The stat modifies the range of the weapon the riven is on."""
     chance_to_gain_extra_combo_count = 24
+    """The stat modifies the chance for the weapon to gain an extra combo count on a hit."""
     combo_duration = 25
+    """The stat modifies the duration of the combo of the weapon the riven is on."""
     critical_chance_on_slide_attack = 26
+    """The stat modifies the critical chance on a slide attack of the weapon the riven is on."""
     finisher_damage = 27
+    """The stat modifies the finisher damage of the weapon the riven is on."""
     channeling_efficiency = 28
+    """The stat modifies the channeling efficiency (heavy attack efficiency) of the weapon the riven is on."""
     channeling_damage = 29
+    """The stat modifies the channeling damage (heavy attack damage) of the weapon the riven is on."""
 
     def __str__(self):
         # Some of these values have non-python-friendly names

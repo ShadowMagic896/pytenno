@@ -93,118 +93,382 @@
 <dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.auctions.</span></span><span class="sig-name descname"><span class="pre">AuctionEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimal_reputation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">winner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_price</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buyout_price</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimal_increment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_direct_sell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_bid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">updated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><span class="pre">Platform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">closed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_marked_for</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionMarking" title="pytenno.models.enums.AuctionMarking"><span class="pre">AuctionMarking</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marked_operation_for</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pytenno.models.auctions.RivenAuction" title="pytenno.models.auctions.RivenAuction"><span class="pre">RivenAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.LichAuction" title="pytenno.models.auctions.LichAuction"><span class="pre">LichAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.KubrowAuction" title="pytenno.models.auctions.KubrowAuction"><span class="pre">KubrowAuction</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#AuctionEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry" title="Permalink to this definition"></a></dt>
 <dd><p>Represents an auction entry.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the auction entry.</p></li>
-<li><p><strong>minimum_reputation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The minimum reputation required to bid on the auction.</p></li>
-<li><p><strong>winner</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The ID of the user who won the auction.</p></li>
-<li><p><strong>private</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is private.</p></li>
-<li><p><strong>visible</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is visible to others.</p></li>
-<li><p><strong>note_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The raw note of the auction.</p></li>
-<li><p><strong>note</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The formatted note of the auction.  This is safe to include in HTML.</p></li>
-<li><p><strong>owner</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the user who owns the auction.</p></li>
-<li><p><strong>starting_price</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The starting price of the auction.</p></li>
-<li><p><strong>buyout_price</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> , </em><em>optional</em>) – The buyout price of the auction. If set to None, the auction cannot be bought out.</p></li>
-<li><p><strong>minimal_increment</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The minimal increment of the auction. If set to None, the auction has no minimal increment.</p></li>
-<li><p><strong>is_direct_sell</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is a direct sell. Shortcut for <code class="docutils literal notranslate"><span class="pre">starting_price</span> <span class="pre">==</span> <span class="pre">buyout_price</span></code>.</p></li>
-<li><p><strong>top_bid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> , </em><em>optional</em>) – The top bid of the auction. If set to None, the auction has not been bid on yet.</p></li>
-<li><p><strong>created</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a>) – The time the auction was created.</p></li>
-<li><p><strong>updated</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a>) – The time the auction was last updated. Bids count as updates.</p></li>
-<li><p><strong>platform</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><em>Platform</em></a>) – The platform the auction was created on.</p></li>
-<li><p><strong>closed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is closed.</p></li>
-<li><p><strong>is_marked_for</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.AuctionMarking" title="pytenno.models.enums.AuctionMarking"><em>AuctionMarking</em></a><em> , </em><em>optional</em>) – The action that will be executed on <code class="docutils literal notranslate"><span class="pre">marked_operation_at</span></code>.</p></li>
-<li><p><strong>marked_operation_at</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a><em> , </em><em>optional</em>) – The time that the auction will be deleted / archived.</p></li>
-<li><p><strong>item</strong> (<a class="reference internal" href="#pytenno.models.auctions.RivenAuction" title="pytenno.models.auctions.RivenAuction"><em>RivenAuction</em></a><em> | </em><a class="reference internal" href="#pytenno.models.auctions.LichAuction" title="pytenno.models.auctions.LichAuction"><em>LichAuction</em></a><em> | </em><a class="reference internal" href="#pytenno.models.auctions.KubrowAuction" title="pytenno.models.auctions.KubrowAuction"><em>KubrowAuction</em></a>) – The item being bid upon.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.buyout_price">
+<span class="sig-name descname"><span class="pre">buyout_price</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.buyout_price" title="Permalink to this definition"></a></dt>
+<dd><p>The buyout price of the auction, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.closed">
+<span class="sig-name descname"><span class="pre">closed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.closed" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is closed or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.created">
+<span class="sig-name descname"><span class="pre">created</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.created" title="Permalink to this definition"></a></dt>
+<dd><p>The date and time the auction was created.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.id" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the auction entry.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.is_direct_sell">
+<span class="sig-name descname"><span class="pre">is_direct_sell</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.is_direct_sell" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is a direct sell or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.is_marked_for">
+<span class="sig-name descname"><span class="pre">is_marked_for</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionMarking" title="pytenno.models.enums.AuctionMarking"><span class="pre">pytenno.models.enums.AuctionMarking</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.is_marked_for" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is marked for a specific action.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.item">
+<span class="sig-name descname"><span class="pre">item</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pytenno.models.auctions.RivenAuction" title="pytenno.models.auctions.RivenAuction"><span class="pre">RivenAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.LichAuction" title="pytenno.models.auctions.LichAuction"><span class="pre">LichAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.KubrowAuction" title="pytenno.models.auctions.KubrowAuction"><span class="pre">KubrowAuction</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.item" title="Permalink to this definition"></a></dt>
+<dd><p>The item of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.marked_operation_for">
+<span class="sig-name descname"><span class="pre">marked_operation_for</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime.datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.marked_operation_for" title="Permalink to this definition"></a></dt>
+<dd><p>The time when the auction was marked for a specific operation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.minimal_increment">
+<span class="sig-name descname"><span class="pre">minimal_increment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.minimal_increment" title="Permalink to this definition"></a></dt>
+<dd><p>The minimal increment for bids, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.minimal_reputation">
+<span class="sig-name descname"><span class="pre">minimal_reputation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.minimal_reputation" title="Permalink to this definition"></a></dt>
+<dd><p>The minimal reputation required to bid on the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.note">
+<span class="sig-name descname"><span class="pre">note</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.note" title="Permalink to this definition"></a></dt>
+<dd><p>The note of the auction entry.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.note_raw">
+<span class="sig-name descname"><span class="pre">note_raw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.note_raw" title="Permalink to this definition"></a></dt>
+<dd><p>The raw note of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.owner">
+<span class="sig-name descname"><span class="pre">owner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.owner" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the owner of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.platform">
+<span class="sig-name descname"><span class="pre">platform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><span class="pre">Platform</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.platform" title="Permalink to this definition"></a></dt>
+<dd><p>The platform the auction is on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.private">
+<span class="sig-name descname"><span class="pre">private</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.private" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is private or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.starting_price">
+<span class="sig-name descname"><span class="pre">starting_price</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.starting_price" title="Permalink to this definition"></a></dt>
+<dd><p>The starting price of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.top_bid">
+<span class="sig-name descname"><span class="pre">top_bid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.top_bid" title="Permalink to this definition"></a></dt>
+<dd><p>The highest bid on the auction, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.updated">
+<span class="sig-name descname"><span class="pre">updated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.updated" title="Permalink to this definition"></a></dt>
+<dd><p>The date and time the auction entry was created.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.visible" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is visible or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntry.winner">
+<span class="sig-name descname"><span class="pre">winner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntry.winner" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the winner of the auction, if any.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.auctions.</span></span><span class="sig-name descname"><span class="pre">AuctionEntryExpanded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">owner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="users.html#pytenno.models.users.UserShort" title="pytenno.models.users.UserShort"><span class="pre">UserShort</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimal_reputation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">winner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">visible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_price</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buyout_price</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimal_increment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_direct_sell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_bid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">updated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">platform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><span class="pre">Platform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">closed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_marked_for</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionMarking" title="pytenno.models.enums.AuctionMarking"><span class="pre">AuctionMarking</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marked_operation_for</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pytenno.models.auctions.RivenAuction" title="pytenno.models.auctions.RivenAuction"><span class="pre">RivenAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.LichAuction" title="pytenno.models.auctions.LichAuction"><span class="pre">LichAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.KubrowAuction" title="pytenno.models.auctions.KubrowAuction"><span class="pre">KubrowAuction</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#AuctionEntryExpanded"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded" title="Permalink to this definition"></a></dt>
 <dd><p>Same as <cite>AuctionEntry</cite>, but with a full user model for <code class="docutils literal notranslate"><span class="pre">.owner</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the auction entry.</p></li>
-<li><p><strong>minimum_reputation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The minimum reputation required to bid on the auction.</p></li>
-<li><p><strong>winner</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The ID of the user who won the auction.</p></li>
-<li><p><strong>private</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is private.</p></li>
-<li><p><strong>visible</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is visible to others.</p></li>
-<li><p><strong>note_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The raw note of the auction.</p></li>
-<li><p><strong>note</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The formatted note of the auction.  This is safe to include in HTML.</p></li>
-<li><p><strong>owner</strong> (<a class="reference internal" href="users.html#pytenno.models.users.UserShort" title="pytenno.models.users.UserShort"><em>UserShort</em></a>) – The ID of the user who owns the auction.</p></li>
-<li><p><strong>starting_price</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The starting price of the auction.</p></li>
-<li><p><strong>buyout_price</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> , </em><em>optional</em>) – The buyout price of the auction. If set to None, the auction cannot be bought out.</p></li>
-<li><p><strong>minimal_increment</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The minimal increment of the auction. If set to None, the auction has no minimal increment.</p></li>
-<li><p><strong>is_direct_sell</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is a direct sell. Shortcut for <code class="docutils literal notranslate"><span class="pre">starting_price</span> <span class="pre">==</span> <span class="pre">buyout_price</span></code>.</p></li>
-<li><p><strong>top_bid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> , </em><em>optional</em>) – The top bid of the auction. If set to None, the auction has not been bid on yet.</p></li>
-<li><p><strong>created</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a>) – The time the auction was created.</p></li>
-<li><p><strong>updated</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a>) – The time the auction was last updated. Bids count as updates.</p></li>
-<li><p><strong>platform</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><em>Platform</em></a>) – The platform the auction was created on.</p></li>
-<li><p><strong>closed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the auction is closed.</p></li>
-<li><p><strong>is_marked_for</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.AuctionMarking" title="pytenno.models.enums.AuctionMarking"><em>AuctionMarking</em></a><em> , </em><em>optional</em>) – The action that will be executed on <code class="docutils literal notranslate"><span class="pre">marked_operation_at</span></code>.</p></li>
-<li><p><strong>marked_operation_at</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a><em> , </em><em>optional</em>) – The time that the auction will be deleted / archived.</p></li>
-<li><p><strong>item</strong> (<a class="reference internal" href="#pytenno.models.auctions.RivenAuction" title="pytenno.models.auctions.RivenAuction"><em>RivenAuction</em></a><em> | </em><a class="reference internal" href="#pytenno.models.auctions.LichAuction" title="pytenno.models.auctions.LichAuction"><em>LichAuction</em></a><em> | </em><a class="reference internal" href="#pytenno.models.auctions.KubrowAuction" title="pytenno.models.auctions.KubrowAuction"><em>KubrowAuction</em></a>) – The item being bid upon.</p></li>
-<li><p><strong>owner</strong> – The owner of the auction.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.buyout_price">
+<span class="sig-name descname"><span class="pre">buyout_price</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.buyout_price" title="Permalink to this definition"></a></dt>
+<dd><p>The buyout price of the auction, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.closed">
+<span class="sig-name descname"><span class="pre">closed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.closed" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is closed or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.created">
+<span class="sig-name descname"><span class="pre">created</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.created" title="Permalink to this definition"></a></dt>
+<dd><p>The date and time the auction was created.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.from_data">
+<span class="sig-name descname"><span class="pre">from_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#AuctionEntryExpanded.from_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.from_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.id" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the auction entry.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.is_direct_sell">
+<span class="sig-name descname"><span class="pre">is_direct_sell</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.is_direct_sell" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is a direct sell or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.is_marked_for">
+<span class="sig-name descname"><span class="pre">is_marked_for</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionMarking" title="pytenno.models.enums.AuctionMarking"><span class="pre">pytenno.models.enums.AuctionMarking</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.is_marked_for" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is marked for a specific action.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.item">
+<span class="sig-name descname"><span class="pre">item</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pytenno.models.auctions.RivenAuction" title="pytenno.models.auctions.RivenAuction"><span class="pre">RivenAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.LichAuction" title="pytenno.models.auctions.LichAuction"><span class="pre">LichAuction</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pytenno.models.auctions.KubrowAuction" title="pytenno.models.auctions.KubrowAuction"><span class="pre">KubrowAuction</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.item" title="Permalink to this definition"></a></dt>
+<dd><p>The item of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.marked_operation_for">
+<span class="sig-name descname"><span class="pre">marked_operation_for</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime.datetime</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.marked_operation_for" title="Permalink to this definition"></a></dt>
+<dd><p>The time when the auction was marked for a specific operation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.minimal_increment">
+<span class="sig-name descname"><span class="pre">minimal_increment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.minimal_increment" title="Permalink to this definition"></a></dt>
+<dd><p>The minimal increment for bids, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.minimal_reputation">
+<span class="sig-name descname"><span class="pre">minimal_reputation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.minimal_reputation" title="Permalink to this definition"></a></dt>
+<dd><p>The minimal reputation required to bid on the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.note">
+<span class="sig-name descname"><span class="pre">note</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.note" title="Permalink to this definition"></a></dt>
+<dd><p>The note of the auction entry.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.note_raw">
+<span class="sig-name descname"><span class="pre">note_raw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.note_raw" title="Permalink to this definition"></a></dt>
+<dd><p>The raw note of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.owner">
+<span class="sig-name descname"><span class="pre">owner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="users.html#pytenno.models.users.UserShort" title="pytenno.models.users.UserShort"><span class="pre">UserShort</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.owner" title="Permalink to this definition"></a></dt>
+<dd><p>The owner of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.platform">
+<span class="sig-name descname"><span class="pre">platform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><span class="pre">Platform</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.platform" title="Permalink to this definition"></a></dt>
+<dd><p>The platform the auction is on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.private">
+<span class="sig-name descname"><span class="pre">private</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.private" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is private or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.starting_price">
+<span class="sig-name descname"><span class="pre">starting_price</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.starting_price" title="Permalink to this definition"></a></dt>
+<dd><p>The starting price of the auction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.top_bid">
+<span class="sig-name descname"><span class="pre">top_bid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.top_bid" title="Permalink to this definition"></a></dt>
+<dd><p>The highest bid on the auction, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.updated">
+<span class="sig-name descname"><span class="pre">updated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.updated" title="Permalink to this definition"></a></dt>
+<dd><p>The date and time the auction entry was created.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.visible" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the auction is visible or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.AuctionEntryExpanded.winner">
+<span class="sig-name descname"><span class="pre">winner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.AuctionEntryExpanded.winner" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the winner of the auction, if any.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.auctions.KubrowAuction">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.auctions.</span></span><span class="sig-name descname"><span class="pre">KubrowAuction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><span class="pre">AuctionType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#KubrowAuction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.KubrowAuction" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a kubrow auction.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>type</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><em>AuctionType</em></a>) – The type of the auction. In this case, <code class="docutils literal notranslate"><span class="pre">kubrow</span></code>.</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the kubrow.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.KubrowAuction.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.KubrowAuction.name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the kubrow.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.KubrowAuction.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><span class="pre">AuctionType</span></a></em><a class="headerlink" href="#pytenno.models.auctions.KubrowAuction.type" title="Permalink to this definition"></a></dt>
+<dd><p>The type of the auction. In this case, <code class="docutils literal notranslate"><span class="pre">kubrow</span></code>.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.auctions.</span></span><span class="sig-name descname"><span class="pre">LichAuction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><span class="pre">AuctionType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">weapon_url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Element" title="pytenno.models.enums.Element"><span class="pre">Element</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">damage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">having_ephemera</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quirk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#LichAuction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.LichAuction" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a lich auction.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>type</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><em>AuctionType</em></a>) – The type of the auction. In this case, <code class="docutils literal notranslate"><span class="pre">lich</span></code>.</p></li>
-<li><p><strong>weapon_url</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL of the weapon.</p></li>
-<li><p><strong>element</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Element" title="pytenno.models.enums.Element"><em>Element</em></a>) – The element of the weapon.</p></li>
-<li><p><strong>damage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The damage of the weapon.</p></li>
-<li><p><strong>having_ephemera</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether the weapon has an ephemera.</p></li>
-<li><p><strong>quirk</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The quirk of the lich.</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> , </em><em>optional</em>) – The name of the lich. Unused by the API.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.damage">
+<span class="sig-name descname"><span class="pre">damage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.damage" title="Permalink to this definition"></a></dt>
+<dd><p>The damage of the weapon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.element">
+<span class="sig-name descname"><span class="pre">element</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.Element" title="pytenno.models.enums.Element"><span class="pre">Element</span></a></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.element" title="Permalink to this definition"></a></dt>
+<dd><p>The element of the weapon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.having_ephemera">
+<span class="sig-name descname"><span class="pre">having_ephemera</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.having_ephemera" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the weapon has an ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the lich. Unused by the API.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.quirk">
+<span class="sig-name descname"><span class="pre">quirk</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.quirk" title="Permalink to this definition"></a></dt>
+<dd><p>The quirk of the lich, if any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><span class="pre">AuctionType</span></a></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.type" title="Permalink to this definition"></a></dt>
+<dd><p>The type of the auction. In this case, <code class="docutils literal notranslate"><span class="pre">lich</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.LichAuction.weapon_url_name">
+<span class="sig-name descname"><span class="pre">weapon_url_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.LichAuction.weapon_url_name" title="Permalink to this definition"></a></dt>
+<dd><p>The URL name of the weapon.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.auctions.</span></span><span class="sig-name descname"><span class="pre">RivenAuction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><span class="pre">AuctionType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rivens.html#pytenno.models.rivens.PartialRivenAttribute" title="pytenno.models.rivens.PartialRivenAttribute"><span class="pre">pytenno.models.rivens.PartialRivenAttribute</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mastery_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_rolls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">weapon_url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">polarity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Polarity" title="pytenno.models.enums.Polarity"><span class="pre">Polarity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod_rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#RivenAuction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.RivenAuction" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a riven auction.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>type</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><em>AuctionType</em></a>) – The type of the auction. In this case, <code class="docutils literal notranslate"><span class="pre">riven</span></code>.</p></li>
-<li><p><strong>attributes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference internal" href="rivens.html#pytenno.models.rivens.PartialRivenAttribute" title="pytenno.models.rivens.PartialRivenAttribute"><em>PartialRivenAttribute</em></a><em>]</em>) – The attributes of the riven.</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the riven.</p></li>
-<li><p><strong>mastery_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The mastery level of the riven.</p></li>
-<li><p><strong>re_rolls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The number of times the riven has been rerolled.</p></li>
-<li><p><strong>weapon_url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL of the weapon the riven is for.</p></li>
-<li><p><strong>polarity</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Polarity" title="pytenno.models.enums.Polarity"><em>Polarity</em></a>) – The polarity of the riven.</p></li>
-<li><p><strong>mod_rank</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The rank of the riven.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rivens.html#pytenno.models.rivens.PartialRivenAttribute" title="pytenno.models.rivens.PartialRivenAttribute"><span class="pre">pytenno.models.rivens.PartialRivenAttribute</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.attributes" title="Permalink to this definition"></a></dt>
+<dd><p>The attributes of the riven.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.from_data">
+<span class="sig-name descname"><span class="pre">from_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/auctions.html#RivenAuction.from_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.from_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.mastery_level">
+<span class="sig-name descname"><span class="pre">mastery_level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.mastery_level" title="Permalink to this definition"></a></dt>
+<dd><p>The mastery level of the riven.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.mod_rank">
+<span class="sig-name descname"><span class="pre">mod_rank</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.mod_rank" title="Permalink to this definition"></a></dt>
+<dd><p>The rank of the riven.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the riven.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.polarity">
+<span class="sig-name descname"><span class="pre">polarity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.Polarity" title="pytenno.models.enums.Polarity"><span class="pre">Polarity</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.polarity" title="Permalink to this definition"></a></dt>
+<dd><p>The polarity of the riven.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.re_rolls">
+<span class="sig-name descname"><span class="pre">re_rolls</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.re_rolls" title="Permalink to this definition"></a></dt>
+<dd><p>The number of times the riven has been rerolled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.AuctionType" title="pytenno.models.enums.AuctionType"><span class="pre">AuctionType</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.type" title="Permalink to this definition"></a></dt>
+<dd><p>The type of the auction. In this case, <code class="docutils literal notranslate"><span class="pre">riven</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.auctions.RivenAuction.weapon_url_name">
+<span class="sig-name descname"><span class="pre">weapon_url_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.auctions.RivenAuction.weapon_url_name" title="Permalink to this definition"></a></dt>
+<dd><p>The URL of the weapon the riven is for.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>

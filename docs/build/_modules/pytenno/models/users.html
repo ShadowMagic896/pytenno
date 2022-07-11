@@ -94,50 +94,28 @@
 
 <div class="viewcode-block" id="PatreonProfile"><a class="viewcode-back" href="../../../models/users.html#pytenno.models.users.PatreonProfile">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PatreonProfile</span><span class="p">:</span>
-
-    <span class="sd">&quot;&quot;&quot;Represents a Patreon profile.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    patreon_founder : bool</span>
-<span class="sd">        Whether the user is a Patreon founder.</span>
-
-<span class="sd">    subscription : bool</span>
-<span class="sd">        Whether the user is a Patreon subscriber.</span>
-
-<span class="sd">    patreon_badge : PatreonBadge , optional</span>
-<span class="sd">        The Patreon badge of the user.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a Patreon profile.&quot;&quot;&quot;</span>
 
     <span class="n">patreon_founder</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user is a Patreon founder.&quot;&quot;&quot;</span>
     <span class="n">subscription</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">patreon_badge</span><span class="p">:</span> <span class="n">PatreonBadge</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="sd">&quot;&quot;&quot;Whether the user is a Patreon subscriber.&quot;&quot;&quot;</span>
+    <span class="n">patreon_badge</span><span class="p">:</span> <span class="n">PatreonBadge</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The Patreon badge of the user, if any.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="BaseUser"><a class="viewcode-back" href="../../../models/users.html#pytenno.models.users.BaseUser">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">BaseUser</span><span class="p">:</span>
-
-    <span class="sd">&quot;&quot;&quot;Base class that other user classes inherit from.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the user.</span>
-
-<span class="sd">    ingame_name : str</span>
-<span class="sd">        The ingame name of the user.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the user is on.</span>
-
-<span class="sd">    avatar : str , optional</span>
-<span class="sd">        The URL of the user&#39;s avatar.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Base class that other user classes inherit from.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the user.&quot;&quot;&quot;</span>
     <span class="n">ingame_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ingame name of the user.&quot;&quot;&quot;</span>
     <span class="n">region</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The region the user is on.&quot;&quot;&quot;</span>
     <span class="n">avatar</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the user&#39;s avatar, if any.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;User id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> ingame_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ingame_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
@@ -145,145 +123,70 @@
 
 <div class="viewcode-block" id="LinkedProfiles"><a class="viewcode-back" href="../../../models/users.html#pytenno.models.users.LinkedProfiles">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">LinkedProfiles</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a user&#39;s linked profiles.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    discord_profile : bool</span>
-<span class="sd">        Whether the user has a Discord profile linked to their warframe.market profile.</span>
-
-<span class="sd">    patreon_profile : bool</span>
-<span class="sd">        Whether the user has a Patreon profile linked to their warframe.market profile.</span>
-
-<span class="sd">    xbox_profile : bool</span>
-<span class="sd">        Whether the user has a Xbox profile linked to their warframe.market profile.</span>
-
-<span class="sd">    steam_profile : bool</span>
-<span class="sd">        Whether the user has a Steam profile linked to their warframe.market profile.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a user&#39;s linked profiles.&quot;&quot;&quot;</span>
 
     <span class="n">discord_profile</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user has a Discord profile linked to their warframe.market profile.&quot;&quot;&quot;</span>
     <span class="n">patreon_profile</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user has a Patreon profile linked to their warframe.market profile.&quot;&quot;&quot;</span>
     <span class="n">xbox_profile</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">steam_profile</span><span class="p">:</span> <span class="nb">bool</span></div>
+    <span class="sd">&quot;&quot;&quot;Whether the user has a Xbox profile linked to their warframe.market profile.&quot;&quot;&quot;</span>
+    <span class="n">steam_profile</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user has a Steam profile linked to their warframe.market profile.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="CurrentUser"><a class="viewcode-back" href="../../../models/users.html#pytenno.models.users.CurrentUser">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">CurrentUser</span><span class="p">(</span><span class="n">BaseUser</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Represents the current user. This is the user that is logged in.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the user.</span>
-
-<span class="sd">    ingame_name : str</span>
-<span class="sd">        The ingame name of the user.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the user is on.</span>
-
-<span class="sd">    avatar : str , optional</span>
-<span class="sd">        The URL of the user&#39;s avatar.</span>
-
-<span class="sd">    anonymous : bool</span>
-<span class="sd">        Whether the user is anonymous.</span>
-
-<span class="sd">    verification : bool</span>
-<span class="sd">        Whether the user is verified.</span>
-
-<span class="sd">    check_code : str</span>
-<span class="sd">        The check code of the user.</span>
-
-<span class="sd">    role : UserRole</span>
-<span class="sd">        The role of the user.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform of the user.</span>
-
-<span class="sd">    banned : bool</span>
-<span class="sd">        Whether the user is banned.</span>
-
-<span class="sd">    ban_reason : str , optional</span>
-<span class="sd">        The reason the user is banned. If None, the user is not banned.</span>
-
-<span class="sd">    background : str , optional</span>
-<span class="sd">        The URL of the user&#39;s background. If None, the user has no background.</span>
-
-<span class="sd">    has_mail : bool</span>
-<span class="sd">        Whether the user has unread mail.</span>
-
-<span class="sd">    reputation : int</span>
-<span class="sd">        The reputation of the user.</span>
-
-<span class="sd">    linked_accounts : LinkedProfiles</span>
-<span class="sd">        The linked accounts of the user.</span>
-
-<span class="sd">    patreon_profile : PatreonProfile</span>
-<span class="sd">        The Patreon profile of the user.</span>
-
-<span class="sd">    written_reviews : int</span>
-<span class="sd">        The number of reviews the user has written today.</span>
-
-<span class="sd">    unread_messages : int</span>
-<span class="sd">        The number of unread messages the user has.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents the current user. This is the user that is logged in.&quot;&quot;&quot;</span>
 
     <span class="n">anonymous</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user is anonymous.&quot;&quot;&quot;</span>
     <span class="n">verification</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user is verified.&quot;&quot;&quot;</span>
     <span class="n">check_code</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The check / verification code of the user.&quot;&quot;&quot;</span>
     <span class="n">role</span><span class="p">:</span> <span class="n">UserRole</span>
+    <span class="sd">&quot;&quot;&quot;The role of the user.&quot;&quot;&quot;</span>
     <span class="n">platform</span><span class="p">:</span> <span class="n">Platform</span>
+    <span class="sd">&quot;&quot;&quot;The platform of the user.&quot;&quot;&quot;</span>
     <span class="n">banned</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user is banned.&quot;&quot;&quot;</span>
     <span class="n">ban_reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The reason the user is banned. If None, the user is not banned.&quot;&quot;&quot;</span>
     <span class="n">background</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the user&#39;s background. If None, the user has no background.&quot;&quot;&quot;</span>
     <span class="n">has_mail</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the user has unread mail.&quot;&quot;&quot;</span>
     <span class="n">reputation</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The reputation of the user.&quot;&quot;&quot;</span>
     <span class="n">linked_accounts</span><span class="p">:</span> <span class="n">LinkedProfiles</span>
+    <span class="sd">&quot;&quot;&quot;The linked accounts of the user.&quot;&quot;&quot;</span>
     <span class="n">patreon_profile</span><span class="p">:</span> <span class="n">PatreonProfile</span>
+    <span class="sd">&quot;&quot;&quot;The Patreon profile of the user.&quot;&quot;&quot;</span>
     <span class="n">written_reviews</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The number of reviews the user has written today.&quot;&quot;&quot;</span>
     <span class="n">unread_messages</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The number of unread messages the user has.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<div class="viewcode-block" id="CurrentUser.from_data"><a class="viewcode-back" href="../../../models/users.html#pytenno.models.users.CurrentUser.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">CurrentUser</span><span class="p">(</span>
             <span class="c1"># file deepcode ignore WrongNumberOfArguments</span>
             <span class="n">patreon_profile</span><span class="o">=</span><span class="n">from_data</span><span class="p">(</span><span class="n">PatreonProfile</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;patreon_profile&quot;</span><span class="p">)),</span>
             <span class="n">linked_accounts</span><span class="o">=</span><span class="n">LinkedProfiles</span><span class="p">(</span><span class="o">**</span><span class="n">node</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;linked_accounts&quot;</span><span class="p">)),</span>
             <span class="o">**</span><span class="n">node</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="UserShort"><a class="viewcode-back" href="../../../models/users.html#pytenno.models.users.UserShort">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">UserShort</span><span class="p">(</span><span class="n">BaseUser</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Represents a user.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the user.</span>
-
-<span class="sd">    ingame_name : str</span>
-<span class="sd">        The ingame name of the user.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the user is on.</span>
-
-<span class="sd">    avatar : str , optional</span>
-<span class="sd">        The URL of the user&#39;s avatar.</span>
-
-<span class="sd">    status : UserStatus</span>
-<span class="sd">        The status of the user.</span>
-
-<span class="sd">    reputation : int</span>
-<span class="sd">        The reputation of the user.</span>
-
-<span class="sd">    last_seen : datetime.datetime , optional</span>
-<span class="sd">        The last time the user was seen. If None, the user has not been seen.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a user.&quot;&quot;&quot;</span>
 
     <span class="n">status</span><span class="p">:</span> <span class="n">UserStatus</span>
+    <span class="sd">&quot;&quot;&quot;The status of the user.&quot;&quot;&quot;</span>
     <span class="n">reputation</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">last_seen</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span></div>
+    <span class="sd">&quot;&quot;&quot;The reputation of the user.&quot;&quot;&quot;</span>
+    <span class="n">last_seen</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The last time the user was seen. If None, the user has not been seen.&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>

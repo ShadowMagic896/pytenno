@@ -93,57 +93,138 @@
 <dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.liches.</span></span><span class="sig-name descname"><span class="pre">LichEphemera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><span class="pre">IconFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">thumb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.AnimationFormat" title="pytenno.models.enums.AnimationFormat"><span class="pre">AnimationFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.Element" title="pytenno.models.enums.Element"><span class="pre">Element</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/liches.html#LichEphemera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.liches.LichEphemera" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a lich ephemera.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the ephemera.</p></li>
-<li><p><strong>url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL name of the ephemera.</p></li>
-<li><p><strong>icon</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The icon URL of the ephemera.</p></li>
-<li><p><strong>icon_format</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><em>IconFormat</em></a>) – The format of the ephemera’s icon.</p></li>
-<li><p><strong>thumb</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The thumbnail URL of the ephemera.</p></li>
-<li><p><strong>animation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The animation URL of the ephemera.</p></li>
-<li><p><strong>animation_format</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.AnimationFormat" title="pytenno.models.enums.AnimationFormat"><em>AnimationFormat</em></a>) – The format of the ephemera’s animation.</p></li>
-<li><p><strong>element</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.Element" title="pytenno.models.enums.Element"><em>Element</em></a>) – The element of the ephemera.</p></li>
-<li><p><strong>item_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the ephemera.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.animation">
+<span class="sig-name descname"><span class="pre">animation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.animation" title="Permalink to this definition"></a></dt>
+<dd><p>The animation URL of the ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.animation_format">
+<span class="sig-name descname"><span class="pre">animation_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.AnimationFormat" title="pytenno.models.enums.AnimationFormat"><span class="pre">AnimationFormat</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.animation_format" title="Permalink to this definition"></a></dt>
+<dd><p>The format of the ephemera’s animation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.element">
+<span class="sig-name descname"><span class="pre">element</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.Element" title="pytenno.models.enums.Element"><span class="pre">Element</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.element" title="Permalink to this definition"></a></dt>
+<dd><p>The element of the ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.icon">
+<span class="sig-name descname"><span class="pre">icon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.icon" title="Permalink to this definition"></a></dt>
+<dd><p>The icon URL of the ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.icon_format">
+<span class="sig-name descname"><span class="pre">icon_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><span class="pre">IconFormat</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.icon_format" title="Permalink to this definition"></a></dt>
+<dd><p>The format of the ephemera’s icon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.id" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.item_name">
+<span class="sig-name descname"><span class="pre">item_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.item_name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.thumb">
+<span class="sig-name descname"><span class="pre">thumb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.thumb" title="Permalink to this definition"></a></dt>
+<dd><p>The thumbnail URL of the ephemera.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichEphemera.url_name">
+<span class="sig-name descname"><span class="pre">url_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichEphemera.url_name" title="Permalink to this definition"></a></dt>
+<dd><p>The URL name of the ephemera.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.liches.LichQuirk">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.liches.</span></span><span class="sig-name descname"><span class="pre">LichQuirk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/liches.html#LichQuirk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.liches.LichQuirk" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a lich quirk.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the quirk.</p></li>
-<li><p><strong>url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL name of the quirk.</p></li>
-<li><p><strong>item_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the quirk.</p></li>
-<li><p><strong>description</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The description of the quirk.</p></li>
-<li><p><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The group of the quirk. Does not belong to any specific enum</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichQuirk.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichQuirk.description" title="Permalink to this definition"></a></dt>
+<dd><p>The description of the quirk.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichQuirk.group">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichQuirk.group" title="Permalink to this definition"></a></dt>
+<dd><p>The group of the quirk. Does not belong to any specific enum</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichQuirk.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichQuirk.id" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the quirk.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichQuirk.item_name">
+<span class="sig-name descname"><span class="pre">item_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichQuirk.item_name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the quirk.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichQuirk.url_name">
+<span class="sig-name descname"><span class="pre">url_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichQuirk.url_name" title="Permalink to this definition"></a></dt>
+<dd><p>The URL name of the quirk.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.liches.</span></span><span class="sig-name descname"><span class="pre">LichWeapon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><span class="pre">IconFormat</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">thumb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/liches.html#LichWeapon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.liches.LichWeapon" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a lich weapon.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the weapon.</p></li>
-<li><p><strong>url_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The URL name of the weapon.</p></li>
-<li><p><strong>icon</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The icon URL of the weapon.</p></li>
-<li><p><strong>icon_format</strong> (<a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><em>IconFormat</em></a>) – The format of the weapon’s icon.</p></li>
-<li><p><strong>icon_format</strong> – The format of the weapon’s icon.</p></li>
-<li><p><strong>thumb</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The thumbnail URL of the weapon.</p></li>
-<li><p><strong>item_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The name of the weapon.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon.icon">
+<span class="sig-name descname"><span class="pre">icon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichWeapon.icon" title="Permalink to this definition"></a></dt>
+<dd><p>The icon URL of the weapon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon.icon_format">
+<span class="sig-name descname"><span class="pre">icon_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="enums.html#pytenno.models.enums.IconFormat" title="pytenno.models.enums.IconFormat"><span class="pre">IconFormat</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichWeapon.icon_format" title="Permalink to this definition"></a></dt>
+<dd><p>The format of the weapon’s icon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichWeapon.id" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the weapon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon.item_name">
+<span class="sig-name descname"><span class="pre">item_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichWeapon.item_name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the weapon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon.thumb">
+<span class="sig-name descname"><span class="pre">thumb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichWeapon.thumb" title="Permalink to this definition"></a></dt>
+<dd><p>The thumbnail URL of the weapon.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.liches.LichWeapon.url_name">
+<span class="sig-name descname"><span class="pre">url_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.liches.LichWeapon.url_name" title="Permalink to this definition"></a></dt>
+<dd><p>The URL name of the weapon.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>

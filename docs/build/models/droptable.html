@@ -93,33 +93,45 @@
 <dt class="sig sig-object py" id="pytenno.models.droptable.Drop">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.droptable.</span></span><span class="sig-name descname"><span class="pre">Drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/droptable.html#Drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.droptable.Drop" title="Permalink to this definition"></a></dt>
 <dd><p>Represents an item’s drop.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The translated name of the location / item.</p></li>
-<li><p><strong>link</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Link to the internal or extarnal source with information about that location.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.droptable.Drop.link">
+<span class="sig-name descname"><span class="pre">link</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.droptable.Drop.link" title="Permalink to this definition"></a></dt>
+<dd><p>Link to the internal or extarnal source with information about that location.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.droptable.Drop.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.droptable.Drop.name" title="Permalink to this definition"></a></dt>
+<dd><p>The translated name of the location / item.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.models.droptable.DropTable">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.droptable.</span></span><span class="sig-name descname"><span class="pre">DropTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">missions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableMission" title="pytenno.models.missions.DroptableMission"><span class="pre">pytenno.models.missions.DroptableMission</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableRelic" title="pytenno.models.missions.DroptableRelic"><span class="pre">pytenno.models.missions.DroptableRelic</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableNPC" title="pytenno.models.missions.DroptableNPC"><span class="pre">pytenno.models.missions.DroptableNPC</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/droptable.html#DropTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.droptable.DropTable" title="Permalink to this definition"></a></dt>
 <dd><p>Represents an item’s drop table.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>missions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableMission" title="pytenno.models.missions.DroptableMission"><em>DroptableMission</em></a><em>]</em>) – The missions where the item can be found.</p></li>
-<li><p><strong>relics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableRelic" title="pytenno.models.missions.DroptableRelic"><em>DroptableRelic</em></a><em>]</em>) – The relic in which parts for the item can be found.</p></li>
-<li><p><strong>npc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableNPC" title="pytenno.models.missions.DroptableNPC"><em>DroptableNPC</em></a><em>]</em>) – The NPCs where the item can be found.</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pytenno.models.droptable.DropTable.from_data">
 <span class="sig-name descname"><span class="pre">from_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/droptable.html#DropTable.from_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.droptable.DropTable.from_data" title="Permalink to this definition"></a></dt>
-<dd><p>Creates a DropTable from a dictionary. For internal use, please use <cite>pytenno.utils.from_data</cite> instead.</p>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.droptable.DropTable.missions">
+<span class="sig-name descname"><span class="pre">missions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableMission" title="pytenno.models.missions.DroptableMission"><span class="pre">pytenno.models.missions.DroptableMission</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytenno.models.droptable.DropTable.missions" title="Permalink to this definition"></a></dt>
+<dd><p>The missions where the item can be found.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.droptable.DropTable.npc">
+<span class="sig-name descname"><span class="pre">npc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableNPC" title="pytenno.models.missions.DroptableNPC"><span class="pre">pytenno.models.missions.DroptableNPC</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytenno.models.droptable.DropTable.npc" title="Permalink to this definition"></a></dt>
+<dd><p>The NPCs where the item can be found.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.droptable.DropTable.relics">
+<span class="sig-name descname"><span class="pre">relics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="missions.html#pytenno.models.missions.DroptableRelic" title="pytenno.models.missions.DroptableRelic"><span class="pre">pytenno.models.missions.DroptableRelic</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytenno.models.droptable.DropTable.relics" title="Permalink to this definition"></a></dt>
+<dd><p>The relic in which parts for the item can be found.</p>
 </dd></dl>
 
 </dd></dl>

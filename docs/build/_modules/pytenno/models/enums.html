@@ -88,8 +88,9 @@
 <span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
 
-<span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="Base"><a class="viewcode-back" href="../../../models/enums.html#pytenno.models.enums.Base">[docs]</a><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all enums.</span>
 <span class="sd">    :meta private:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -103,7 +104,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="RelicQuality"><a class="viewcode-back" href="../../../models/enums.html#pytenno.models.enums.RelicQuality">[docs]</a><span class="k">class</span> <span class="nc">RelicQuality</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
@@ -644,70 +645,7 @@
 
 <div class="viewcode-block" id="RivenStat"><a class="viewcode-back" href="../../../models/enums.html#pytenno.models.enums.RivenStat">[docs]</a><span class="k">class</span> <span class="nc">RivenStat</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Represents the stat of a riven attribute.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    ammo_maximum : int</span>
-<span class="sd">        The stat modifies the maximum ammo of the weapon the riven is on.</span>
-<span class="sd">    cold : int</span>
-<span class="sd">        The stat modifies the ``Element.cold`` damage of the weapon the riven is on.</span>
-<span class="sd">    critical_chance : int</span>
-<span class="sd">        The stat modifies the critical chance damage of the weapon the riven is on.</span>
-<span class="sd">    damage : int</span>
-<span class="sd">        The stat modifies the base damage of the weapon the riven is on.</span>
-<span class="sd">    damage_vs_corpus : int</span>
-<span class="sd">        The stat modifies the damage of the weapon the riven is on against the Corpus.</span>
-<span class="sd">    damage_vs_grineer : int</span>
-<span class="sd">        The stat modifies the damage of the weapon the riven is on against the Grineer.</span>
-<span class="sd">    damage_vs_infested : int</span>
-<span class="sd">        The stat modifies the damage of the weapon the riven is on against the Infested.</span>
-<span class="sd">    electricity : int</span>
-<span class="sd">        The stat modifies the ``Element.electricity`` damage of the weapon the riven is on.</span>
-<span class="sd">    fire_rate_attack_speed : int</span>
-<span class="sd">        The stat modifies the fire rate / attack speed of the weapon the riven is on.</span>
-<span class="sd">    heat : int</span>
-<span class="sd">        The stat modifies the ``Element.heat`` damage of the weapon the riven is on.</span>
-<span class="sd">    impact : int</span>
-<span class="sd">        The stat modifies the ``Element.impact`` damage of the weapon the riven is on.</span>
-<span class="sd">    magazine_capacity : int</span>
-<span class="sd">        The stat modifies the magazine capacity of the weapon the riven is on.</span>
-<span class="sd">    multishot : int</span>
-<span class="sd">        The stat modifies the multishot of the weapon the riven is on.</span>
-<span class="sd">    projectile_speed : int</span>
-<span class="sd">        The stat modifies the projectile speed of the weapon the riven is on.</span>
-<span class="sd">    punch_through : int</span>
-<span class="sd">        The stat modifies the punch through of the weapon the riven is on.</span>
-<span class="sd">    puncture : int</span>
-<span class="sd">        The stat modifies the ``Element.puncture`` damage of the weapon the riven is on.</span>
-<span class="sd">    reload_speed : int</span>
-<span class="sd">        The stat modifies the reload speed of the weapon the riven is on.</span>
-<span class="sd">    slash : int</span>
-<span class="sd">        The stat modifies the ``Element.slash`` damage of the weapon the riven is on.</span>
-<span class="sd">    status_chance : int</span>
-<span class="sd">        The stat modifies the status chance of the weapon the riven is on.</span>
-<span class="sd">    status_duration : int</span>
-<span class="sd">        The stat modifies the status duration of the weapon the riven is on.</span>
-<span class="sd">    toxin : int</span>
-<span class="sd">        The stat modifies the ``Element.toxin`` damage of the weapon the riven is on.</span>
-<span class="sd">    weapon_recoil : int</span>
-<span class="sd">        The stat modifies the weapon recoil of the weapon the riven is on.</span>
-<span class="sd">    initial_combo : int</span>
-<span class="sd">        The stat modifies the initial combo of the weapon the riven is on.</span>
-<span class="sd">    range : int</span>
-<span class="sd">        The stat modifies the range of the weapon the riven is on.</span>
-<span class="sd">    chance_to_gain_extra_combo_count : int</span>
-<span class="sd">        The stat modifies the chance for the weapon to gain an extra combo count on a hit.</span>
-<span class="sd">    combo_duration : int</span>
-<span class="sd">        The stat modifies the duration of the combo of the weapon the riven is on.</span>
-<span class="sd">    critical_chance_on_slide_attack : int</span>
-<span class="sd">        The stat modifies the critical chance on a slide attack of the weapon the riven is on.</span>
-<span class="sd">    finisher_damage : int</span>
-<span class="sd">        The stat modifies the finisher damage of the weapon the riven is on.</span>
-<span class="sd">    channeling_efficiency : int</span>
-<span class="sd">        The stat modifies the channeling efficiency (heavy attack efficiency) of the weapon the riven is on.</span>
-<span class="sd">    channeling_damage : int</span>
-<span class="sd">        The stat modifies the channeling damage (heavy attack damage) of the weapon the riven is on.</span>
-
+<span class="sd">    </span>
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The stat names do not always line up with the actual names in Warframe.</span>
@@ -718,35 +656,65 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ammo_maximum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the maximum ammo of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">cold</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.cold`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">critical_chance</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the critical chance damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">damage</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the base damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">damage_vs_corpus</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the damage of the weapon the riven is on against the Corpus.&quot;&quot;&quot;</span>
     <span class="n">damage_vs_grineer</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the damage of the weapon the riven is on against the Corpus.&quot;&quot;&quot;</span>
     <span class="n">damage_vs_infested</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the damage of the weapon the riven is on against the faction.&quot;&quot;&quot;</span>
     <span class="n">electricity</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.electricity`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">fire_rate_attack_speed</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the fire rate / attack speed of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">heat</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.heat`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">impact</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.impact`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">magazine_capacity</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the magazine capacity of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">multishot</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the multishot of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">projectile_speed</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the projectile speed of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">punch_through</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the punch through of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">puncture</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.puncture`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">reload_speed</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the reload speed of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">slash</span> <span class="o">=</span> <span class="mi">17</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.slash`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">status_chance</span> <span class="o">=</span> <span class="mi">18</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the status chance of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">status_duration</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the status duration of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">toxin</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the ``Element.toxin`` damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">weapon_recoil</span> <span class="o">=</span> <span class="mi">21</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the weapon recoil of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">initial_combo</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the initial combo of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="nb">range</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the range of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">chance_to_gain_extra_combo_count</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the chance for the weapon to gain an extra combo count on a hit.&quot;&quot;&quot;</span>
     <span class="n">combo_duration</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the duration of the combo of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">critical_chance_on_slide_attack</span> <span class="o">=</span> <span class="mi">26</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the critical chance on a slide attack of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">finisher_damage</span> <span class="o">=</span> <span class="mi">27</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the finisher damage of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">channeling_efficiency</span> <span class="o">=</span> <span class="mi">28</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the channeling efficiency (heavy attack efficiency) of the weapon the riven is on.&quot;&quot;&quot;</span>
     <span class="n">channeling_damage</span> <span class="o">=</span> <span class="mi">29</span>
+    <span class="sd">&quot;&quot;&quot;The stat modifies the channeling damage (heavy attack damage) of the weapon the riven is on.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Some of these values have non-python-friendly names</span>

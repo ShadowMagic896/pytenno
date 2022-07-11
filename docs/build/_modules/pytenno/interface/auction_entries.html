@@ -85,13 +85,17 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pytenno.interface.auction_entries</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.._backends.auction_entries</span> <span class="kn">import</span> <span class="n">AuctionEntriesBackend</span>
+<span></span><span class="sd">&quot;&quot;&quot;Module holding the AuctionEntries interface class.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">.._backends.auction_entries</span> <span class="kn">import</span> <span class="n">AuctionEntriesBackend</span>
 <span class="kn">from</span> <span class="nn">..models.auctions</span> <span class="kn">import</span> <span class="n">AuctionEntryExpanded</span>
 
 
 <div class="viewcode-block" id="AuctionEntries"><a class="viewcode-back" href="../../../interface/auction_entries.html#pytenno.interface.auction_entries.AuctionEntries">[docs]</a><span class="k">class</span> <span class="nc">AuctionEntries</span><span class="p">(</span><span class="n">AuctionEntriesBackend</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A class for getting information about auction entries by ID.&quot;&quot;&quot;</span>
-
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="n">AuctionEntriesBackend</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initializes the interface class. For internal use.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
+        
 <div class="viewcode-block" id="AuctionEntries.get_by_id"><a class="viewcode-back" href="../../../interface/auction_entries.html#pytenno.interface.auction_entries.AuctionEntries.get_by_id">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AuctionEntryExpanded</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Gets a specific auction entry by ID.</span>
 

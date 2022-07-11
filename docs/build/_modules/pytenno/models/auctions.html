@@ -97,166 +97,57 @@
 
 <div class="viewcode-block" id="AuctionEntry"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.AuctionEntry">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">AuctionEntry</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents an auction entry.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the auction entry.</span>
-
-<span class="sd">    minimum_reputation : int</span>
-<span class="sd">        The minimum reputation required to bid on the auction.</span>
-
-<span class="sd">    winner : str , optional</span>
-<span class="sd">        The ID of the user who won the auction.</span>
-
-<span class="sd">    private : bool</span>
-<span class="sd">        Whether the auction is private.</span>
-
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the auction is visible to others.</span>
-
-<span class="sd">    note_raw : str , optional</span>
-<span class="sd">        The raw note of the auction.</span>
-
-<span class="sd">    note : str , optional</span>
-<span class="sd">        The formatted note of the auction.  This is safe to include in HTML.</span>
-
-<span class="sd">    owner : str</span>
-<span class="sd">        The ID of the user who owns the auction.</span>
-
-<span class="sd">    starting_price : int</span>
-<span class="sd">        The starting price of the auction.</span>
-
-<span class="sd">    buyout_price : int , optional</span>
-<span class="sd">        The buyout price of the auction. If set to None, the auction cannot be bought out.</span>
-
-<span class="sd">    minimal_increment : int</span>
-<span class="sd">        The minimal increment of the auction. If set to None, the auction has no minimal increment.</span>
-
-<span class="sd">    is_direct_sell : bool</span>
-<span class="sd">        Whether the auction is a direct sell. Shortcut for ``starting_price == buyout_price``.</span>
-
-<span class="sd">    top_bid : int , optional</span>
-<span class="sd">        The top bid of the auction. If set to None, the auction has not been bid on yet.</span>
-
-<span class="sd">    created : datetime.datetime</span>
-<span class="sd">        The time the auction was created.</span>
-
-<span class="sd">    updated : datetime.datetime</span>
-<span class="sd">        The time the auction was last updated. Bids count as updates.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform the auction was created on.</span>
-
-<span class="sd">    closed : bool</span>
-<span class="sd">        Whether the auction is closed.</span>
-
-<span class="sd">    is_marked_for : AuctionMarking , optional</span>
-<span class="sd">        The action that will be executed on ``marked_operation_at``.</span>
-
-<span class="sd">    marked_operation_at : datetime.datetime , optional</span>
-<span class="sd">        The time that the auction will be deleted / archived.</span>
-
-<span class="sd">    item : RivenAuction | LichAuction | KubrowAuction</span>
-<span class="sd">        The item being bid upon.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents an auction entry.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the auction entry.&quot;&quot;&quot;</span>
     <span class="n">minimal_reputation</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The minimal reputation required to bid on the auction.&quot;&quot;&quot;</span>
     <span class="n">winner</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the winner of the auction, if any.&quot;&quot;&quot;</span>
     <span class="n">private</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the auction is private or not.&quot;&quot;&quot;</span>
     <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the auction is visible or not.&quot;&quot;&quot;</span>
     <span class="n">note_raw</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The raw note of the auction.&quot;&quot;&quot;</span>
     <span class="n">note</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The note of the auction entry.&quot;&quot;&quot;</span>
     <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the owner of the auction.&quot;&quot;&quot;</span>
     <span class="n">starting_price</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The starting price of the auction.&quot;&quot;&quot;</span>
     <span class="n">buyout_price</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The buyout price of the auction, if any.&quot;&quot;&quot;</span>
     <span class="n">minimal_increment</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The minimal increment for bids, if any.&quot;&quot;&quot;</span>
     <span class="n">is_direct_sell</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the auction is a direct sell or not.&quot;&quot;&quot;</span>
     <span class="n">top_bid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The highest bid on the auction, if any.&quot;&quot;&quot;</span>
     <span class="n">created</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="sd">&quot;&quot;&quot;The date and time the auction was created.&quot;&quot;&quot;</span>
     <span class="n">updated</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="sd">&quot;&quot;&quot;The date and time the auction entry was created.&quot;&quot;&quot;</span>
     <span class="n">platform</span><span class="p">:</span> <span class="n">Platform</span>
+    <span class="sd">&quot;&quot;&quot;The platform the auction is on.&quot;&quot;&quot;</span>
     <span class="n">closed</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the auction is closed or not.&quot;&quot;&quot;</span>
     <span class="n">is_marked_for</span><span class="p">:</span> <span class="n">AuctionMarking</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;Whether the auction is marked for a specific action.&quot;&quot;&quot;</span>
     <span class="n">marked_operation_for</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">item</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;RivenAuction&quot;</span><span class="p">,</span> <span class="s2">&quot;LichAuction&quot;</span><span class="p">,</span> <span class="s2">&quot;KubrowAuction&quot;</span><span class="p">]</span></div>
+    <span class="sd">&quot;&quot;&quot;The time when the auction was marked for a specific operation.&quot;&quot;&quot;</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;RivenAuction&quot;</span><span class="p">,</span> <span class="s2">&quot;LichAuction&quot;</span><span class="p">,</span> <span class="s2">&quot;KubrowAuction&quot;</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;The item of the auction.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="AuctionEntryExpanded"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.AuctionEntryExpanded">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">AuctionEntryExpanded</span><span class="p">(</span><span class="n">AuctionEntry</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Same as `AuctionEntry`, but with a full user model for ``.owner``</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the auction entry.</span>
-
-<span class="sd">    minimum_reputation : int</span>
-<span class="sd">        The minimum reputation required to bid on the auction.</span>
-
-<span class="sd">    winner : str , optional</span>
-<span class="sd">        The ID of the user who won the auction.</span>
-
-<span class="sd">    private : bool</span>
-<span class="sd">        Whether the auction is private.</span>
-
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the auction is visible to others.</span>
-
-<span class="sd">    note_raw : str , optional</span>
-<span class="sd">        The raw note of the auction.</span>
-
-<span class="sd">    note : str , optional</span>
-<span class="sd">        The formatted note of the auction.  This is safe to include in HTML.</span>
-
-<span class="sd">    owner : str</span>
-<span class="sd">        The ID of the user who owns the auction.</span>
-
-<span class="sd">    starting_price : int</span>
-<span class="sd">        The starting price of the auction.</span>
-
-<span class="sd">    buyout_price : int , optional</span>
-<span class="sd">        The buyout price of the auction. If set to None, the auction cannot be bought out.</span>
-
-<span class="sd">    minimal_increment : int</span>
-<span class="sd">        The minimal increment of the auction. If set to None, the auction has no minimal increment.</span>
-
-<span class="sd">    is_direct_sell : bool</span>
-<span class="sd">        Whether the auction is a direct sell. Shortcut for ``starting_price == buyout_price``.</span>
-
-<span class="sd">    top_bid : int , optional</span>
-<span class="sd">        The top bid of the auction. If set to None, the auction has not been bid on yet.</span>
-
-<span class="sd">    created : datetime.datetime</span>
-<span class="sd">        The time the auction was created.</span>
-
-<span class="sd">    updated : datetime.datetime</span>
-<span class="sd">        The time the auction was last updated. Bids count as updates.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform the auction was created on.</span>
-
-<span class="sd">    closed : bool</span>
-<span class="sd">        Whether the auction is closed.</span>
-
-<span class="sd">    is_marked_for : AuctionMarking , optional</span>
-<span class="sd">        The action that will be executed on ``marked_operation_at``.</span>
-
-<span class="sd">    marked_operation_at : datetime.datetime , optional</span>
-<span class="sd">        The time that the auction will be deleted / archived.</span>
-
-<span class="sd">    item : RivenAuction | LichAuction | KubrowAuction</span>
-<span class="sd">        The item being bid upon.</span>
-
-<span class="sd">    owner : UserShort</span>
-<span class="sd">        The owner of the auction.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
+    <span class="sd">&quot;&quot;&quot;Same as `AuctionEntry`, but with a full user model for ``.owner``&quot;&quot;&quot;</span>
     <span class="n">owner</span><span class="p">:</span> <span class="n">UserShort</span>
+    <span class="sd">&quot;&quot;&quot;The owner of the auction.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<div class="viewcode-block" id="AuctionEntryExpanded.from_data"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.AuctionEntryExpanded.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="c1"># deepcode ignore</span>
         <span class="k">return</span> <span class="n">AuctionEntryExpanded</span><span class="p">(</span>
             <span class="c1"># file deepcode ignore WrongNumberOfArguments</span>
@@ -267,110 +158,67 @@
             <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s2">&quot;lich&quot;</span>
             <span class="k">else</span> <span class="n">from_data</span><span class="p">(</span><span class="n">KubrowAuction</span><span class="p">,</span> <span class="n">item</span><span class="p">),</span>
             <span class="o">**</span><span class="n">node</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="LichAuction"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.LichAuction">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">LichAuction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a lich auction.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    type : AuctionType</span>
-<span class="sd">        The type of the auction. In this case, ``lich``.</span>
-
-<span class="sd">    weapon_url : str</span>
-<span class="sd">        The URL of the weapon.</span>
-
-<span class="sd">    element : Element</span>
-<span class="sd">        The element of the weapon.</span>
-
-<span class="sd">    damage : int</span>
-<span class="sd">        The damage of the weapon.</span>
-
-<span class="sd">    having_ephemera : bool</span>
-<span class="sd">        Whether the weapon has an ephemera.</span>
-
-<span class="sd">    quirk : str , optional</span>
-<span class="sd">        The quirk of the lich.</span>
-
-<span class="sd">    name : str , optional</span>
-<span class="sd">        The name of the lich. Unused by the API.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a lich auction.&quot;&quot;&quot;</span>
 
     <span class="nb">type</span><span class="p">:</span> <span class="n">AuctionType</span>  <span class="c1"># lich</span>
+    <span class="sd">&quot;&quot;&quot;The type of the auction. In this case, ``lich``.&quot;&quot;&quot;</span>
     <span class="n">weapon_url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL name of the weapon.&quot;&quot;&quot;</span>
     <span class="n">element</span><span class="p">:</span> <span class="n">Element</span>
+    <span class="sd">&quot;&quot;&quot;The element of the weapon.&quot;&quot;&quot;</span>
     <span class="n">damage</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The damage of the weapon.&quot;&quot;&quot;</span>
     <span class="n">having_ephemera</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the weapon has an ephemera.&quot;&quot;&quot;</span>
     <span class="n">quirk</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Unused by API</span></div>
+    <span class="sd">&quot;&quot;&quot;The quirk of the lich, if any.&quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The name of the lich. Unused by the API.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="KubrowAuction"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.KubrowAuction">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">KubrowAuction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a kubrow auction.</span>
+    <span class="sd">&quot;&quot;&quot;Represents a kubrow auction.&quot;&quot;&quot;</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    type : AuctionType</span>
-<span class="sd">        The type of the auction. In this case, ``kubrow``.</span>
-
-<span class="sd">    name : str</span>
-<span class="sd">        The name of the kubrow.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">type</span><span class="p">:</span> <span class="n">AuctionType</span>  <span class="c1"># kubrow</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">AuctionType</span>
+    <span class="sd">&quot;&quot;&quot;The type of the auction. In this case, ``kubrow``.&quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The name of the kubrow.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="RivenAuction"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.RivenAuction">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">RivenAuction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a riven auction.</span>
+    <span class="sd">&quot;&quot;&quot;Represents a riven auction.&quot;&quot;&quot;</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    type : AuctionType</span>
-<span class="sd">        The type of the auction. In this case, ``riven``.</span>
-
-<span class="sd">    attributes : list[PartialRivenAttribute]</span>
-<span class="sd">        The attributes of the riven.</span>
-
-<span class="sd">    name : str</span>
-<span class="sd">        The name of the riven.</span>
-
-<span class="sd">    mastery_level : int</span>
-<span class="sd">        The mastery level of the riven.</span>
-
-<span class="sd">    re_rolls : int</span>
-<span class="sd">        The number of times the riven has been rerolled.</span>
-
-<span class="sd">    weapon_url_name : str</span>
-<span class="sd">        The URL of the weapon the riven is for.</span>
-
-<span class="sd">    polarity : Polarity</span>
-<span class="sd">        The polarity of the riven.</span>
-
-<span class="sd">    mod_rank : int</span>
-<span class="sd">        The rank of the riven.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">type</span><span class="p">:</span> <span class="n">AuctionType</span>  <span class="c1"># riven</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">AuctionType</span>
+    <span class="sd">&quot;&quot;&quot;The type of the auction. In this case, ``riven``.&quot;&quot;&quot;</span>
     <span class="n">attributes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PartialRivenAttribute</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;The attributes of the riven.&quot;&quot;&quot;</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The name of the riven.&quot;&quot;&quot;</span>
     <span class="n">mastery_level</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The mastery level of the riven.&quot;&quot;&quot;</span>
     <span class="n">re_rolls</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The number of times the riven has been rerolled.&quot;&quot;&quot;</span>
     <span class="n">weapon_url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL of the weapon the riven is for.&quot;&quot;&quot;</span>
     <span class="n">polarity</span><span class="p">:</span> <span class="n">Polarity</span>
+    <span class="sd">&quot;&quot;&quot;The polarity of the riven.&quot;&quot;&quot;</span>
     <span class="n">mod_rank</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The rank of the riven.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<div class="viewcode-block" id="RivenAuction.from_data"><a class="viewcode-back" href="../../../models/auctions.html#pytenno.models.auctions.RivenAuction.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">RivenAuction</span><span class="p">(</span>
             <span class="n">attributes</span><span class="o">=</span><span class="p">[</span>
                 <span class="n">from_data</span><span class="p">(</span><span class="n">PartialRivenAttribute</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;attributes&quot;</span><span class="p">)</span>
             <span class="p">],</span>
             <span class="o">**</span><span class="n">node</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span></div></div>
 </pre></div>
 
            </div>

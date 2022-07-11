@@ -93,120 +93,63 @@
 
 <div class="viewcode-block" id="RivenItem"><a class="viewcode-back" href="../../../models/rivens.html#pytenno.models.rivens.RivenItem">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">RivenItem</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a riven item.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    -----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the riven item.</span>
-
-<span class="sd">    item_name : str</span>
-<span class="sd">        The name of the riven item.</span>
-
-<span class="sd">    item_url_name : str</span>
-<span class="sd">        The URL name of the riven item.</span>
-
-<span class="sd">    group : RivenWeaponGroup</span>
-<span class="sd">        The group of the riven item.</span>
-
-<span class="sd">    riven_type : RivenType</span>
-<span class="sd">        The type of the riven item.</span>
-
-<span class="sd">    icon : str</span>
-<span class="sd">        The icon URL of the riven item.</span>
-
-<span class="sd">    icon_format : IconFormat</span>
-<span class="sd">        The format of the icon URL of the riven item.</span>
-
-<span class="sd">    thumb : str</span>
-<span class="sd">        The thumbnail URL of the riven item.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a riven item.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the riven item.&quot;&quot;&quot;</span>
     <span class="n">item_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The name of the riven item.&quot;&quot;&quot;</span>
     <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL name of the riven item.&quot;&quot;&quot;</span>
     <span class="n">group</span><span class="p">:</span> <span class="n">RivenWeaponGroup</span>
+    <span class="sd">&quot;&quot;&quot;The group of the riven item.&quot;&quot;&quot;</span>
     <span class="n">riven_type</span><span class="p">:</span> <span class="n">RivenWeaponType</span>
+    <span class="sd">&quot;&quot;&quot;The type of the riven item.&quot;&quot;&quot;</span>
     <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The icon URL of the riven item.&quot;&quot;&quot;</span>
     <span class="n">icon_format</span><span class="p">:</span> <span class="n">IconFormat</span>
-    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="sd">&quot;&quot;&quot;The format of the icon URL of the riven item.&quot;&quot;&quot;</span>
+    <span class="n">thumb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The thumbnail URL of the riven item.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="RivenAttribute"><a class="viewcode-back" href="../../../models/rivens.html#pytenno.models.rivens.RivenAttribute">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">RivenAttribute</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a riven attribute. Most rivens have multiple attributes.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    -----------</span>
-
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the riven attribute.</span>
-
-<span class="sd">    url_name : str</span>
-<span class="sd">        The URL name of the riven attribute.</span>
-
-<span class="sd">    group : RivenAttributeGroup</span>
-<span class="sd">        The group of the riven attribute</span>
-
-<span class="sd">    prefix : str</span>
-<span class="sd">        The prefix of the riven attribute.</span>
-<span class="sd">        Example: &quot;hexi&quot;</span>
-
-<span class="sd">    suffix : str</span>
-<span class="sd">        The suffix of the riven attribute.</span>
-<span class="sd">        Example: &quot;bin&quot;</span>
-
-<span class="sd">    positive_is_negative : bool</span>
-<span class="sd">        Whether the positive attribute is actually negative.</span>
-<span class="sd">        Example: Recoil, Reload Speed, etc.</span>
-
-<span class="sd">    exclusive_to : list[RivenWeaponType] , optional</span>
-<span class="sd">        The types of weapons that the attribute is exclusive to. None if it is not exclusive to any weapon.</span>
-
-<span class="sd">    effect : str</span>
-<span class="sd">        The effect of the riven attribute. Depends on the requested language.</span>
-
-<span class="sd">    units : MeasurementUnit, optional</span>
-<span class="sd">        What the riven attribute is measured in.</span>
-
-<span class="sd">    negative_only : bool</span>
-<span class="sd">        Whether the attribute only appears as a negative.</span>
-
-<span class="sd">    search_only : bool</span>
-<span class="sd">        Whether the attribute only appears in search results.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a riven attribute. Most rivens have multiple attributes.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the riven attribute.&quot;&quot;&quot;</span>
     <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL name of the riven attribute.&quot;&quot;&quot;</span>
     <span class="n">group</span><span class="p">:</span> <span class="n">RivenAttributeGroup</span>
+    <span class="sd">&quot;&quot;&quot;The group of the riven attribute.&quot;&quot;&quot;</span>
     <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The prefix of the riven attribute. Default is empty string.&quot;&quot;&quot;</span>
     <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The suffix of the riven attribute. Default is empty string.&quot;&quot;&quot;</span>
     <span class="n">positive_is_negative</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the positive attribute is actually negative.&quot;&quot;&quot;</span>
     <span class="n">exclusive_to</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RivenWeaponType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The types of weapons that the attribute is exclusive to. Default is None, meaning it is not exclusive to any weapon.&quot;&quot;&quot;</span>
     <span class="n">effect</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The name of the effect of the riven attribute. Depends on the requested language.&quot;&quot;&quot;</span>
     <span class="n">units</span><span class="p">:</span> <span class="n">MeasurementUnit</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="sd">&quot;&quot;&quot;The units of the riven attribute. Default is None, meaning it is not measured in any units.&quot;&quot;&quot;</span>
     <span class="n">negative_only</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">search_only</span><span class="p">:</span> <span class="nb">bool</span></div>
+    <span class="sd">&quot;&quot;&quot;Whether the attribute only appears as a negative.&quot;&quot;&quot;</span>
+    <span class="n">search_only</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the attribute only appears in search results.&quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="PartialRivenAttribute"><a class="viewcode-back" href="../../../models/rivens.html#pytenno.models.rivens.PartialRivenAttribute">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PartialRivenAttribute</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents a partial riven attribute.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    -----------</span>
-<span class="sd">    positive : bool</span>
-<span class="sd">        Whether the attribute is positive.</span>
-
-<span class="sd">    value : int</span>
-<span class="sd">        The value of the attribute.</span>
-
-<span class="sd">    url_name : str</span>
-<span class="sd">        The URL name of the attribute.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents a partial riven attribute.&quot;&quot;&quot;</span>
 
     <span class="n">positive</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the attribute is positive.&quot;&quot;&quot;</span>
     <span class="n">value</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="sd">&quot;&quot;&quot;The value of the attribute.&quot;&quot;&quot;</span>
+    <span class="n">url_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The URL name of the attribute.&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>

@@ -26,7 +26,9 @@ def iter_py_files(source: str, relative: bool) -> list[str]:
 module_template = """\
 {title}
 .. automodule:: {module}
+    :inherited-members:
     :members:
+    :undoc-members:
     """
 
 index_template = """\

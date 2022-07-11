@@ -97,137 +97,54 @@
 
 <div class="viewcode-block" id="OrderCommon"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderCommon">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">OrderCommon</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Common base class that orders inherit from.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the order.</span>
-
-<span class="sd">    platinum : int</span>
-<span class="sd">        The amount of platinum per item in the order.</span>
-
-<span class="sd">    quantity : int</span>
-<span class="sd">        How many items the user is selling / buying.</span>
-
-<span class="sd">    order_type : OrderType</span>
-<span class="sd">        The type of order.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform the order is on.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the order is on.</span>
-
-<span class="sd">    creation_date : datetime.datetime</span>
-<span class="sd">        The time the order was created.</span>
-
-<span class="sd">    last_update : datetime.datetime</span>
-<span class="sd">        The time the order was last updated.</span>
-
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Common base class that orders inherit from.&quot;&quot;&quot;</span>
 
     <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The ID of the order.&quot;&quot;&quot;</span>
     <span class="n">platinum</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;The amount of platinum per item in the order.&quot;&quot;&quot;</span>
     <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="sd">&quot;&quot;&quot;How many items the user is selling / buying.&quot;&quot;&quot;</span>
     <span class="n">order_type</span><span class="p">:</span> <span class="n">OrderType</span>
+    <span class="sd">&quot;&quot;&quot;The type of order.&quot;&quot;&quot;</span>
     <span class="n">platform</span><span class="p">:</span> <span class="n">Platform</span>
+    <span class="sd">&quot;&quot;&quot;The platform the order is on.&quot;&quot;&quot;</span>
     <span class="n">region</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;The region the order is on.&quot;&quot;&quot;</span>
     <span class="n">creation_date</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="sd">&quot;&quot;&quot;The time the order was created.&quot;&quot;&quot;</span>
     <span class="n">last_update</span><span class="p">:</span> <span class="n">datetime</span>
-    <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span></div>
+    <span class="sd">&quot;&quot;&quot;The time the order was last updated.&quot;&quot;&quot;</span>
+    <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="sd">&quot;&quot;&quot;Whether the order is visible to others. In this case, always True.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="OrderCreated"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderCreated">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">OrderCreated</span><span class="p">(</span><span class="n">OrderCommon</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Represents an Order after it has been passed to the API</span>
-<span class="sd">    and is now created.</span>
+<span class="sd">    and is now created.&quot;&quot;&quot;</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the order.</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">ItemInOrder</span>
+    <span class="sd">&quot;&quot;&quot;The item in the order.&quot;&quot;&quot;</span>
 
-<span class="sd">    platinum : int</span>
-<span class="sd">        The amount of platinum per item in the order.</span>
-
-<span class="sd">    quantity : int</span>
-<span class="sd">        How many items the user is selling / buying.</span>
-
-<span class="sd">    order_type : OrderType</span>
-<span class="sd">        The type of order.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform the order is on.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the order is on.</span>
-
-<span class="sd">    creation_date : datetime.datetime</span>
-<span class="sd">        The time the order was created.</span>
-
-<span class="sd">    last_update : datetime.datetime</span>
-<span class="sd">        The time the order was last updated.</span>
-
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
-<span class="sd">    </span>
-<span class="sd">    item: ItemInOrder</span>
-<span class="sd">        The item in the order.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<div class="viewcode-block" id="OrderCreated.from_data"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderCreated.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">OrderCreated</span><span class="p">(</span>
             <span class="n">item</span><span class="o">=</span><span class="n">from_data</span><span class="p">(</span><span class="n">ItemInOrder</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">)),</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="OrderRow"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderRow">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">OrderRow</span><span class="p">(</span><span class="n">OrderCommon</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Same as OrderCommon, but with a full user model.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the order.</span>
-
-<span class="sd">    platinum : int</span>
-<span class="sd">        The amount of platinum per item in the order.</span>
-
-<span class="sd">    quantity : int</span>
-<span class="sd">        How many items the user is selling / buying.</span>
-
-<span class="sd">    order_type : OrderType</span>
-<span class="sd">        The type of order.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform the order is on.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the order is on.</span>
-
-<span class="sd">    creation_date : datetime.datetime</span>
-<span class="sd">        The time the order was created.</span>
-
-<span class="sd">    last_update : datetime.datetime</span>
-<span class="sd">        The time the order was last updated.</span>
-
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
-
-<span class="sd">    user : UserShort</span>
-<span class="sd">        The user who made the order.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Same as OrderCommon, but with a full user model.&quot;&quot;&quot;</span>
 
     <span class="n">user</span><span class="p">:</span> <span class="n">UserShort</span>
+    <span class="sd">&quot;&quot;&quot;The user who made the order.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<div class="viewcode-block" id="OrderRow.from_data"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderRow.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">OrderRow</span><span class="p">(</span>
             <span class="n">user</span><span class="o">=</span><span class="n">UserShort</span><span class="p">(</span><span class="o">**</span><span class="n">node</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)),</span>
             <span class="o">**</span><span class="n">node</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;OrderRow id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> user=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">ingame_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
@@ -235,45 +152,10 @@
 
 <div class="viewcode-block" id="OrderFull"><a class="viewcode-back" href="../../../models/orders.html#pytenno.models.orders.OrderFull">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">OrderFull</span><span class="p">(</span><span class="n">OrderRow</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Same as OrderRow, but with a full item model.</span>
+    <span class="sd">&quot;&quot;&quot;Same as OrderRow, but with a full item model.&quot;&quot;&quot;</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    id : str</span>
-<span class="sd">        The ID of the order.</span>
-
-<span class="sd">    platinum : int</span>
-<span class="sd">        The amount of platinum per item in the order.</span>
-
-<span class="sd">    quantity : int</span>
-<span class="sd">        How many items the user is selling / buying.</span>
-
-<span class="sd">    order_type : OrderType</span>
-<span class="sd">        The type of order.</span>
-
-<span class="sd">    platform : Platform</span>
-<span class="sd">        The platform the order is on.</span>
-
-<span class="sd">    region : str</span>
-<span class="sd">        The region the order is on.</span>
-
-<span class="sd">    creation_date : datetime.datetime</span>
-<span class="sd">        The time the order was created.</span>
-
-<span class="sd">    last_update : datetime.datetime</span>
-<span class="sd">        The time the order was last updated.</span>
-
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the order is visible to others. In this case, always True.</span>
-
-<span class="sd">    user : UserShort</span>
-<span class="sd">        The user who made the order.</span>
-
-<span class="sd">    item : ItemInOrder</span>
-<span class="sd">        The item in the order.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">item</span><span class="p">:</span> <span class="n">ItemInOrder</span></div>
+    <span class="n">item</span><span class="p">:</span> <span class="n">ItemInOrder</span>
+    <span class="sd">&quot;&quot;&quot;The item in the order.&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>

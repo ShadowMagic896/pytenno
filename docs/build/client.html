@@ -89,9 +89,10 @@
              
   <section id="module-pytenno.client">
 <span id="pytenno-client"></span><h1>pytenno.client<a class="headerlink" href="#module-pytenno.client" title="Permalink to this heading"></a></h1>
+<p>The main module for the PyTenno client.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pytenno.client.PyTenno">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.client.</span></span><span class="sig-name descname"><span class="pre">PyTenno</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.10)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'en'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ru'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ko'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'fr'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'sv'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'de'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'zh_hant'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'pt'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'es'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'pl'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_platform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models/enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><span class="pre">Platform</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Platform.pc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silenced_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><span class="pre">Exception</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytenno/client.html#PyTenno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.client.PyTenno" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.client.</span></span><span class="sig-name descname"><span class="pre">PyTenno</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.10)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'en'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ru'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ko'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'fr'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'sv'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'de'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'zh_hans'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'zh_hant'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'pt'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'es'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'pl'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_platform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models/enums.html#pytenno.models.enums.Platform" title="pytenno.models.enums.Platform"><span class="pre">Platform</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Platform.pc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silenced_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><span class="pre">Exception</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytenno/client.html#PyTenno"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.client.PyTenno" title="Permalink to this definition"></a></dt>
 <dd><p>The primary class for interaction with the warframe.market API endpoints.
 This must be used in an asynchronous context manager.</p>
 <dl class="field-list simple">
@@ -104,9 +105,6 @@ See <code class="docutils literal notranslate"><span class="pre">VALID_LANGUAGES
 Instead of raising the error, the function will return None.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#pytenno.client.PyTenno" title="pytenno.client.PyTenno">PyTenno</a></p>
-</dd>
 </dl>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">async</span> <span class="k">with</span> <span class="n">PyTenno</span><span class="p">()</span> <span class="k">as</span> <span class="n">tenno</span><span class="p">:</span>
@@ -114,6 +112,54 @@ Instead of raising the error, the function will return None.</p></li>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">ingame_name</span><span class="p">)</span>
 </pre></div>
 </div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.AuctionEntries">
+<span class="sig-name descname"><span class="pre">AuctionEntries</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/auction_entries.html#pytenno.interface.auction_entries.AuctionEntries" title="pytenno.interface.auction_entries.AuctionEntries"><span class="pre">AuctionEntries</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.AuctionEntries" title="Permalink to this definition"></a></dt>
+<dd><p>The AuctionEntries interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Auctions">
+<span class="sig-name descname"><span class="pre">Auctions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/auctions.html#pytenno.interface.auctions.Auctions" title="pytenno.interface.auctions.Auctions"><span class="pre">Auctions</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Auctions" title="Permalink to this definition"></a></dt>
+<dd><p>The Auctions interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Auth">
+<span class="sig-name descname"><span class="pre">Auth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/auth.html#pytenno.interface.auth.Auth" title="pytenno.interface.auth.Auth"><span class="pre">Auth</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Auth" title="Permalink to this definition"></a></dt>
+<dd><p>The Auth interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Items">
+<span class="sig-name descname"><span class="pre">Items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/items.html#pytenno.interface.items.Items" title="pytenno.interface.items.Items"><span class="pre">Items</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Items" title="Permalink to this definition"></a></dt>
+<dd><p>The Items interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Liches">
+<span class="sig-name descname"><span class="pre">Liches</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/liches.html#pytenno.interface.liches.Liches" title="pytenno.interface.liches.Liches"><span class="pre">Liches</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Liches" title="Permalink to this definition"></a></dt>
+<dd><p>The Liches interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Misc">
+<span class="sig-name descname"><span class="pre">Misc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/misc.html#pytenno.interface.misc.Misc" title="pytenno.interface.misc.Misc"><span class="pre">Misc</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Misc" title="Permalink to this definition"></a></dt>
+<dd><p>The Misc interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Profile">
+<span class="sig-name descname"><span class="pre">Profile</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/profile.html#pytenno.interface.profile.Profile" title="pytenno.interface.profile.Profile"><span class="pre">Profile</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Profile" title="Permalink to this definition"></a></dt>
+<dd><p>The Profile interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.client.PyTenno.Rivens">
+<span class="sig-name descname"><span class="pre">Rivens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="interface/rivens.html#pytenno.interface.rivens.Rivens" title="pytenno.interface.rivens.Rivens"><span class="pre">Rivens</span></a></em><a class="headerlink" href="#pytenno.client.PyTenno.Rivens" title="Permalink to this definition"></a></dt>
+<dd><p>The Rivens interface.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pytenno.client.PyTenno.close">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/pytenno/client.html#PyTenno.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.client.PyTenno.close" title="Permalink to this definition"></a></dt>

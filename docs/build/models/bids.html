@@ -93,18 +93,42 @@
 <dt class="sig sig-object py" id="pytenno.models.bids.Bid">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytenno.models.bids.</span></span><span class="sig-name descname"><span class="pre">Bid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">auction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">updated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pytenno/models/bids.html#Bid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytenno.models.bids.Bid" title="Permalink to this definition"></a></dt>
 <dd><p>Represents a bid on an auction.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The ID of the bid.</p></li>
-<li><p><strong>auction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the auction the bid is on.</p></li>
-<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The ID of the user who made the bid.</p></li>
-<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The amount of platinum placed on the bid.</p></li>
-<li><p><strong>created</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a>) – The time the bid was made.</p></li>
-<li><p><strong>updated</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><em>datetime.datetime</em></a>) – The time the bid was last updated.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.bids.Bid.auction">
+<span class="sig-name descname"><span class="pre">auction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.bids.Bid.auction" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the auction the bid is on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.bids.Bid.created">
+<span class="sig-name descname"><span class="pre">created</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#pytenno.models.bids.Bid.created" title="Permalink to this definition"></a></dt>
+<dd><p>The date and time the bid was created.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.bids.Bid.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.bids.Bid.id" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the bid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.bids.Bid.updated">
+<span class="sig-name descname"><span class="pre">updated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><span class="pre">datetime</span></a></em><a class="headerlink" href="#pytenno.models.bids.Bid.updated" title="Permalink to this definition"></a></dt>
+<dd><p>The date and time the bid was updated.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.bids.Bid.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#pytenno.models.bids.Bid.user" title="Permalink to this definition"></a></dt>
+<dd><p>The ID of the user who made the bid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytenno.models.bids.Bid.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#pytenno.models.bids.Bid.value" title="Permalink to this definition"></a></dt>
+<dd><p>The value (platinum) of the bid.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>

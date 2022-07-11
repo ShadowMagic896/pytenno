@@ -92,26 +92,16 @@
 
 <div class="viewcode-block" id="DropTable"><a class="viewcode-back" href="../../../models/droptable.html#pytenno.models.droptable.DropTable">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">DropTable</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s drop table.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    missions : list[DroptableMission]</span>
-<span class="sd">        The missions where the item can be found.</span>
-
-<span class="sd">    relics : list[DroptableRelic]</span>
-<span class="sd">        The relic in which parts for the item can be found.</span>
-
-<span class="sd">    npc : list[DroptableNPC]</span>
-<span class="sd">        The NPCs where the item can be found.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s drop table.&quot;&quot;&quot;</span>
 
     <span class="n">missions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DroptableMission</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;The missions where the item can be found.&quot;&quot;&quot;</span>
     <span class="n">relics</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DroptableRelic</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;The relic in which parts for the item can be found.&quot;&quot;&quot;</span>
     <span class="n">npc</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DroptableNPC</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;The NPCs where the item can be found.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DropTable.from_data"><a class="viewcode-back" href="../../../models/droptable.html#pytenno.models.droptable.DropTable.from_data">[docs]</a>    <span class="k">def</span> <span class="nf">from_data</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a DropTable from a dictionary. For internal use, please use `pytenno.utils.from_data` instead.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">DropTable</span><span class="p">(</span>
             <span class="p">[</span><span class="n">DroptableMission</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="n">mission</span><span class="p">)</span> <span class="k">for</span> <span class="n">mission</span> <span class="ow">in</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;missions&quot;</span><span class="p">]],</span>
             <span class="p">[</span><span class="n">DroptableRelic</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="n">relic</span><span class="p">)</span> <span class="k">for</span> <span class="n">relic</span> <span class="ow">in</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;relics&quot;</span><span class="p">]],</span>
@@ -121,19 +111,12 @@
 
 <div class="viewcode-block" id="Drop"><a class="viewcode-back" href="../../../models/droptable.html#pytenno.models.droptable.Drop">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">Drop</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s drop.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    name : str</span>
-<span class="sd">        The translated name of the location / item.</span>
-
-<span class="sd">    link : str</span>
-<span class="sd">        Link to the internal or extarnal source with information about that location.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Represents an item&#39;s drop.&quot;&quot;&quot;</span>
 
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">link</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="sd">&quot;&quot;&quot;The translated name of the location / item.&quot;&quot;&quot;</span>
+    <span class="n">link</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="sd">&quot;&quot;&quot;Link to the internal or extarnal source with information about that location.&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>
