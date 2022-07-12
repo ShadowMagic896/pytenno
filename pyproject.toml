@@ -8,7 +8,7 @@ name = "pytenno"
 version = "0.1.0"
 description = "A asynchronous Python library for interacting with the warframe.market API"
 readme = "README.md"
-authors = ["Ryan Peckham"]
+authors = [{ name="Ryan Peckham", email="86629697+ShadowMagic896@users.noreply.github.com" }]
 license = {file = "LICENSE"}
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -21,13 +21,13 @@ dependencies = [
 ]
 requires-python = ">=3.8"
 
+[tool.setuptools]
+py-modules = []
+
 [project.optional-dependencies]
 dev = ["black", "isort"]
 
 [project.urls]
 Homepage = "https://github.com/ShadowMagic896/pytenno"
 Documentation = "https://pytenno.readthedocs.io"
-
-[project.scripts]
-pytenno = "pytenno/__main__.py"
 
