@@ -1,5 +1,5 @@
 # PyTenno
-PyTenno is an asynchronous Python wrapper for the warframe.market API
+PyTenno is an asynchronous wrapper for the [warframe.market](https://warframe.market) API, written in Python.
 
 [Read Documentation](https://pytenno.readthedocs.io/en/latest/index.html)
 
@@ -12,7 +12,7 @@ Use your favorite spice of the following:
 py -m pip install git+https://github.com/ShadowMagic896/pytenno.git
 ```
 
-- [Git](https://git-scm.com/) is required for direct installation
+- [Git-SCM](https://git-scm.com/) is required for direct installation
 
 ### PyPi
 
@@ -21,7 +21,7 @@ py -m pip install pytenno
 ```
 
 ## Requirements
-The project's only requiremnt is aiohttp, which is available on PyPi.
+The project's only requirement is aiohttp, which is available on PyPi.
 
 [aiohttp](https://aiohttp.readthedocs.io/en/stable/index.html) >= 3.8.1
 
