@@ -31,3 +31,8 @@ dev = ["black", "isort"]
 Homepage = "https://github.com/ShadowMagic896/pytenno"
 Documentation = "https://pytenno.readthedocs.io"
 
+[project.entry-points]
+console_scripts = [
+    "pytenno = pytenno.__main__:main",
+]
+
