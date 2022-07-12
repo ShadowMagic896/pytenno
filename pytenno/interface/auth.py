@@ -1,6 +1,6 @@
 """Module holding the Auth interface class."""
 
-from typing import Optional
+from typing import Any, Coroutine, Optional
 
 from .._backends.auth import AuthBackend
 from ..constants import VALID_LANGUAGES

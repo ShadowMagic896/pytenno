@@ -94,7 +94,7 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 T = TypeVar("T", bound=type)
 
 
-def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
+def from_data(cls_: T, data: dict[str, Any] | None, use_data_method: bool = True) -> Type[T]:
     """Partially converts common data types into their object equivalent, then creates an instance of ``cls_``."""
     if data is None:
         return None
@@ -115,6 +115,8 @@ def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
             nd[key] = datetime.datetime.strptime(value, DATETIME_FORMAT)
         elif key == "drop":
             nd[key] = [Drop(**val) for val in value]
+        elif key in {"zh-hans", "zh-hant"}:
+            nd[{"zh-hans": "zh_hans", "zh-hant": "zh_hant"}[key]] = value
         else:
             try:
                 nd[key] = _ENUM_MAPPING[key][value]
@@ -124,6 +126,6 @@ def from_data(cls_: T, data: dict[str, Any] | None) -> Type[T]:
                 except KeyError:
                     nd[key] = value
 
-    if hasattr(cls_, "from_data"):
+    if hasattr(cls_, "from_data") and use_data_method:
         return cls_.from_data(nd)
     return cls_(**nd)

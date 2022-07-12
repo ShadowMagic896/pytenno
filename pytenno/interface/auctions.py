@@ -83,7 +83,7 @@ class Auctions(AuctionsBackend):
         self,
         *,
         weapon_url_name: str,
-        platform: Platform = Platform.pc,
+        platform: Platform = None,
         mastery_rank_min: int = None,
         mastery_rank_max: int = None,
         re_rolls_min: int = None,
@@ -106,21 +106,21 @@ class Auctions(AuctionsBackend):
         ----------
         weapon_url_name : str
             The URL name of the weapon to search for.
-        platform : Platform
-            The platform to search for riven auctions on. Default: ``Platform.pc``.
-        mastery_rank_min : int
+        platform : Platform, optional
+            The platform to search for riven auctions on. Default: ``None``, meaning the default set when the client was created.
+        mastery_rank_min : int, optional
             The minimum mastery rank of the riven. Default: None.
-        mastery_rank_max : int
+        mastery_rank_max : int, optional
             The maximum mastery rank of the riven. Default: None.
-        re_rolls_min : int
+        re_rolls_min : int, optional
             The minimum number of re-rolls of the riven. Default: None.
-        re_rolls_max : int
+        re_rolls_max : int, optional
             The maximum number of re-rolls of the riven. Default: None.
-        positive_stats : list[RivenStat]
+        positive_stats : list[RivenStat], optional
             Restricts the riven to have the given positive stats. Maximum amount is 3. Default: None.
-        negative_stats : list[RivenStat]
+        negative_stats : list[RivenStat], optional
             Restricts the riven to have the given negative stats. Maximum amount is 3. Default: None.
-        polarity : Polarity
+        polarity : Polarity, optional
             The polarity of the riven. Default: ``Polarity.any``.
 
         Returns
@@ -190,7 +190,7 @@ class Auctions(AuctionsBackend):
         self,
         *,
         weapon_url_name: str,
-        platform: Platform = Platform.pc,
+        platform: Platform = None,
         element: Optional[Element] = None,
         ephemera: Optional[bool] = None,
         damage_min: Optional[int] = None,
@@ -210,7 +210,7 @@ class Auctions(AuctionsBackend):
         weapon_url_name : str
             The URL name of the weapon to search for.
         platform : Platform
-            The platform to search for lich auctions on. Default: Platform.pc.
+            The platform to search for lich auctions on. Default: ``None``, meaning the default set when the client was created.
         element : Element
             The element of the lich. Default: None.
         ephemera : bool
@@ -258,7 +258,7 @@ class Auctions(AuctionsBackend):
             raise ValueError("The damage max cannot be less than 0.")
 
         return await self._find_lich_auctions(
-            platform=platform,
+            platform=str(platform),
             weapon_url_name=weapon_url_name,
             element=element,
             ephemera=ephemera,

@@ -40,16 +40,18 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         *,
-        platform: Optional[Platform] = Platform.pc,
+        platform: Optional[Platform] = None,
     ) -> list[ItemFull]:
         """Gets the item with the given name, as well as related items (such as items of the same set).
+
+        The item must be tradeable.
 
         Parameters
         ----------
         item_name : str
             The name of the item.
         platform : Platform
-            The platform of the item. Default: Platform.pc.
+            The platform of the item. Default: ``None``, meaning the default set when the client was created.
 
         Returns
         -------
@@ -58,7 +60,7 @@ class Items(ItemsBackend):
         Example
         -------
         >>> async with PyTenno() as pytenno:
-        >>>     items = await pytenno.items.get_item("kuva_bramma")
+        >>>     items = await pytenno.items.get_item("mirage prime set")
         >>>     for item in items:
         >>>         print(item.url_name)
         """
@@ -69,7 +71,7 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         include_items: Literal[False],
-        platform: Optional[Platform] = Platform.pc,
+        platform: Optional[Platform] = None,
     ) -> list[OrderRow]:
         ...
 
@@ -78,7 +80,7 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         include_items: Literal[True],
-        platform: Optional[Platform] = Platform.pc,
+        platform: Optional[Platform] = None,
     ) -> tuple[list[OrderRow], list[ItemFull]]:
         ...
 
@@ -86,7 +88,7 @@ class Items(ItemsBackend):
         self,
         item_name: str,
         include_items: bool,
-        platform: Optional[Platform] = Platform.pc,
+        platform: Optional[Platform] = None,
     ):
         """Gets the orders of the given item.
 
@@ -97,7 +99,7 @@ class Items(ItemsBackend):
         include_items : bool
             Whether to include information about the item requested.
         platform : Platform
-            The platform of the item. Default: Platform.pc.
+            The platform of the item. Default: ``None``, meaning the default set when the client was created.
 
         Returns
         -------
@@ -106,13 +108,13 @@ class Items(ItemsBackend):
         Example
         -------
         >>> async with PyTenno() as pytenno:
-        >>>     orders, items = await pytenno.items.get_orders("kuva_bramma", include_items=True)
+        >>>     orders, items = await pytenno.items.get_orders("mirage prime set", include_items=True)
         >>>     for order in orders:
         >>>         print(order.user.ingame_name)
         >>>     for item in items:
         >>>         print(item.url_name)
         """
-        return await self._get_orders(item_name, include_items, platform)
+        return await self._get_orders(item_name, include_items, str(platform))
 
     @overload
     async def get_droptable(

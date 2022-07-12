@@ -80,7 +80,7 @@ class PyTenno:
             "Content-Type": "application/json",
             "Accept": "application/json",
             "language": self._language,
-            "platform": self._platform.name,
+            "platform": str(self._platform),
         }
         self._session = aiohttp.ClientSession(headers=headers)
         backend = PyTennoBackend(self._session, self._silenced)
