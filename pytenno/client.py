@@ -57,21 +57,21 @@ class PyTenno:
         self._silenced = silenced_errors
         """A list of errors that will be silenced when raised by the API."""
 
-        self.AuctionEntries: AuctionEntries
+        self.auction_entries: AuctionEntries
         """The AuctionEntries interface."""
-        self.Auctions: Auctions
+        self.auctions: Auctions
         """The Auctions interface."""
-        self.Auth: Auth
+        self.auth: Auth
         """The Auth interface."""
-        self.Items: Items
+        self.items: Items
         """The Items interface."""
-        self.Liches: Liches
+        self.liches: Liches
         """The Liches interface."""
-        self.Misc: Misc
+        self.misc: Misc
         """The Misc interface."""
-        self.Profile: Profile
+        self.profile: Profile
         """The Profile interface."""
-        self.Rivens: Rivens
+        self.rivens: Rivens
         """The Rivens interface."""
 
     async def __aenter__(self):
@@ -85,14 +85,14 @@ class PyTenno:
         self._session = aiohttp.ClientSession(headers=headers)
         backend = PyTennoBackend(self._session, self._silenced)
 
-        self.AuctionEntries = AuctionEntries(backend)
-        self.Auctions = Auctions(backend)
-        self.Auth = Auth(backend)
-        self.Items = Items(backend)
-        self.Liches = Liches(backend)
-        self.Misc = Misc(backend)
-        self.Profile = Profile(backend)
-        self.Rivens = Rivens(backend)
+        self.auction_entries = AuctionEntries(backend)
+        self.auctions = Auctions(backend)
+        self.auth = Auth(backend)
+        self.items = Items(backend)
+        self.liches = Liches(backend)
+        self.misc = Misc(backend)
+        self.profile = Profile(backend)
+        self.rivens = Rivens(backend)
         return self
 
     async def __aexit__(

@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.10",
 ]
-keywords = ["warframe", "market", "api", "asyncio", "aiohttp"]
+keywords = ["warframe", "market", "api", "asyncio", "aiohttp", "wrapper"]
 dependencies = [
     "aiohttp >= 3.8.1",
 ]
@@ -26,4 +26,8 @@ dev = ["black", "isort"]
 
 [project.urls]
 Homepage = "https://github.com/ShadowMagic896/pytenno"
+Documentation = "https://pytenno.readthedocs.io"
+
+[project.scripts]
+pytenno = "pytenno/__main__.py"
 

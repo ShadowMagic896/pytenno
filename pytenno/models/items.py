@@ -22,6 +22,9 @@ class LangInItem:
     drop: list[Drop]
     """Where the item can be found."""
 
+    def from_data(data: dict):
+        data["drop"] = [Drop(**drop) for drop in data["drop"]]
+        return LangInItem(**data)
 
 @dataclass(kw_only=True)
 class ItemCommon:
@@ -147,7 +150,7 @@ class ItemFull(ItemInOrder):
             "es",
             "pl",
         ):
-            data[lang] = LangInItem(**data[lang])
+            data[lang] = LangInItem.from_data(data[lang])
         return from_data(ItemFull, data, False)
 
     def __repr__(self):
