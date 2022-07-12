@@ -22,6 +22,7 @@ py -m pip install pytenno
 
 ## Requirements
 The project's only requiremnt is aiohttp, which is available on PyPi.
+
 [aiohttp](https://aiohttp.readthedocs.io/en/stable/index.html) >= 3.8.1
 
 ## Examples
@@ -48,18 +49,28 @@ async def main(): # PyTenno is asynchronous, so it must be done in an asynchrono
         ########################################
 
         # This function returns a `CurrentUser` object, which contains misc. information about the user account.
-        # This can be accessed through the `Auth` attribute on the client.
-        current_user = await tenno.Auth.login(
+        # This can be accessed through the `auth` attribute on the client.
+        # All methods are sorted into several attributes on the client:
+        # - `auction_entries`: Interface for getting auctions and bids by ID
+        # - `auctions`: Interface for creating and searching for auctions
+        # - `auth`: Interface for logging into warframe.market, and other authentication-related functions
+        # - `items`: Interface for getting items, orders for them, and information about their droptables
+        # - `liches`: Interface for getting lich-related information, such as weapons, ephemeras, etc.
+        # - `misc`: Interface for miscellaneous endpoints for the API
+        # - `profile`: Interface for creating orders for items
+        # - `rivens`: Interface for getting Riven-related information such as weapons, attributes, etc.
+        current_user = await tenno.auth.login(
             email=email, 
             password=password
         )
+        print(current_user.ingame) # Prints the ingame name of the user that logged in
 
         ######################################
         # Finding orders for a specific item #
         ######################################
 
         # This function returns a `OrderRow` object, which contains information about the order.
-        orders = await tenno.Items.get_orders(
+        orders = await tenno.items.get_orders(
             # The full name of the item
             item_name="Mirage Prime Neuroptics", 
             # Whether to include data about the items requested, as well as the orders. If this were set to 
