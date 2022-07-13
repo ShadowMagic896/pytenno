@@ -26,6 +26,7 @@ License: MIT License
         SOFTWARE.
         
 Project-URL: Homepage, https://github.com/ShadowMagic896/pytenno
+Project-URL: BugTracker, https://github.com/ShadowMagic896/pytenno/issues
 Project-URL: Documentation, https://pytenno.readthedocs.io
 Keywords: warframe,market,api,asyncio,aiohttp,wrapper
 Classifier: License :: OSI Approved :: MIT License

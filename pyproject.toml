@@ -29,10 +29,5 @@ dev = ["black", "isort"]
 
 [project.urls]
 Homepage = "https://github.com/ShadowMagic896/pytenno"
+BugTracker = "https://github.com/ShadowMagic896/pytenno/issues"
 Documentation = "https://pytenno.readthedocs.io"
-
-[project.entry-points]
-console_scripts = [
-    "pytenno = pytenno.__main__:main",
-]
-

@@ -42,7 +42,6 @@ class PyTenno:
 
     def __init__(
         self,
-        *,
         default_language: Optional[VALID_LANGUAGES] = "en",
         default_platform: Platform = Platform.pc,
         silenced_errors: list[Exception] = [],

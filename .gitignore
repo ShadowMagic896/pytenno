@@ -1,6 +1,5 @@
 .dccache
 **/__pycache__/
+dist/*
 *.log
-html/
 main.py
-config.json
