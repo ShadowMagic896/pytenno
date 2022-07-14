@@ -1,1 +1,0 @@
-py -m sphinx.cmd.build -b html ../docs ../docs/build

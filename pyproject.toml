@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytenno"
-version = "0.1.0"
+version = "0.1.1"
 description = "A asynchronous Python library for interacting with the warframe.market API"
 readme = "README.md"
 authors = [{ name="Ryan Peckham", email="86629697+ShadowMagic896@users.noreply.github.com" }]
@@ -31,3 +31,6 @@ dev = ["black", "isort"]
 Homepage = "https://github.com/ShadowMagic896/pytenno"
 BugTracker = "https://github.com/ShadowMagic896/pytenno/issues"
 Documentation = "https://pytenno.readthedocs.io"
+
+[project.scripts]
+pytenno = "pytenno.__main__:main"
