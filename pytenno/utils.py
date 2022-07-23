@@ -108,6 +108,7 @@ def from_data(cls_: T, data: dict[str, Any] | None, use_data_method: bool = True
             "creation_date",
             "created",
             "last_updated",
+            "last_update",
             "updated",
             "last_seen",
             "marked_operation_at",
