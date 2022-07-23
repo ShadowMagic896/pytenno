@@ -1,36 +1,30 @@
 
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "pytenno"
-version = "0.1.1"
+version = "0.1.5"
 description = "A asynchronous Python library for interacting with the warframe.market API"
+license = "MIT"
+authors = ["Ryan Peckham <86629697+ShadowMagic896@users.noreply.github.com>"]
+maintainers = ["Ryan Peckham <86629697+ShadowMagic896@users.noreply.github.com>"]
 readme = "README.md"
-authors = [{ name="Ryan Peckham", email="86629697+ShadowMagic896@users.noreply.github.com" }]
-license = {file = "LICENSE"}
+
+repository = "https://github.com/ShadowMagic896/pytenno"
+documentation = "https://pytenno.readthedocs.io"
+
+keywords = ["warframe", "market", "api", "asyncio", "aiohttp", "wrapper"]
+
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.10",
 ]
-keywords = ["warframe", "market", "api", "asyncio", "aiohttp", "wrapper"]
-dependencies = [
-    "aiohttp >= 3.8.1",
-]
-requires-python = ">=3.8"
 
-[tool.setuptools]
-py-modules = []
+[tool.poetry.dependencies]
+aiohttp = "^3.8.1"
 
-[project.optional-dependencies]
-dev = ["black", "isort"]
-
-[project.urls]
-Homepage = "https://github.com/ShadowMagic896/pytenno"
-BugTracker = "https://github.com/ShadowMagic896/pytenno/issues"
-Documentation = "https://pytenno.readthedocs.io"
-
-[project.scripts]
-pytenno = "pytenno.__main__:main"
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/ShadowMagic896/pytenno/issues"

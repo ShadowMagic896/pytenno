@@ -169,6 +169,8 @@ class ItemShort:
     """The URL of the item's thumbnail."""
     item_name: str
     """The name of the item."""
+    vaulted: bool | None = None
+    """Whether the item is vaulted. Default: `None`, meaning the item cannot be vaulted/unvaulted."""
 
     def __repr__(self):
         return f"<ItemShort id={self.id} url_name={self.url_name}>"

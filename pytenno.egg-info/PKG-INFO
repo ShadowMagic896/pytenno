@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pytenno
-Version: 0.1.1
+Version: 0.1.2
 Summary: A asynchronous Python library for interacting with the warframe.market API
 Author-email: Ryan Peckham <86629697+ShadowMagic896@users.noreply.github.com>
 License: MIT License
