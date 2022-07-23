@@ -1,6 +1,5 @@
 Welcome to the documentation of PyTenno.
 ========================================
-
 .. toctree::
     :maxdepth: 1
 

@@ -81,8 +81,8 @@ def build_files(source: str, output: str):
 
         out.write(index_template.format(modules="\n    ".join(modules)))
 
-    print("Copying configuration file [from .\\dodoc\\config_template.py]")
-    with open(f".\\dodoc\\config_template.py", "r") as template:
+    print("Copying configuration file [from .\\deploy\\config_template.py]")
+    with open(f".\\deploy\\config_template.py", "r") as template:
         with open(f"{output}\\conf.py", "w") as target:
             target.write(template.read())
 
