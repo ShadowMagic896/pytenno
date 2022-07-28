@@ -94,7 +94,9 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
 T = TypeVar("T", bound=type)
 
 
-def from_data(cls_: T, data: dict[str, Any] | None, use_data_method: bool = True) -> Type[T]:
+def from_data(
+    cls_: T, data: dict[str, Any] | None, use_data_method: bool = True
+) -> Type[T]:
     """Partially converts common data types into their object equivalent, then creates an instance of ``cls_``."""
     if data is None:
         return None

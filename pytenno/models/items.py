@@ -26,6 +26,7 @@ class LangInItem:
         data["drop"] = [Drop(**drop) for drop in data["drop"]]
         return LangInItem(**data)
 
+
 @dataclass(kw_only=True)
 class ItemCommon:
     """Common base class that an item can inherit from."""

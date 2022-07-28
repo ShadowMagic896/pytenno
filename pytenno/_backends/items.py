@@ -56,7 +56,8 @@ class ItemsBackend(BackendAdapter):
     async def _get_droptable(
         self, item_name, include_items: bool, language: Optional[VALID_LANGUAGES]
     ):
-        url = f"/items/{format_name(item_name)}/droptables"
+        # url = f"/items/{format_name(item_name)}/droptables"
+        url = f"/items/{format_name(item_name)}/dropsources"
         if include_items:
             url += "?include=item"
         headers = {"Language": language}

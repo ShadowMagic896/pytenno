@@ -6,6 +6,7 @@ from ..models.auctions import AuctionEntryExpanded
 
 class AuctionEntries(AuctionEntriesBackend):
     """The AuctionEntries interface class."""
+
     def __init__(self, backend: AuctionEntriesBackend) -> None:
         """Initializes the interface class. For internal use."""
         super().__init__(backend)

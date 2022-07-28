@@ -1,25 +1,20 @@
 import argparse
 import os
+
 from . import __version__
 
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    "--version", 
-    action="version", 
-    version=__version__
-)
+parser.add_argument("--version", action="version", version=__version__)
 # Create an argument to create a file using basic features of PyTenno
-parser.add_argument(
-    "--example",
-    action="store_true",
-    help="Create an example file"
-)
+parser.add_argument("--example", action="store_true", help="Create an example file")
 
 
 args = parser.parse_args()
 if isinstance(args, argparse.Namespace):
     if args.example:
-        location = input("Please enter a directory in which to save the example file:\n  | ")
+        location = input(
+            "Please enter a directory in which to save the example file:\n  | "
+        )
         path = os.path.abspath(location)
         if not os.path.exists(path):
             os.makedirs(path, exist_ok=True)
@@ -70,4 +65,3 @@ asyncio.run(main())
             print(f"Example file created at {path}.")
 else:
     print(args)
-
