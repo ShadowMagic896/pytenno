@@ -8,7 +8,7 @@ from .items import ItemInOrder
 from .users import UserShort
 
 
-@dataclass
+@dataclass(kw_only=True)
 class OrderCommon:
     """Common base class that orders inherit from."""
 
@@ -30,9 +30,11 @@ class OrderCommon:
     """The time the order was last updated."""
     visible: bool
     """Whether the order is visible to others. In this case, always True."""
+    mod_rank: int | None = None
+    """The mod rank of the order's item. Default is ``None``, meaning not applicable."""
 
 
-@dataclass
+@dataclass(kw_only=True)
 class OrderCreated(OrderCommon):
     """Represents an Order after it has been passed to the API
     and is now created."""
@@ -46,7 +48,7 @@ class OrderCreated(OrderCommon):
         )
 
 
-@dataclass
+@dataclass(kw_only=True)
 class OrderRow(OrderCommon):
     """Same as OrderCommon, but with a full user model."""
 
@@ -63,7 +65,7 @@ class OrderRow(OrderCommon):
         return f"<OrderRow id={self.id} user={self.user.ingame_name}>"
 
 
-@dataclass
+@dataclass(kw_only=True)
 class OrderFull(OrderRow):
     """Same as OrderRow, but with a full item model."""
 
