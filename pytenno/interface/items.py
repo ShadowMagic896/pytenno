@@ -158,12 +158,10 @@ class Items(ItemsBackend):
         Example
         -------
         >>> async with PyTenno() as pytenno:
-        >>>     droptable, items = await pytenno.items.get_droptable("kuva_bramma", include_items=True)
+        >>>     droptable, items = await pytenno.items.get_droptable("frost prime neuroptics", include_items=True)
         >>>     print(droptable.relics, droptable.missions)
         >>>     for item in items:
         >>>         print(item.url_name)
 
         """
-        raise Exception(
-            "The API on warframe.market for this feature is currently nonfunctional"
-        )
+        return await self._get_droptable(item_name, include_items, language)

@@ -64,10 +64,10 @@ class ItemsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
         if include_items:
             return (
-                DropTable.from_data(response["droptables"]),
+                DropTable.from_data(response["dropsources"]),
                 [
                     ItemFull.from_data(item)
                     for item in response["include"]["item"]["items_in_set"]
                 ],
             )
-        return from_data(DropTable, response["droptables"])
+        return from_data(DropTable, response["dropsources"])

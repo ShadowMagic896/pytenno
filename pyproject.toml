@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pytenno"
-version = "0.1.8"
+version = "0.2.1"
 description = "A asynchronous Python library for interacting with the warframe.market API"
 license = "MIT"
 authors = ["Ryan Peckham <86629697+ShadowMagic896@users.noreply.github.com>"]
