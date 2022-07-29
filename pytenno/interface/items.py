@@ -4,7 +4,7 @@ from typing import Literal, Optional, overload
 
 from .._backends.items import ItemsBackend
 from ..constants import VALID_LANGUAGES
-from ..models.droptable import DropTable
+from ..models.droptable import DropSource, DropTable
 from ..models.enums import Platform
 from ..models.items import ItemFull, ItemShort
 from ..models.orders import OrderRow
@@ -117,30 +117,30 @@ class Items(ItemsBackend):
         return await self._get_orders(item_name, include_items, str(platform))
 
     @overload
-    async def get_droptable(
+    async def get_dropsources(
         self,
         item_name: str,
         include_items: Literal[False],
         language: Optional[VALID_LANGUAGES] = None,
-    ) -> DropTable:
+    ) -> DropSource:
         ...
 
     @overload
-    async def get_droptable(
+    async def get_dropsources(
         self,
         item_name: str,
         include_items: Literal[True],
         language: Optional[VALID_LANGUAGES] = None,
-    ) -> tuple[DropTable, list[ItemFull]]:
+    ) -> tuple[DropSource, list[ItemFull]]:
         ...
 
-    async def get_droptable(
+    async def get_dropsources(
         self,
         item_name: str,
         include_items: bool,
         language: Optional[VALID_LANGUAGES] = None,
     ):
-        """Gets the droptable of the given item.
+        """Gets where an item can be found.
 
         Parameters
         ----------
@@ -164,4 +164,4 @@ class Items(ItemsBackend):
         >>>         print(item.url_name)
 
         """
-        return await self._get_droptable(item_name, include_items, language)
+        return await self._get_dropsources(item_name, include_items, language)

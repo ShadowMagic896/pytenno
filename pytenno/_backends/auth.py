@@ -1,5 +1,5 @@
 from ..models.users import CurrentUser
-from ..utils import from_data
+from ..utils import _from_data
 from .core import BackendAdapter
 
 
@@ -18,7 +18,7 @@ class AuthBackend(BackendAdapter):
             "device_id": device_id,
         }
         response = await self._backend._request(url, json=data, method="post")
-        return from_data(CurrentUser, response["payload"]["user"])
+        return _from_data(CurrentUser, response["payload"]["user"])
 
     async def _register(
         self, email: str, password: str, region: str, device_id: str, recaptcha: str
@@ -33,7 +33,7 @@ class AuthBackend(BackendAdapter):
             "recaptcha": recaptcha,
         }
         response = await self._backend._request(url, json=data, method="post")
-        return from_data(CurrentUser, response)
+        return _from_data(CurrentUser, response)
 
     async def _restore(self, email: str):
         url = "/auth/restore"

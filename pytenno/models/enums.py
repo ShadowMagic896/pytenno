@@ -636,3 +636,16 @@ class RivenStat(Base):
         elif self.value == 8:
             return "fire_rate_/_attack_speed"
         return self.name
+
+
+class DropSourceType(Base):
+    """Represents the type of drop source.
+
+    Attributes
+    ----------
+    relic: int
+        The source of the drop was a relic.
+    """
+
+    relic = 0
+    mission = 1

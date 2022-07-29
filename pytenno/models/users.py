@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-from ..utils import from_data
+from ..utils import _from_data
 from .enums import PatreonBadge, Platform, UserRole, UserStatus
 
 
@@ -81,10 +81,10 @@ class CurrentUser(BaseUser):
     unread_messages: int
     """The number of unread messages the user has."""
 
-    def from_data(node: dict):
+    def _from_data(node: dict):
         return CurrentUser(
             # file deepcode ignore WrongNumberOfArguments
-            patreon_profile=from_data(PatreonProfile, node.pop("patreon_profile")),
+            patreon_profile=_from_data(PatreonProfile, node.pop("patreon_profile")),
             linked_accounts=LinkedProfiles(**node.pop("linked_accounts")),
             **node,
         )

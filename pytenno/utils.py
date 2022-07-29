@@ -17,7 +17,7 @@ import aiohttp
 
 from .constants import ASSET_ROOT, VALID_TRANSLATIONS_RAW
 from .errors import BaseError
-from .models.droptable import Drop
+from .models.droptable import Drop, RelicRates
 from .models.enums import (AnimationFormat, AuctionMarking, AuctionType,
                            Element, Faction, IconFormat, ItemRarity,
                            MeasurementUnit, OrderType, PatreonBadge, Platform,
@@ -89,19 +89,33 @@ _SPECIAL_ENUM_MAPPING: Mapping[str, Callable[[str], Type[Enum]]] = {
     else grp,
     "stage": lambda stage: Stage[f"_{stage}" if stage.isdigit() else stage],
     "is_marked_for": lambda mark: AuctionMarking[mark] if mark is not None else None,
+    "rates": lambda rates: RelicRates(**rates),
 }
 
 T = TypeVar("T", bound=type)
 
 
-def from_data(
-    cls_: T, data: dict[str, Any] | None, use_data_method: bool = True
-) -> Type[T]:
+def _from_data(
+    cls_: Type[T], data: dict[str, Any] | list[dict[str, Any]] | None, use_data_method: bool = True
+) -> T:
     """Partially converts common data types into their object equivalent, then creates an instance of ``cls_``."""
     if data is None:
         return None
+    
+    if isinstance(data, list):
+        for d in data:
+            d = _format_names(d)
+    else:
+        data = _format_names(data)
+
+    if hasattr(cls_, "_from_data") and use_data_method:
+        return cls_._from_data(data)
+    return cls_(**data)
+
+
+def _format_names(d: dict):
     nd = {}  # Create new dict to avoid RuntimeErrors
-    for key, value in data.items():
+    for key, value in d.items():
         if value is None:
             continue
         if key in ("icon", "sub_icon", "thumb", "avatar", "animation", "background"):
@@ -128,7 +142,5 @@ def from_data(
                     nd[key] = _SPECIAL_ENUM_MAPPING[key](value)
                 except KeyError:
                     nd[key] = value
+    return nd
 
-    if hasattr(cls_, "from_data") and use_data_method:
-        return cls_.from_data(nd)
-    return cls_(**nd)

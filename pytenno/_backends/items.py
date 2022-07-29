@@ -1,10 +1,10 @@
 from typing import Optional
 
 from ..constants import VALID_LANGUAGES
-from ..models.droptable import DropTable
+from ..models.droptable import DropSource, DropTable
 from ..models.items import ItemFull, ItemShort
 from ..models.orders import OrderFull, OrderRow
-from ..utils import format_name, from_data
+from ..utils import format_name, _from_data
 from .core import BackendAdapter
 
 
@@ -14,7 +14,7 @@ class ItemsBackend(BackendAdapter):
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
 
-        return [from_data(ItemShort, node) for node in response["payload"]["items"]]
+        return [_from_data(ItemShort, node) for node in response["payload"]["items"]]
 
     async def _get_item(
         self,
@@ -28,7 +28,7 @@ class ItemsBackend(BackendAdapter):
             return None
         items = response["payload"]["item"]["items_in_set"]
 
-        return [from_data(ItemFull, node) for node in items]
+        return [_from_data(ItemFull, node) for node in items]
 
     async def _get_orders(
         self,
@@ -45,15 +45,15 @@ class ItemsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
         if include_items:
             return (
-                [from_data(OrderRow, node) for node in response["payload"]["orders"]],
+                [_from_data(OrderRow, node) for node in response["payload"]["orders"]],
                 [
-                    from_data(ItemFull, node)
+                    _from_data(ItemFull, node)
                     for node in response["include"]["item"]["items_in_set"]
                 ],
             )
-        return [from_data(OrderRow, node) for node in response["payload"]["orders"]]
+        return [_from_data(OrderRow, node) for node in response["payload"]["orders"]]
 
-    async def _get_droptable(
+    async def _get_dropsources(
         self, item_name, include_items: bool, language: Optional[VALID_LANGUAGES]
     ):
         # url = f"/items/{format_name(item_name)}/droptables"
@@ -64,10 +64,10 @@ class ItemsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
         if include_items:
             return (
-                DropTable.from_data(response["dropsources"]),
+                DropSource._from_data(response["payload"]["dropsources"]),
                 [
-                    ItemFull.from_data(item)
+                    ItemFull._from_data(item)
                     for item in response["include"]["item"]["items_in_set"]
                 ],
             )
-        return from_data(DropTable, response["dropsources"])
+        return DropSource._from_data(response["payload"]["dropsources"])

@@ -3,7 +3,7 @@ from typing import Optional
 from pytenno.models.enums import OrderType, Platform, Subtype
 from pytenno.models.items import ItemFull, ItemInOrder
 from pytenno.models.orders import OrderCommon, OrderCreated, OrderRow
-from pytenno.utils import from_data
+from pytenno.utils import _from_data
 
 from .core import BackendAdapter
 
@@ -34,4 +34,4 @@ class ProfileBackend(BackendAdapter):
             },
         )
         order = response["payload"]["order"]
-        return from_data(OrderCreated, order)
+        return _from_data(OrderCreated, order)

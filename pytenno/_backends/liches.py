@@ -1,5 +1,5 @@
 from ..models.liches import LichEphemera, LichQuirk, LichWeapon
-from ..utils import from_data
+from ..utils import _from_data
 from .core import BackendAdapter
 
 
@@ -8,18 +8,18 @@ class LichesBackend(BackendAdapter):
         url = "/lich/weapons"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
-        return [from_data(LichWeapon, node) for node in response["payload"]["weapons"]]
+        return [_from_data(LichWeapon, node) for node in response["payload"]["weapons"]]
 
     async def _get_ephemeras(self, language):
         url = "/lich/ephemeras"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
         return [
-            from_data(LichEphemera, node) for node in response["payload"]["ephemeras"]
+            _from_data(LichEphemera, node) for node in response["payload"]["ephemeras"]
         ]
 
     async def _get_quirks(self, language):
         url = "/lich/quirks"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
-        return [from_data(LichQuirk, node) for node in response["payload"]["quirks"]]
+        return [_from_data(LichQuirk, node) for node in response["payload"]["quirks"]]

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-from pytenno.utils import from_data
+from pytenno.utils import _from_data
 
 from .enums import OrderType, Platform
 from .items import ItemInOrder
@@ -42,9 +42,9 @@ class OrderCreated(OrderCommon):
     item: ItemInOrder
     """The item in the order."""
 
-    def from_data(data: dict):
+    def _from_data(data: dict):
         return OrderCreated(
-            item=from_data(ItemInOrder, data.pop("item")),
+            item=_from_data(ItemInOrder, data.pop("item")),
         )
 
 
@@ -55,7 +55,7 @@ class OrderRow(OrderCommon):
     user: UserShort
     """The user who made the order."""
 
-    def from_data(node: dict):
+    def _from_data(node: dict):
         return OrderRow(
             user=UserShort(**node.pop("user")),
             **node,

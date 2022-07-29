@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 
 from pytenno.constants import VALID_TRANSLATIONS_RAW
-from pytenno.utils import from_data
+from pytenno.utils import _from_data
 
 from .droptable import Drop
 from .enums import IconFormat, ItemRarity, Subtype
@@ -22,7 +22,7 @@ class LangInItem:
     drop: list[Drop]
     """Where the item can be found."""
 
-    def from_data(data: dict):
+    def _from_data(data: dict):
         data["drop"] = [Drop(**drop) for drop in data["drop"]]
         return LangInItem(**data)
 
@@ -137,7 +137,7 @@ class ItemFull(ItemInOrder):
     pl: LangInItem
     """The Polish translation of the item."""
 
-    def from_data(data: dict):
+    def _from_data(data: dict):
         for lang in (
             "en",
             "ru",
@@ -151,8 +151,8 @@ class ItemFull(ItemInOrder):
             "es",
             "pl",
         ):
-            data[lang] = LangInItem.from_data(data[lang])
-        return from_data(ItemFull, data, False)
+            data[lang] = LangInItem._from_data(data[lang])
+        return _from_data(ItemFull, data, False)
 
     def __repr__(self):
         return f"<ItemFull id={self.id} url_name={self.url_name} tags={self.tags} rarity={self.rarity}>"

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Union
 
-from ..utils import from_data
+from ..utils import _from_data
 from .enums import AuctionMarking, AuctionType, Element, Platform, Polarity
 from .rivens import PartialRivenAttribute
 from .users import UserShort
@@ -61,16 +61,16 @@ class AuctionEntryExpanded(AuctionEntry):
     owner: UserShort
     """The owner of the auction."""
 
-    def from_data(node: dict):
+    def _from_data(node: dict):
         # deepcode ignore
         return AuctionEntryExpanded(
             # file deepcode ignore WrongNumberOfArguments
-            owner=from_data(UserShort, node.pop("owner")),
-            item=from_data(RivenAuction, item)
+            owner=_from_data(UserShort, node.pop("owner")),
+            item=_from_data(RivenAuction, item)
             if (t := (item := node.pop("item"))["type"]) == "riven"
-            else from_data(LichAuction, item)
+            else _from_data(LichAuction, item)
             if t == "lich"
-            else from_data(KubrowAuction, item),
+            else _from_data(KubrowAuction, item),
             **node,
         )
 
@@ -126,10 +126,10 @@ class RivenAuction:
     mod_rank: int
     """The rank of the riven."""
 
-    def from_data(node: dict):
+    def _from_data(node: dict):
         return RivenAuction(
             attributes=[
-                from_data(PartialRivenAttribute, x) for x in node.pop("attributes")
+                _from_data(PartialRivenAttribute, x) for x in node.pop("attributes")
             ],
             **node,
         )

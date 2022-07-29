@@ -3,7 +3,7 @@ from typing import Literal, Union
 from ..models.auctions import (AuctionEntry, AuctionEntryExpanded,
                                KubrowAuction, LichAuction, RivenAuction)
 from ..models.enums import Element, Platform, Polarity
-from ..utils import format_name, from_data
+from ..utils import format_name, _from_data
 from .core import BackendAdapter
 
 
@@ -51,7 +51,7 @@ class AuctionsBackend(BackendAdapter):
         }
 
         response = await self._backend._request(url, method="post", data=str(data))
-        return from_data(AuctionEntry, response["payload"]["auction"])
+        return _from_data(AuctionEntry, response["payload"]["auction"])
 
     async def _find_riven_auctions(
         self,
@@ -113,7 +113,7 @@ class AuctionsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
 
         return [
-            from_data(AuctionEntryExpanded, node)
+            _from_data(AuctionEntryExpanded, node)
             for node in response["payload"]["auctions"]
         ]
 
@@ -147,6 +147,6 @@ class AuctionsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
 
         return [
-            from_data(AuctionEntryExpanded, node)
+            _from_data(AuctionEntryExpanded, node)
             for node in response["payload"]["auctions"]
         ]

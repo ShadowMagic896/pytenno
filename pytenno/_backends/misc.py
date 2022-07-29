@@ -1,7 +1,7 @@
 from ..models.droptable import DroptableNPC
 from ..models.locations import Location
 from ..models.missions import PartialMission
-from ..utils import from_data
+from ..utils import _from_data
 from .core import BackendAdapter
 
 
@@ -10,18 +10,18 @@ class MiscBackend(BackendAdapter):
         url = "/misc/locations"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
-        return [from_data(Location, node) for node in response["payload"]["locations"]]
+        return [_from_data(Location, node) for node in response["payload"]["locations"]]
 
     async def _get_npcs(self, language):
         url = "/misc/npc"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
-        return [from_data(DroptableNPC, node) for node in response["payload"]["npc"]]
+        return [_from_data(DroptableNPC, node) for node in response["payload"]["npc"]]
 
     async def _get_missions(self, language):
         url = "/misc/missions"
         headers = {"Language": language}
         response = await self._backend._request(url, headers=headers)
         return [
-            from_data(PartialMission, node) for node in response["payload"]["missions"]
+            _from_data(PartialMission, node) for node in response["payload"]["missions"]
         ]
