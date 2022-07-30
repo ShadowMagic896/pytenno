@@ -64,10 +64,10 @@ class ItemsBackend(BackendAdapter):
         response = await self._backend._request(url, headers=headers)
         if include_items:
             return (
-                DropSource._from_data(response["payload"]["dropsources"]),
+                [DropSource._from_data(d) for d in response["payload"]["dropsources"]],
                 [
                     ItemFull._from_data(item)
                     for item in response["include"]["item"]["items_in_set"]
                 ],
             )
-        return DropSource._from_data(response["payload"]["dropsources"])
+        return [DropSource._from_data(d) for d in response["payload"]["dropsources"]]

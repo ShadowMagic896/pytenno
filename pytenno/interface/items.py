@@ -122,7 +122,7 @@ class Items(ItemsBackend):
         item_name: str,
         include_items: Literal[False],
         language: Optional[VALID_LANGUAGES] = None,
-    ) -> DropSource:
+    ) -> list[DropSource]:
         ...
 
     @overload
@@ -131,7 +131,7 @@ class Items(ItemsBackend):
         item_name: str,
         include_items: Literal[True],
         language: Optional[VALID_LANGUAGES] = None,
-    ) -> tuple[DropSource, list[ItemFull]]:
+    ) -> tuple[list[DropSource], list[ItemFull]]:
         ...
 
     async def get_dropsources(
@@ -153,7 +153,7 @@ class Items(ItemsBackend):
 
         Returns
         -------
-        DropTable | tuple(DropTable, list[ItemFull])
+        list[DropSource] | tuple(list[DropSource], list[ItemFull])
 
         Example
         -------
