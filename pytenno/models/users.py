@@ -46,7 +46,8 @@ class LinkedProfiles:
     """Whether the user has a Xbox profile linked to their warframe.market profile."""
     steam_profile: bool
     """Whether the user has a Steam profile linked to their warframe.market profile."""
-
+    github_profile: bool
+    """Whether the user has a GitHub profile linked to their warframe.market profile."""
 
 @dataclass(kw_only=True)
 class CurrentUser(BaseUser):
