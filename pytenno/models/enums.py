@@ -649,3 +649,45 @@ class DropSourceType(Base):
 
     relic = 0
     mission = 1
+
+
+class UserLocale(Base):
+    """Represents the locale of a user.
+
+    Attributes
+    ----------
+    en : int
+        The user's locale is English.
+    ru : int
+        The user's locale is Russian.
+    ko : int
+        The user's locale is Korean.
+    fr : int
+        The user's locale is French.
+    sv : int
+        The user's locale is Swedish.
+    de : int
+        The user's locale is German.
+    zh_hant : int
+        The user's locale is Chinese (Traditional).
+    zh_hans : int
+        The user's locale is Chinese (Simplified).
+    pt : int
+        The user's locale is Portuguese.
+    es : int
+        The user's locale is Spanish.
+    pl : int
+        The user's locale is Polish.
+    """
+
+    en = 0
+    ru = 1
+    ko = 2
+    fr = 3
+    sv = 4
+    de = 5
+    zh_hant = 6
+    zh_hans = 7
+    pt = 8
+    es = 9
+    pl = 10

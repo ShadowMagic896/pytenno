@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 from ..utils import _from_data
-from .enums import PatreonBadge, Platform, UserRole, UserStatus
+from .enums import PatreonBadge, Platform, UserRole, UserStatus, UserLocale
 
 
 @dataclass
@@ -81,12 +81,15 @@ class CurrentUser(BaseUser):
     """The number of reviews the user has written today."""
     unread_messages: int
     """The number of unread messages the user has."""
+    locale: UserLocale
+    """The locale of the user."""
 
     def _from_data(node: dict):
         return CurrentUser(
             # file deepcode ignore WrongNumberOfArguments
             patreon_profile=_from_data(PatreonProfile, node.pop("patreon_profile")),
             linked_accounts=LinkedProfiles(**node.pop("linked_accounts")),
+            locale=UserLocale[node.pop("locale")],
             **node,
         )
 
